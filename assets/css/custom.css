@@ -1,0 +1,33 @@
+/*Background Color*/
+.bg-custom-1{
+    background-color: #ff1010;
+}
+
+.bg-custom-2{
+    background-color: #ff0000;
+}
+
+.fa-dark{
+    color: black !important;
+}
+
+.fa-red{
+    color: #ee2222 !important;
+}
+
+.font-small{
+    font-size:12px;
+}
+
+.font-white{
+    color: white !important;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
