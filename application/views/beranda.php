@@ -22,22 +22,22 @@
         </ul>
         <ul class="navbar-nav ml-auto col-sm-12 col-lg-4 font-small justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="<?php echo base_url()."beranda/";?>">
                     <i class="fa fa-home"></i><span class="clearfix d-none d-sm-inline-block">Beranda</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-newspaper-o"></i><span class="clearfix d-none d-sm-inline-block">Informasi</span>
+                <a class="nav-link" href="<?php echo base_url()."informasi/";?>">
+                    <i class="fa fa-newspaper-o"></i><span class="clearfix d-none d-sm-inline-block"> Informasi</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url()."pengumuman/";?>">
                     <i class="fa fa-bell fa-1x"></i><span class="clearfix d-none d-sm-inline-block">Pengumuman</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url()."buku_tamu/";?>">
                    <i class="fa fa-book fa-1x"></i><span class="clearfix d-none d-sm-inline-block">Buku Tamu</span>
                 </a>
             </li>
