@@ -27,11 +27,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link full-sm" href="<?php echo base_url()."tentang/";?>">
-                    <i class="fa fa-info fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Tentang</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link active" href="<?php echo base_url()."informasi/";?>">
                     <i class="fa fa-newspaper-o fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block"> Informasi</span>
                 </a>
@@ -50,43 +45,47 @@
     </div>
 </nav>
 
-<div class="container mb-3" id="box-informasi">
+<div class="container mb-3">
     <div class="box-rounded">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Informasi</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Berita</li>
             </ol>
         </nav>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/berita"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
+    <?php for($n=1;$n<=3;$n++): ?>
+    <div class="box-rounded">
+        <div class="row">
+            <div class="col-lg-3">
+                <img class="img-fluid" src="<?php echo base_url();?>assets/img/gallery-1.jpg" />
+            </div>
+            <div class="col-lg-9">
+                <h2 class="display-4">Judul</h2>
                 <hr>
-                <p class="display-4 text-center"> Berita Terkini </p>
+                <small class="text-muted ml-2">Dipost oleh ? pada ? pada kategori ?</small>
+                <p><?php echo word_limiter('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 60); ?></p>
+                <hr>
+                <a href="#" class="btn btn-primary btn-block">Selengkapnya</a>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/guru"><h1 class="h1 display-1 text-center"><i class="fa fa-id-card fa-1x mr-1"></i></h1></a>
-                <hr>
-                <p class="display-4 text-center"> Kolom Guru </p>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/agenda"><h1 class="h1 display-1 text-center"><i class="fa fa-calendar fa-1x mr-1"></i></h1></a>
-                <hr>
-                <p class="display-4 text-center"> Agenda </p>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/download"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x mr-1"></i></h1></a>
-                <hr>
-                <p class="display-4 text-center"> Download </p>
-            </div>
-        </div>
-     </div>
+    </div>
+    <?php endfor; ?>
+    <div class="box-rounded">
+        <ul class="pagination justify-content-center m-0">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-arrow-left fa-height-auto"></i></a>
+            </li>
+            <li class="page-item"><a class="page-link auto" href="#">1</a></li>
+            <li class="page-item"><a class="page-link auto" href="#">2</a></li>
+            <li class="page-item"><a class="page-link auto" href="#">3</a></li>
+            <li class="page-item"><a class="page-link auto" href="#">4</a></li>
+            <li class="page-item"><a class="page-link auto" href="#">5</a></li>
+            <li class="page-item"><a class="page-link auto" href="#">6</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="+1"><i class="fa fa-arrow-right fa-height-auto"></i></a>
+            </li>
+        </ul>
+    </div>
 </div>

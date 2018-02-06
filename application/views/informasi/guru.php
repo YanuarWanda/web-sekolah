@@ -27,11 +27,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link full-sm" href="<?php echo base_url()."tentang/";?>">
-                    <i class="fa fa-info fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Tentang</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link active" href="<?php echo base_url()."informasi/";?>">
                     <i class="fa fa-newspaper-o fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block"> Informasi</span>
                 </a>
@@ -50,43 +45,55 @@
     </div>
 </nav>
 
-<div class="container mb-3" id="box-informasi">
+<div class="container mb-3">
     <div class="box-rounded">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Informasi</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Guru</li>
             </ol>
         </nav>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <?php for($n=1;$n<=6;$n++){ ?>
+        <div class="col-lg-4">
             <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/berita"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
+                <img class="img-fluid" src="<?php echo base_url();?>assets/img/gallery-1.jpg" />
                 <hr>
-                <p class="display-4 text-center"> Berita Terkini </p>
+                <p class="text-center font-weight-bold"> Yanuar Wanda Putra </p>
+                <p class="text-center"> 195289381923192839 </p>
+                <p class="text-center"> Pemrograman Web Dinamis </p>
+                <p class="text-center"> 087825418390 </p>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/guru"><h1 class="h1 display-1 text-center"><i class="fa fa-id-card fa-1x mr-1"></i></h1></a>
-                <hr>
-                <p class="display-4 text-center"> Kolom Guru </p>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/agenda"><h1 class="h1 display-1 text-center"><i class="fa fa-calendar fa-1x mr-1"></i></h1></a>
-                <hr>
-                <p class="display-4 text-center"> Agenda </p>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="box-rounded">
-                <a class="informasi-menu" href="<?php echo base_url();?>informasi/download"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x mr-1"></i></h1></a>
-                <hr>
-                <p class="display-4 text-center"> Download </p>
-            </div>
-        </div>
-     </div>
+        <?php } ?>
+    </div>
 </div>

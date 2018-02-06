@@ -1,4 +1,7 @@
-/*Background Color*/
+/*
+    Background Color Collection
+    by : Yanuar Wanda Putra
+*/
 .bg-custom-1{
     background-color: #ff1010;
 }
@@ -6,15 +9,43 @@
 .bg-custom-2{
     background-color: #ff0000;
 }
+/* --- END --- */
 
+/*
+    Font Awesome Icon Color Collection
+    by : Yanuar Wanda Putra
+*/
 .fa-dark{
     color: black !important;
+}
+
+.fa-light{
+    color: white !important;
 }
 
 .fa-red{
     color: #ee2222 !important;
 }
 
+.fa-light:hover, .fa-inverse:hover{
+    color: rgba(0, 0, 0, 0.25) !important;
+}
+
+@media (max-width : 576px){
+    .fa-xs-2x{
+        font-size: 2em !important;
+    }
+}
+
+.fa-height-auto{
+    font-size: inherit !important;
+}
+/* --- END --- */
+
+/*
+    Text Styling Collection
+    by : Yanuar Wanda Putra
+*/
 .font-small{
     font-size:12px;
 }
@@ -23,6 +54,36 @@
     color: white !important;
 }
 
+@media (max-width : 576px){
+    html{
+        font-size: 12px;
+    }
+}
+
+.paragraph:first-letter{
+    margin-left: 3em;
+    text-align: justify !important;
+}
+
+@media (max-width : 768px){
+    #box-informasi .display-4{
+        font-size: 25px !important;
+    }
+}
+
+a.page-link.auto{
+    font-size: .80em !important;
+}
+
+.square-list{
+    list-style-type: disc;
+}
+/* --- END --- */
+
+/*
+    HR Styling Collection
+    by : Yanuar Wanda Putra
+*/
 hr {
     display: block;
     height: 1px;
@@ -32,29 +93,109 @@ hr {
     padding: 0;
 }
 
-.relative{
-    position: relative;
-}
+hr .black-hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1em 0;
+    padding: 0;
 
-.height-sidenav{
-    height: 500px;
-    overflow-x: visible;
-    box-shadow: 0 !important;
 }
+/* --- END --- */
 
-.mr-6{
-    margin-left:230px;
-    margin-top: 100px;
-}
-
+/*
+    My Box
+    by : Yanuar Wanda Putra
+*/
 .box{
 	background-color: white;
 	margin-top: 15px;
 	padding: 1rem;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
-.nav-link.box.active{
-    background-color: red;
-    color: white
+.box-rounded{
+    background-color: white;
+    margin-top: 15px;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
+
+.nav-link.box.active, .nav-link.box-rounded.active{
+    background-color: red;
+    color: white;
+    font-size: 30px;
+}
+
+@media (max-width: 768px){
+    .nav-link.box.active, .nav-link.box-rounded.active{
+        font-size: 16px;
+    }
+    .nav-link.box, .nav-link.box-rounded{
+        font-size:12px;
+    }
+}
+
+@media (max-width: 576px){
+    .nav-link.box.active, .nav-link.box-rounded.active{
+        font-size: 18px;
+    }
+    .nav-link.box, .nav-link.box-rounded{
+    }
+}
+/* --- END --- */
+
+/*
+    Link Styling Collection
+    by : Yanuar Wanda Putra
+*/
+a{
+    text-decoration: none !important;
+}
+
+a.informasi-menu{
+    color: red;
+}
+
+a.informasi-menu:hover{
+    color: rgba(255,0,0,.5);
+}
+
+a.nav-link.active i{
+    display: inline;
+}
+/* --- END --- */
+
+/*
+    Position Collection
+    by : Yanuar Wanda Putra
+*/
+.relative{
+    position: relative;
+}
+/* --- END --- */
+
+/*
+    Breadcrumb Collection
+    by : Yanuar Wanda Putra
+*/
+.breadcrumb{
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+/* --- END --- */
+
+/*
+    IMG Styling Collection
+    by : Yanuar Wanda Putra
+*/
+
+.img-photo-max{
+    max-height: 300px;
+    max-width: 300px;
+}
+
+/* --- END --- */
