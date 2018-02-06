@@ -1,5 +1,5 @@
-    <footer class="fixed-bottom">
-        <div class="row bg-custom-1 font-white font-small">
+    <footer>
+        <div class="row bg-custom-1 font-white font-small m-0">
             <div class="col-lg-4 col-sm-12 m-2">
                 <h6 class="h6">Kontak</h6>
                 <hr>
