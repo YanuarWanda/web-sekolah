@@ -44,103 +44,45 @@
         </ul>
     </div>
 </nav>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="slide-out" class="side-nav relative mdb-sidenav">
-                <ul class="custom-scrollbar list-unstyled" style="max-height:100px;">
-                    <li>
-                        <div class="logo-wrapper waves-light">
-                            <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
-                        </div>
-                    </li>
-                    <li>
-                        <ul class="collapsible collapsible-accordion">
-                            <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="waves-effect">Submit listing</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">Registration form</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="waves-effect">For bloggers</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">For authors</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="waves-effect">Introduction</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">Monthly meetings</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="waves-effect">FAQ</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">Write a message</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">FAQ</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">Write a message</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">FAQ</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">Write a message</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">FAQ</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="waves-effect">Write a message</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="sidenav-bg mask-strong"></div>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div>
-                <a href="#" data-activates="slide-out" class="button-collapse m-2" onclick=""><i class="fa fa-bars fa-red"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script src="<?php echo base_url();?>assets/js/compiled.min.js"></script>
-<script>
-     // SideNav Initialization
-    $(".button-collapse").sideNav();
-    new WOW().init();
-</script>
+<div class="container-fluid p-3">
+    <!-- <div class="row">
+        <div class="col-sm-2">
+            <div class="btn-group-vertical">
+                <a href="<?php echo base_url();?>#profil" role="button" class="btn btn-primary">Profil RPL</a>
+                <a href="<?php echo base_url();?>#visi" role="button" class="btn btn-secondary">Visi Misi</a>
+                <a href="<?php echo base_url();?>#struktur" role="button" class="btn btn-secondary">Struktur Organisasi</a>
+                <a href="<?php echo base_url();?>#kurikulum" role="button" class="btn btn-secondary">Kurikulum RPL</a>
+                <a href="<?php echo base_url();?>#kerja" role="button" class="btn btn-secondary">Peluang Kerja</a>
+            </div>
+        </div>
+        <div class="col-sm-9 ml-auto btn-primary">
+
+        </div>
+    </div> -->
+        <ul class="nav justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link box active mr-2" id="home-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="home" aria-selected="true">Profil RPL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link box mr-2" id="profile-tab" data-toggle="tab" href="#visimisi" role="tab" aria-controls="profile" aria-selected="false">Visi Misi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link box mr-2" id="contact-tab" data-toggle="tab" href="#struktur" role="tab" aria-controls="contact" aria-selected="false">Struktur Organisasi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link box mr-2" id="contact-tab" data-toggle="tab" href="#kurikulum" role="tab" aria-controls="contact" aria-selected="false">Kurikulum RPL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link box mr-2" id="contact-tab" data-toggle="tab" href="#kerja" role="tab" aria-controls="contact" aria-selected="false">Peluang Kerja</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active box" id="profil" role="tabpanel" aria-labelledby="home-tab">Profil RPL</div>
+            <div class="tab-pane fade box" id="visimisi" role="tabpanel" aria-labelledby="profile-tab">Visi dan Misi</div>
+            <div class="tab-pane fade box" id="struktur" role="tabpanel" aria-labelledby="contact-tab">Struktur Organisasi</div>
+            <div class="tab-pane fade box" id="kurikulum" role="tabpanel" aria-labelledby="contact-tab">Kurikulum RPL</div>
+            <div class="tab-pane fade box" id="kerja" role="tabpanel" aria-labelledby="contact-tab">Peluang Kerja</div>
+        </div>
+</div>
