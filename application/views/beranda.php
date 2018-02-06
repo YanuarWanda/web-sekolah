@@ -79,7 +79,20 @@
 
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active box" id="profil" role="tabpanel" aria-labelledby="home-tab">Profil RPL</div>
+            <div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="box">
+                            Profil RPL
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="box">
+                            Profil RPL 2
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="tab-pane fade box" id="visimisi" role="tabpanel" aria-labelledby="profile-tab">Visi dan Misi</div>
             <div class="tab-pane fade box" id="struktur" role="tabpanel" aria-labelledby="contact-tab">Struktur Organisasi</div>
             <div class="tab-pane fade box" id="kurikulum" role="tabpanel" aria-labelledby="contact-tab">Kurikulum RPL</div>
