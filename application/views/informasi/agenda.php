@@ -32,6 +32,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link full-sm" href="<?php echo base_url()."tentang/";?>">
+                    <i class="fa fa-info fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Tentang</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link active" href="<?php echo base_url()."informasi/";?>">
                     <i class="fa fa-newspaper-o fa-xs-2x fa-md-1x mr-1"></i><span class="clearfix d-none d-sm-inline-block"> Informasi</span>
                 </a>
