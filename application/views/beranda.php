@@ -100,21 +100,18 @@
                 <div class="col-sm-4">
                     <div class="box-rounded small">
                         <img class="img-fluid" src="<?php echo base_url();?>assets/img/beranda/small-banner-1.png" />
-                        <hr>
                         <h1 class="text-center p-2">Lebih lieur.</h1>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="box-rounded small">
                         <img class="img-fluid" src="<?php echo base_url();?>assets/img/beranda/small-banner-1.png" />
-                        <hr>
                         <h1 class="text-center p-2">Lebih sering olab.</h1>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="box-rounded small">
                         <img class="img-fluid" src="<?php echo base_url();?>assets/img/beranda/small-banner-1.png" />
-                        <hr>
                         <div class="br-small-text p-2">
                             <h1 class="text-center">Lebih cepat gila.</h1>
                         </div>
@@ -126,39 +123,52 @@
     <div class="bg-custom-3">
         <div class="parallax"></div>
     </div>
-    <div class="bg-custom-3 container-fluid">
+    <div class="bg-custom-3 container">
         <div class="box mb-3">
-            <h1 class="display-1 text-center">Menu</h1>
+            <h1 class="display-2 text-center">Menu</h1>
             <hr>
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-5">
                     <div class="box-rounded">
                         <a class="informasi-menu" href="<?php echo base_url();?>tentang"><h1 class="h1 display-1 text-center"><i class="fa fa-info-circle fa-1x mr-1"></i></h1></a>
                         <hr>
-                        <h1 class="display-3 text-center">Tentang</h1>
+                        <h1 class="display-4 text-center">Tentang</h1>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="box-rounded">
                         <a class="informasi-menu" href="<?php echo base_url();?>informasi"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
                         <hr>
-                        <h1 class="display-3 text-center">Informasi</h1>
+                        <h1 class="display-4 text-center">Informasi</h1>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="box-rounded">
                         <a class="informasi-menu" href="<?php echo base_url();?>pengumuman"><h1 class="h1 display-1 text-center"><i class="fa fa-bell fa-1x mr-1"></i></h1></a>
                         <hr>
-                        <h1 class="display-3 text-center">Pengumuman</h1>
+                        <h1 class="display-4 text-center">Pengumuman</h1>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="box-rounded">
                         <a class="informasi-menu" href="<?php echo base_url();?>buku_tamu"><h1 class="h1 display-1 text-center"><i class="fa fa-book fa-1x mr-1"></i></h1></a>
                         <hr>
-                        <h1 class="display-3 text-center">Buku Tamu</h1>
+                        <h1 class="display-4 text-center">Buku Tamu</h1>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-custom-3">
+        <div class="parallax"></div>
+    </div>
+    <div class="bg-custom-3">
+        <div class="container">
+            <div class="box mb-3">
+                <h1 class="text-center display-3">Lokasi Kita</h1>
+            </div>
+            <div class="box mb-3">
+               <iframe class="maps-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.002612100019!2d107.55619391442444!3d-6.8902891950211185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6bd6aaaaaab%3A0xf843088e2b5bf838!2sSMK+11+Bandung!5e0!3m2!1sen!2sid!4v1517989587366" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
     </div>

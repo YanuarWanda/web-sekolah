@@ -285,4 +285,7 @@ a.pagination-link{
 
     z-index: 9999999;
 }
+.maps-full{
+    width: 100%;
+}
 /* --- END --- */
