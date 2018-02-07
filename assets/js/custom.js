@@ -18,3 +18,5 @@ span.on('click', function(){
 modal.on('click', function(){
     modal.fadeOut(500);
 });
+
+/* -------------------------------------- */

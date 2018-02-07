@@ -9,6 +9,10 @@
 .bg-custom-2{
     background-color: #ff0000;
 }
+
+.bg-custom-3{
+    background-color: #f6f6f6;
+}
 /* --- END --- */
 
 /*
@@ -31,8 +35,29 @@
     color: rgba(0, 0, 0, 0.25) !important;
 }
 
-@media (max-width : 576px){
+@media (min-width : 576px){
     .fa-xs-2x{
+        font-size: 2em !important;
+    }
+}
+
+@media (min-width : 768px){
+    .fa-md-1x{
+        font-size: 1em !important;
+    }
+    .fa-md-2x{
+        font-size: 2em !important;
+    }
+}
+
+@media (min-width : 992px){
+    .fa-lg-3x{
+        font-size: 3em !important;
+    }
+}
+
+@media (min-width : 1200px){
+    .fa-xl-2x{
         font-size: 2em !important;
     }
 }
@@ -52,6 +77,14 @@
 
 .font-white{
     color: white !important;
+}
+
+a.font-white:hover{
+    color: rgba(255, 255, 255, .5) !important;
+}
+
+a.font-white:visited{
+    color: rgba(128, 128, 128, 1) !important;
 }
 
 @media (max-width : 576px){
@@ -121,6 +154,12 @@ hr .black-hr{
     padding: 1rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+}
+
+.box-rounded.small{
+    margin: 1rem;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .nav-link.box.active, .nav-link.box-rounded.active{
@@ -198,4 +237,52 @@ a.nav-link.active i{
     max-width: 300px;
 }
 
+/* --- END --- */
+
+/*
+    MISC Styling
+    by : Yanuar Wanda Putra
+*/
+
+.z-last{
+    z-index: 99999999999;
+}
+.carousel-control-prev, .carousel-control-next{
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 5%;
+}
+.pagination-links{
+    margin: 30px 0;
+}
+.pagination-links strong{
+    padding: 8px 13px;
+    margin: 5px;
+    background: #f4f4f4;
+    border: 1px #ccc solid;
+}
+a.pagination-link{
+    padding: 8px 13px;
+    margin: 5px;
+    background: #f4f4f4;
+    border: 1px #ccc solid;
+}
+.img-full{
+    width: 100%;
+    height: auto;
+}
+.parallax {
+    /* The image used */
+    background-image: url("../img/beranda/banner-2.jpg");
+
+    /* Set a specific height */
+    height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    z-index: 9999999;
+}
 /* --- END --- */
