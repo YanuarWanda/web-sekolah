@@ -4,5 +4,9 @@
 		function lihat_agenda(){
 			return $this->db->get('agenda')->result();
 		}
+
+		function tambah_agenda($data){
+			$this->db->insert('agenda',$data);
+		}
 	}
 ?>

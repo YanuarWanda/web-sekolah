@@ -69,7 +69,7 @@
 					<ul class="nav ace-nav">
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="<?php echo base_url()?>aceadmin/assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="<?php echo base_url()?>aceadmin/assets/images/avatars/avatar2.png" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									Admin
@@ -547,8 +547,37 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-									<button class="btn btn-success"><i class="fa fa-plus"></i> Tambah Agenda</button>
+									<a href="#tambah-agenda" role="button" class="green" data-toggle="modal"><button class="btn btn-success"><i class="fa fa-plus"></i> Tambah Agenda</button></a>
 
+									<div id="tambah-agenda" class="modal fade" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header no-padding table-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+													</button>
+													<h3 class="text-center">Tambah Agenda</h3>
+											</div>
+
+											<div class="modal-body no-padding">
+												<form action="<?php echo base_url(); ?>adminhome/tambah_agenda" method="POST" >
+													<input class="form-control" type="text" name="judul" placeholder="Judul Agenda">
+													<input class="form-control" type="date" name="tanggal">
+													<textarea name="isi"></textarea>
+											</div>
+
+											<div class="modal-footer no-margin-top">
+												<button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
+													<i class="ace-icon fa fa-times"></i>
+													Close
+												</button>
+												<button id="submit" class="btn btn-sm btn-primary pull-right">
+													<i class="fa fa-plus"></i>
+												Tambah</button>
+												</form>
+											</div>
+										</div><!-- /.modal-content -->
+									</div><!-- /.modal-dialog -->
+								</div>
 									<div class="col-xs-12">
 										<br>
 										<table class="table  table-bordered table-hover">
