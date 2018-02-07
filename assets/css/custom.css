@@ -288,4 +288,7 @@ a.pagination-link{
 .maps-full{
     width: 100%;
 }
+.ace-nav{
+    height: 1% !important;
+}
 /* --- END --- */
