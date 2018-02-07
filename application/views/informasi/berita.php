@@ -23,7 +23,12 @@
         <ul class="navbar-nav ml-auto col-sm-12 col-lg-4 font-small justify-content-center">
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url()."beranda/";?>">
-                    <i class="fa fa-home fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Beranda</span>
+                    <i class="fa fa-home fa-xs-2x fa-md-1x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Beranda</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link full-sm" href="<?php echo base_url()."tentang/";?>">
+                    <i class="fa fa-info fa-xs-2x fa-md-1x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Tentang</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -33,17 +38,17 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="<?php echo base_url()."informasi/";?>">
-                    <i class="fa fa-newspaper-o fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block"> Informasi</span>
+                    <i class="fa fa-newspaper-o fa-xs-2x fa-md-1x mr-1"></i><span class="clearfix d-none d-sm-inline-block"> Informasi</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url()."pengumuman/";?>">
-                    <i class="fa fa-bell fa-1x fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Pengumuman</span>
+                    <i class="fa fa-bell fa-1x fa-xs-2x fa-md-1x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Pengumuman</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url()."buku_tamu/";?>">
-                   <i class="fa fa-book fa-1x fa-xs-2x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Buku Tamu</span>
+                   <i class="fa fa-book fa-1x fa-xs-2x fa-md-1x mr-1"></i><span class="clearfix d-none d-sm-inline-block">Buku Tamu</span>
                 </a>
             </li>
         </ul>
@@ -78,19 +83,25 @@
     </div>
     <?php endfor; ?>
     <div class="box-rounded">
-        <ul class="pagination justify-content-center m-0">
+        <!-- <ul class="pagination justify-content-center m-0">
             <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1"><i class="fa fa-arrow-left fa-height-auto"></i></a>
             </li>
-            <li class="page-item"><a class="page-link auto" href="#">1</a></li>
+            <li class="page-item"><a class="page-link auto" href="">1</a></li>
             <li class="page-item"><a class="page-link auto" href="#">2</a></li>
             <li class="page-item"><a class="page-link auto" href="#">3</a></li>
             <li class="page-item"><a class="page-link auto" href="#">4</a></li>
             <li class="page-item"><a class="page-link auto" href="#">5</a></li>
             <li class="page-item"><a class="page-link auto" href="#">6</a></li>
             <li class="page-item">
+                <a class="page-link auto"><?php echo $this->pagination->create_links(); ?></a>
+            </li>
+            <li class="page-item">
                 <a class="page-link" href="#" tabindex="+1"><i class="fa fa-arrow-right fa-height-auto"></i></a>
             </li>
-        </ul>
+        </ul> -->
+        <div class="d-flex justify-content-center m-0 p-0">
+            <?php echo $this->pagination->create_links(); ?>
+        </div>
     </div>
 </div>

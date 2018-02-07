@@ -20,7 +20,7 @@
             <div class="col-lg-3 col-sm-12 m-2">
                 <h6 class="h6">Link</h6>
                 <hr>
-                <p class="text-muted">Jl. Budhi Cilember Bandung - Jawa Barat</p>
+                <a class="font-white" href="#"> Website SMKN 11 Bandung </a>
             </div>
         </div>
         <div class="bg-custom-2 p-2 font-white">
