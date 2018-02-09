@@ -96,16 +96,16 @@
 					<div class="col-xs-12">
 						<div class="row">
 							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<a href="#tambah-agenda" role="button" class="green" data-toggle="modal"><button class="btn btn-success"><i class="fa fa-plus"></i> Tambah Agenda</button></a>
-							<div id="tambah-agenda" class="modal fade" tabindex="-1">
+							<button class="btn btn-success" data-target="#tambah-agenda" data-toggle="modal"><i class="fa fa-plus"></i> Tambah Agenda</button>
+							<div id="tambah-agenda" class="modal" role="dialog">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header no-padding table-header">
-											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
 											<h3 class="text-center">Tambah Agenda</h3>
 										</div>
 										<div class="modal-body no-padding">
-											<form action="<?php echo base_url(); ?>adminhome/tambah_agenda" method="POST" >
+											<form action="<?php echo base_url(); ?>admin/tambah_agenda" method="POST" >
 												<input class="form-control" type="text" name="judul" placeholder="Judul Agenda">
 												<input class="form-control" type="date" name="tanggal">
 												<textarea name="isi"></textarea>
@@ -117,6 +117,7 @@
 											</button>
 											<button id="submit" class="btn btn-sm btn-primary pull-right">
 												<i class="fa fa-plus"></i>Tambah
+
 											</button>
 											</form>
 										</div>
@@ -187,7 +188,7 @@
 						<div class="hr hr-18 dotted hr-double"></div>
 						<div class="row">
 							<div class="col-xs-12">
-								<h3 class="header smaller lighter blue">jQuery dataTables</h3>
+								<h3 class="header smaller lighter blue">Data Table</h3>
 								<div class="clearfix">
 									<div class="pull-right tableTools-container"></div>
 								</div>

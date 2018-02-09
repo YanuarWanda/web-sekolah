@@ -121,7 +121,7 @@ Class Admin extends CI_Controller{
 
 			if(!empty($data['judul_agenda']) && !empty($data['tanggal_agenda']) && !empty($data['isi_agenda'])){
 				$this->modelweb->tambah_agenda($data);
-				redirect(base_url()."adminhome");
+				redirect(base_url()."admin/agenda");
 			}else{
 			//$this->session->set_flashdata('pesan', "<script> alert ('Data harus di isi') </script>");
 			}
