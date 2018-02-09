@@ -11,11 +11,28 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
-        $data['title']  = "Admin ";
-        $data['isi']    = "admin/home";
-        $data['record'] = $this->modelweb->lihat_agenda();
+        $data['title']      = "Admin ";
+        $data['isi']        = "admin/home";
+        $data['tentang']    = $this->modelweb->getDataTentangRPL();
 
         $this->load->view('layout_admin/wrapper',$data);
+    }
+
+    public function update_tentang(){
+        if(empty($this->session->userdata('email'))){
+            redirect('admin/login');
+        }
+
+        $data = array(
+            'visi'  => $_POST['visi'],
+            'misi'  => $_POST['misi'],
+            'deskripsi' => $_POST['deskripsi'],
+            'sejarah'   => $_POST['sejarah']
+        );
+
+        $this->modelweb->updateData('tentang_rpl', $data);
+        // print_r($data);
+        redirect('admin');
     }
 
     public function berita(){

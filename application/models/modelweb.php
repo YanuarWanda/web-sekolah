@@ -13,5 +13,13 @@
 			$this->db->where('email', $email);
 			return $this->db->get('users')->result_array();
 		}
+
+		public function getDataTentangRPL(){
+			return $this->db->get('tentang_rpl')->row();
+		}
+
+		public function updateData($tabel, $where){
+			$this->db->replace($tabel, $where);
+		}
 	}
 ?>

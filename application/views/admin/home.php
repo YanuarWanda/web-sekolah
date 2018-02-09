@@ -88,7 +88,38 @@
 				</ul>
 			</div>
 			<div class="page-content">
-				
+				<form method="POST" action="<?php echo base_url();?>admin/update_tentang">
+					<div class="form-group">
+						<label for="visi"><h1>Visi</h1></label>
+						<textarea id="visi" name="visi" class="form-control"><?php echo $tentang->visi; ?></textarea>
+						<script>
+							CKEDITOR.replace( 'visi' );
+						</script>
+					</div>
+					<div clas="form-group">
+						<label for="misi"><h1>Misi</h1></label>
+						<textarea id="misi" name="misi" class="form-control"><?php echo $tentang->misi; ?></textarea>
+						<script>
+							CKEDITOR.replace( 'misi' );
+						</script>
+					</div>
+					<div clas="form-group">
+						<label for="deskripsi"><h1>Deskripsi</h1></label>
+						<textarea id="deskripsi" name="deskripsi" class="form-control"><?php echo $tentang->deskripsi; ?></textarea>
+						<script>
+							CKEDITOR.replace( 'deskripsi' );
+						</script>
+					</div>
+					<div clas="form-group">
+						<label for="sejarah"><h1>Sejarah</h1></label>
+						<textarea id="sejarah" name="sejarah" class="form-control"><?php echo $tentang->sejarah; ?></textarea>
+						<script>
+							CKEDITOR.replace( 'sejarah' );
+						</script>
+					</div>
+					<hr>
+					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-edit fa-2x"></i></button>
+				</form>
 			</div>
 		</div>
 	</div>
