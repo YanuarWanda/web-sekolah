@@ -6,6 +6,7 @@ class Tentang extends CI_Controller {
 	{
 		$data['title']	= "Tentang ";
 		$data['isi']	= "tentang/tentang";
+		$data['tentang']= $this->main_model->getDataTentangRPL();
 
 		$this->load->view('layout/wrapper', $data);
 	}

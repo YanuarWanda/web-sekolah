@@ -80,7 +80,7 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-				<ul class="breadcrumb">
+				<ul class="breadcrumb normal">
 					<li class="active">
 						<i class="ace-icon fa fa-home home-icon"></i>
 						Home
@@ -89,55 +89,89 @@
 			</div>
 			<div class="page-content">
 				<form method="POST" action="<?php echo base_url();?>admin/update_tentang">
-					<div class="form-group">
-						<label for="visi"><h1>Visi</h1></label>
-						<textarea id="visi" name="visi" class="form-control"><?php echo $tentang->visi; ?></textarea>
-						<script>
-							CKEDITOR.replace( 'visi' );
-						</script>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			  			<div class="panel panel-default">
+				    		<div class="panel-heading" role="tab" id="headingOne">
+				      			<h4 class="panel-title">
+				        			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					          			Visi
+					        		</a>
+					      		</h4>
+					    	</div>
+					    	<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+					      		<div class="panel-body">
+									<div class="form-group">
+										<textarea id="visi" name="visi" class="form-control"><?php echo $tentang->visi; ?></textarea>
+										<script>
+											CKEDITOR.replace( 'visi' );
+										</script>
+									</div>
+					      		</div>
+					    	</div>
+					  	</div>
+
+					  	<div class="panel panel-default">
+					    	<div class="panel-heading" role="tab" id="headingTwo">
+					      		<h4 class="panel-title">
+					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					          			Misi
+				        			</a>
+					      		</h4>
+				    		</div>
+					    	<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						      	<div class="panel-body">
+									<div clas="form-group">
+										<textarea id="misi" name="misi" class="form-control"><?php echo $tentang->misi; ?></textarea>
+										<script>
+											CKEDITOR.replace( 'misi' );
+										</script>
+									</div>
+						    	</div>
+				    		</div>
+					  	</div>
+
+					  	<div class="panel panel-default">
+					    	<div class="panel-heading" role="tab" id="headingThree">
+					      		<h4 class="panel-title">
+					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					          			Sejarah
+				        			</a>
+					      		</h4>
+					    	</div>
+					    	<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					      		<div class="panel-body">
+									<div clas="form-group">
+										<textarea id="sejarah" name="sejarah" class="form-control"><?php echo $tentang->sejarah; ?></textarea>
+										<script>
+											CKEDITOR.replace( 'sejarah' );
+										</script>
+									</div>
+					      		</div>
+					    	</div>
+					  	</div>
+
+						<div class="panel panel-default">
+					    	<div class="panel-heading" role="tab" id="headingFour">
+					      		<h4 class="panel-title">
+					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					          			Deskripsi
+				        			</a>
+					      		</h4>
+					    	</div>
+					    	<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+					      		<div class="panel-body">
+									<div clas="form-group">
+										<textarea id="deskripsi" name="deskripsi" class="form-control"><?php echo $tentang->deskripsi; ?></textarea>
+										<script>
+											CKEDITOR.replace( 'deskripsi' );
+										</script>
+									</div>
+					      		</div>
+					    	</div>
+					  	</div>
 					</div>
-					<div clas="form-group">
-						<label for="misi"><h1>Misi</h1></label>
-						<textarea id="misi" name="misi" class="form-control"><?php echo $tentang->misi; ?></textarea>
-						<script>
-							CKEDITOR.replace( 'misi' );
-						</script>
-					</div>
-					<div clas="form-group">
-						<label for="deskripsi"><h1>Deskripsi</h1></label>
-						<textarea id="deskripsi" name="deskripsi" class="form-control"><?php echo $tentang->deskripsi; ?></textarea>
-						<script>
-							CKEDITOR.replace( 'deskripsi' );
-						</script>
-					</div>
-					<div clas="form-group">
-						<label for="sejarah"><h1>Sejarah</h1></label>
-						<textarea id="sejarah" name="sejarah" class="form-control"><?php echo $tentang->sejarah; ?></textarea>
-						<script>
-							CKEDITOR.replace( 'sejarah' );
-						</script>
-					</div>
-					<hr>
-					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-edit fa-2x"></i></button>
+					<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
 				</form>
 			</div>
 		</div>
 	</div>
-
-	<div class="footer">
-		<div class="footer-inner">
-			<div class="footer-content">
-				<span class="bigger-120">
-					 &copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved. 2017-2018.
-				</span>
-				&nbsp; &nbsp;
-				<span class="action-buttons">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-	</a>
-</div>

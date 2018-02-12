@@ -225,6 +225,11 @@ a.nav-link.active i{
     padding: 0;
     margin: 0;
 }
+
+.breadcrumb.normal{
+    background-color: transparent;
+    margin: 1em;
+}
 /* --- END --- */
 
 /*
@@ -290,5 +295,21 @@ a.pagination-link{
 }
 .ace-nav{
     height: 1% !important;
+}
+
+.btn-fixed-bottom-right{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+}
+
+.z-top{
+   z-index: 4;
+}
+.d-flex{
+    display: flex;
+}
+.align-self-center{
+    align-self: center;
 }
 /* --- END --- */

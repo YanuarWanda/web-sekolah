@@ -60,23 +60,23 @@
             </ol>
         </nav>
     </div>
-    <?php for($n=1;$n<=3;$n++): ?>
+    <?php foreach($berita as $b){ ?>
     <div class="box-rounded">
         <div class="row">
             <div class="col-lg-3">
-                <img class="img-fluid" src="<?php echo base_url();?>assets/img/gallery-1.jpg" />
+                <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
             </div>
             <div class="col-lg-9">
-                <h2 class="display-4">Judul</h2>
+                <h2 class="display-4"><?php echo $b['judul_berita']; ?></h2>
                 <hr>
-                <small class="text-muted ml-2">Dipost oleh ? pada ? pada kategori ?</small>
-                <p><?php echo word_limiter('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 60); ?></p>
+                <small class="text-muted ml-2">Dipost pada <?php echo $b['tanggal_berita']; ?> pada kategori ?</small>
+                <p><?php echo word_limiter($b['isi_berita'], 40); ?></p>
                 <hr>
-                <a href="#" class="btn btn-primary btn-block">Selengkapnya</a>
+                <a href="<?php echo base_url();?>informasi/berita/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya</a>
             </div>
         </div>
     </div>
-    <?php endfor; ?>
+    <?php } ?>
     <div class="box-rounded">
         <!-- <ul class="pagination justify-content-center m-0">
             <li class="page-item disabled">

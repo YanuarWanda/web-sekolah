@@ -80,7 +80,7 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-				<ul class="breadcrumb">
+				<ul class="breadcrumb normal">
 					<li>
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
@@ -91,23 +91,27 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-	</div>
-
-	<div class="footer">
-		<div class="footer-inner">
-			<div class="footer-content">
-				<span class="bigger-120">
-					&copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved. 2017-2018.
-				</span>
-				&nbsp; &nbsp;
-				<span class="action-buttons">
-				</span>
+			<div class="page-content">
+				<a href="<?php echo base_url();?>admin/tambahBerita" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+				<?php foreach($berita as $b){ ?>
+					<div class="box-rounded small">
+						<div class="row">
+							<div class="col-sm-12 col-lg-3">
+								<img class="img-responsive" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>"/>
+							</div>
+							<div class="col-sm-12 col-lg-9">
+								<h1> <?php echo $b['judul_berita']; ?> </h1>
+								<hr>
+								<small class="text-muted">Dipost pada : <?php echo $b['tanggal_berita']; ?></small>
+								<p class="text-justify text-truncate"> <?php echo word_limiter($b['isi_berita'], 25); ?> </p>
+								<hr>
+								<a href="<?php echo base_url();?>admin/editBerita?i=<?php echo $b['id']; ?>"><button class="btn btn-primary" role="button"><i class="fa fa-edit fa-2x"></i></button></a>
+								<button href="<?php echo base_url();?>admin/deleteBerita?i=<?php echo $b['id']; ?>" class="btn btn-danger remove" role="button"><i class="fa fa-trash fa-2x"></i></button>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+				<?php echo $this->pagination->create_links(); ?>
 			</div>
 		</div>
 	</div>
-
-	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-	</a>
-</div>

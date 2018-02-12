@@ -1,4 +1,24 @@
 
+
+    <div class="footer bg-custom-2">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <span class="bigger-90">
+                     &copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved. 2017-2018.
+                </span>
+                &nbsp; &nbsp;
+                <span class="action-buttons">
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>
+
+
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/custom.js"></script>
@@ -18,6 +38,7 @@
 	<script src="<?php echo base_url()?>assets/js/ace.min.js"></script>
 
 	<script type="text/javascript">
+
     			jQuery(function($) {
     				//initiate dataTables plugin
     				var myTable =

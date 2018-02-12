@@ -80,7 +80,7 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-				<ul class="breadcrumb">
+				<ul class="breadcrumb normal">
 					<li>
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
@@ -218,21 +218,3 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="footer">
-		<div class="footer-inner">
-			<div class="footer-content">
-				<span class="bigger-120">
-					&copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved. 2017-2018.
-				</span>
-				&nbsp; &nbsp;
-				<span class="action-buttons">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-	</a>
-</div>

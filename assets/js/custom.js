@@ -19,4 +19,20 @@ modal.on('click', function(){
     modal.fadeOut(500);
 });
 
+$('.remove').on('click', function(){
+    var url = $(this).attr('href');
+    swal({
+        title: 'Hapus data?',
+        text: 'Data yang dihapus tidak bisa dikembalikan!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Okelah, hapus aja!'
+    }).then((result) =>{
+        if(result.value) {
+            window.location.replace(url);
+        }
+    });
+});
 /* -------------------------------------- */

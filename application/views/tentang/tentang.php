@@ -73,14 +73,29 @@
 
         <div class="tab-pane fade" id="profil" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-12">
                     <div class="box-rounded">
                         <img class="img-fluid imgZoom" src="<?php echo base_url();?>assets/img/gallery-1.jpg" alt="Profil RPL"/>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-12">
+                    <div class="box-rounded text-center">
+                        <h1 class="display-4"> Apa itu Rekayasa Perangkat Lunak ? </h1>
+                    </div>
+                </div>
+                <div class="col-lg-12">
                     <div class="box-rounded text-justify">
-                        RPL di SMKN 11 Bandung sudah ada sejak tahun 2011, di tahun pertama hanya ada satu kelas bengkel yaitu BTI-1 Di sana terdapat 20 buah PC, dan 1 buah proyektor.
+                        <?php echo $tentang->deskripsi; ?>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="box-rounded text-center">
+                        <h1 class="display-4"> Sejarah Rekayasa Perangkat Lunak </h1>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="box-rounded text-justify">
+                        <?php echo $tentang->sejarah; ?>
                     </div>
                 </div>
             </div>
@@ -91,7 +106,7 @@
                 <h1 class="text-center"> Visi </h1>
                 <hr>
                 <blockquote class="blockquote text-center">
-                    <p class="mb-0"> Mencetak lulusan berkualitas dengan kompetensi di bidang rekayasa perangkatlunak, pemrograman dan web.</p>
+                    <p class="mb-0"><?php echo $tentang->visi; ?></p>
                     <footer class="blockquote-footer">Visi RPL di SMKN 11 Bandung</footer>
                 </blockquote>
             </div>
@@ -100,9 +115,7 @@
                 <hr>
                 <blockquote class="blockquote">
                     <ol>
-                        <li>Mendidik siswa mengidentifikasi dan melakukan reparasi software untuk kebutuhan didunia usaha dan industri.</li>
-                        <li>Mendidik siswa mengimplementasikan aplikasi-aplikasi pemrograman, dan pengembangan web.</li>
-                        <li>Mendidik siswa mengimplementasikan pemrograman berbasis client server dan desktop</li>
+                        <?php echo $tentang->misi; ?>
                     </ol>
                 </blockquote>
             </div>

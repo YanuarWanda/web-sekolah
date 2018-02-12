@@ -37,7 +37,7 @@
 				</a>
 				<b class="arrow"></b>
 			</li>
-            <li class="">
+            <li class="active open">
                 <a href="<?php echo base_url();?>admin/berita">
                     <i class="menu-icon fa fa-newspaper-o"></i>
                     <span class="menu-text"> Berita </span>
@@ -50,7 +50,7 @@
     				<b class="arrow"></b>
     			</a>
     		</li>
-    		<li class="active open">
+    		<li class="">
     			<a href="<?php echo base_url();?>admin/guru">
     				<i class="menu-icon fa fa-id-card"></i>
     				<span class="menu-text"> Guru </span>
@@ -85,11 +85,31 @@
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
-					<li class="active">
-						<i class="ace-icon fa fa-id-card home-icon"></i>
-						Guru
+					<li>
+						<i class="ace-icon fa fa-newspaper-o home-icon"></i>
+						<a href="<?php echo base_url();?>admin/berita">Berita</a>
 					</li>
+                    <li class="active">
+                        <i class="ace-icon fa fa-edit home-icon"></i>
+                        Edit Berita
+                    </li>
 				</ul>
 			</div>
-		</div>
-	</div>
+            <div class="page-content">
+                <?php echo form_open('admin/updateBerita?i='.$berita['0']['id']); ?>
+					<div class="form-group">
+						<label for="judul">Judul Berita</label>
+						<input type="text" class="form-control" name="judul" value="<?php echo $berita['0']['judul_berita']; ?>"></input>
+					</div>
+					<div class="form-group">
+						<label for="berita">Isi Berita</label>
+						<textarea id="isi_berita" name="isi_berita" class="form-control"><?php echo $berita['0']['isi_berita']; ?></textarea>
+						<script>
+							CKEDITOR.replace('isi_berita');
+						</script>
+					</div>
+					<button role="button" type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
+				</form>
+            </div>
+        </div>
+    </div>

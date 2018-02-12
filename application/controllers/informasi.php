@@ -10,16 +10,18 @@ class Informasi extends CI_Controller {
 		$this->load->view('layout/wrapper', $data);
 	}
 
-	public function berita(){
+	public function berita($offset = 0){
 		$data['title']	= "Berita ";
 		$data['isi']	= "informasi/berita";
 
 		$config['base_url']		= base_url().'informasi/berita/';
-		$config['total_rows']	= 10;
+		$config['total_rows']	= $this->db->count_all('berita');
 		$config['per_page']		= 3;
 		$config['uri_segment']	= 3;
+		$config['attributes']	= array('class' => 'pagination-link');
 
 		$this->pagination->initialize($config);
+        $data['berita'] = $this->main_model->getDataBerita($config['per_page'], $offset);
 
 		$this->load->view('layout/wrapper', $data);
 	}
