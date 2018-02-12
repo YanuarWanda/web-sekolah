@@ -114,18 +114,12 @@
                 <h1 class="text-center"> Misi </h1>
                 <hr>
                 <blockquote class="blockquote">
-<<<<<<< HEAD
-                    <ol>
-                        <?php echo $tentang->misi; ?>
-                    </ol>
-=======
                     <?php echo $tentang->misi; ?>
                     <!-- <ol>
                         <li>Mendidik siswa mengidentifikasi dan melakukan reparasi software untuk kebutuhan didunia usaha dan industri.</li>
                         <li>Mendidik siswa mengimplementasikan aplikasi-aplikasi pemrograman, dan pengembangan web.</li>
                         <li>Mendidik siswa mengimplementasikan pemrograman berbasis client server dan desktop</li>
                     </ol> -->
->>>>>>> c5853bf1d5041cab55d77833a8a2ffdb790a6a95
                 </blockquote>
             </div>
         </div>

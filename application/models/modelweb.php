@@ -14,7 +14,6 @@
 			return $this->db->get('tentang_rpl')->row();
 		}
 
-<<<<<<< HEAD
 		public function getDataBerita($limit = FALSE, $offset = FALSE, $where = FALSE){
 			if($where){
 				$this->db->where('id', $where);
@@ -24,16 +23,11 @@
 			}
 			$this->db->order_by('berita.id', 'DESC');
 			return $this->db->get('berita')->result_array();
-=======
-		function hapus_agenda(){
-			$this->db->where('id', $this->uri->segment(3));
-			$this->db->delete('agenda');
-		}		
+		}
 
 		function getDataAkun($email){
 			$this->db->where('email', $email);
 			return $this->db->get('users')->result_array();
->>>>>>> c5853bf1d5041cab55d77833a8a2ffdb790a6a95
 		}
 		/* .Get Data */
 
@@ -53,14 +47,13 @@
 		}
 		/* .Tambah Data */
 
-<<<<<<< HEAD
 		/* Hapus Data */
 		public function hapusData($tabel, $where){
 			$this->db->delete($tabel, $where);
-=======
-		public function updateData($tabel, $where){
-			$this->db->update($tabel, $where);
->>>>>>> c5853bf1d5041cab55d77833a8a2ffdb790a6a95
+		}
+		function hapus_agenda(){
+			$this->db->where('id', $this->uri->segment(3));
+			$this->db->delete('agenda');
 		}
 		/* .Hapus Data */
 	}

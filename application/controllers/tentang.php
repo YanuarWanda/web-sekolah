@@ -11,11 +11,7 @@ function __construct() {
 	{
 		$data['title']	= "Tentang ";
 		$data['isi']	= "tentang/tentang";
-<<<<<<< HEAD
-		$data['tentang']= $this->main_model->getDataTentangRPL();
-=======
 		$data['tentang']= $this->modelweb->getDataTentangRPL();
->>>>>>> c5853bf1d5041cab55d77833a8a2ffdb790a6a95
 
 		$this->load->view('layout/wrapper', $data);
 	}
