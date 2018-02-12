@@ -198,7 +198,39 @@ Class Admin extends CI_Controller{
 	}
     /* .Agenda */
 
+<<<<<<< HEAD
     /* Guru */
+=======
+    // public function ambil_ubah_agenda(){
+    //     if(empty($this->session->userdata['email'])){
+    //         redirect('admin/login');
+    //     }
+
+    //     $data['title']  = "Agenda ";
+    //     $data['isi']    = "admin/ubah_agenda";
+    //     $data['record'] = $this->modelweb->lihat_agenda($data);
+
+    //     $this->load->view('layout_admin/wrapper', $data);
+    // }
+
+    // function ubah_agenda(){
+    //         $data = array('isi_agenda'  => $_POST['isi_agenda'],);
+
+    //         if(!empty($data['isi_agenda'])){
+    //             $this->modelweb->ubah_agenda($data);
+    //         }else{
+    //             $alert = $this->session->set_flashdata('pesan', "<script> alert ('Data harus di isi') </script>");
+    //         }
+    //         redirect('admin/agenda');
+    //     }
+
+    function hapus_agenda(){
+            $this->modelweb->hapus_agenda();
+            redirect('admin/agenda');
+        }
+
+
+>>>>>>> c5853bf1d5041cab55d77833a8a2ffdb790a6a95
     public function guru(){
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');

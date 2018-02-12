@@ -80,7 +80,7 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-				<ul class="breadcrumb normal">
+				<ul class="breadcrumb">
 					<li>
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
@@ -156,11 +156,12 @@
 												<div class="hidden-sm hidden-xs btn-group center">
 													<button class="btn btn-xs btn-info" title="Ubah">
 														<i class="ace-icon fa fa-pencil bigger-120"></i>
-														<!-- <?php echo anchor('admin/ambil_ubah_agenda/'.$value->id); ?> -->
+														<?php echo anchor('admin/ambil_ubah_agenda/'.$value->id); ?>
 													</button>
 
 													<button class="btn btn-xs btn-danger" title="Hapus">
-														<?php echo anchor('admin/hapus_agenda/'.$value->id, "<i class='ace-icon fa fa-trash-o bigger-120'></i>"); ?>
+														<i class="ace-icon fa fa-trash-o bigger-120"></i>
+														<?php echo anchor('admin/hapus_agenda/'.$value->id); ?>
 													</button>
 												</div>
 											</td>
@@ -173,7 +174,12 @@
 														<div class="col-xs-16 col-sm-12">
 															<div class="space visible-xs"></div>
 															<div>
-																<?php echo $value->isi_agenda; ?>
+																<form method="POST" action="<?php echo base_url();?>admin/ubah_agenda">
+																	<input type="text" class="form-control" name="isi_agenda" value="<?php echo $value->isi_agenda; ?>">
+
+																	<button type="submit" class="btn btn-primary pull-right"><i class="ace-icon fa fa-pencil bigger-120"></i></button>
+																</form>
+																<button type="button" class="close"><a href="<?php echo base_url();?>admin/agenda">&times;</a></button>
 															</div>
 														</div>
 													</div>
@@ -219,3 +225,21 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="footer">
+		<div class="footer-inner">
+			<div class="footer-content">
+				<span class="bigger-120">
+					&copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved. 2017-2018.
+				</span>
+				&nbsp; &nbsp;
+				<span class="action-buttons">
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+	</a>
+</div>
