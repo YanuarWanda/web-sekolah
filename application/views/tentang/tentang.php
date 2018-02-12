@@ -91,7 +91,7 @@
                 <h1 class="text-center"> Visi </h1>
                 <hr>
                 <blockquote class="blockquote text-center">
-                    <p class="mb-0"> Mencetak lulusan berkualitas dengan kompetensi di bidang rekayasa perangkatlunak, pemrograman dan web.</p>
+                    <p class="mb-0"><?php echo $tentang->visi; ?></p>
                     <footer class="blockquote-footer">Visi RPL di SMKN 11 Bandung</footer>
                 </blockquote>
             </div>
@@ -99,11 +99,12 @@
                 <h1 class="text-center"> Misi </h1>
                 <hr>
                 <blockquote class="blockquote">
-                    <ol>
+                    <?php echo $tentang->misi; ?>
+                    <!-- <ol>
                         <li>Mendidik siswa mengidentifikasi dan melakukan reparasi software untuk kebutuhan didunia usaha dan industri.</li>
                         <li>Mendidik siswa mengimplementasikan aplikasi-aplikasi pemrograman, dan pengembangan web.</li>
                         <li>Mendidik siswa mengimplementasikan pemrograman berbasis client server dan desktop</li>
-                    </ol>
+                    </ol> -->
                 </blockquote>
             </div>
         </div>

@@ -9,6 +9,11 @@
 			$this->db->insert('agenda',$data);
 		}
 
+		function hapus_agenda(){
+			$this->db->where('id', $this->uri->segment(3));
+			$this->db->delete('agenda');
+		}		
+
 		function getDataAkun($email){
 			$this->db->where('email', $email);
 			return $this->db->get('users')->result_array();
@@ -19,7 +24,7 @@
 		}
 
 		public function updateData($tabel, $where){
-			$this->db->replace($tabel, $where);
+			$this->db->update($tabel, $where);
 		}
 	}
 ?>
