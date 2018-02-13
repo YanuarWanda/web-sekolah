@@ -85,55 +85,64 @@
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
+                    <li>
+                        <i class="ace-icon fa fa-id-card home-icon"></i>
+                        <a href="<?php echo base_url();?>admin/guru">Guru</a>
+                    </li>
 					<li class="active">
-						<i class="ace-icon fa fa-id-card home-icon"></i>
-						Guru
+						<i class="ace-icon fa fa-plus home-icon"></i>
+						Tambah Guru
 					</li>
 				</ul>
 			</div>
-			<div class="page-content">
-				<a href="<?php echo base_url();?>admin/tambahGuru" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-				<div class="row">
-					<?php foreach($guru as $g){ ?>
-					<div class="col-lg-3">
-						<div class="box-rounded">
-							<img class="img-responsive" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
-							<hr>
-							<div class="d-flex">
-								<button type="button" data-panel="<?php echo $g['id']; ?>" class="btn btn-info show">
-									<i class="fa fa-info fa-2x"></i>
-								</button>
-								<a href="<?php echo base_url();?>admin/editGuru?i=<?php echo $g['id']; ?>">
-									<button type="button" class="btn btn-primary">
-										<i class="fa fa-edit fa-2x"></i>
-									</button>
-								</a>
-								<button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/deleteGuru?i=<?php echo $g['id']; ?>">
-									<i class="fa fa-trash fa-2x"></i>
-								</button>
-							</div>
-
-							<div class="card-reveal" id="<?php echo $g['id']; ?>">
-								<i data-panel="<?php echo $g['id']; ?>" class="fa fa-close close"></i>
-								<ul>
-									<li>NIP<br>
-										<?php echo $g['nip']; ?></li>
-									<li>Nama<br>
-										<?php echo $g['nama_guru']; ?></li>
-									<li>Mata Pelajaran<br>
-										<?php echo $g['deskripsi_guru']; ?></li>
-									<li>Jabatan<br>
-										<?php echo $g['jabatan_guru']; ?></li>
-									<li>E-mail<br>
-										<?php echo $g['email']; ?></li>
-									<li>No HP<br>
-										<?php echo $g['no_hp']; ?></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<?php } ?>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="page-content">
+                <?php echo form_open_multipart('admin/addGuru'); ?>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" name="nip" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input type="text" name="nama" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="mapel">Mata Pelajaran</label>
+                                <input type="text" name="mapel" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="jabatan">Jabatan</label>
+                                <input type="text" name="jabatan" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="text" name="email" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="hp">No HP</label>
+                                <input type="text" name="hp" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="gambar">Foto</label>
+                                <input type="file" name="gambar" size="20"/>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus fa-2x"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>

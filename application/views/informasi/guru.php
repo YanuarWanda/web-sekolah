@@ -61,15 +61,15 @@
         </nav>
     </div>
     <div class="row">
-        <?php for($n=1;$n<=6;$n++){ ?>
+        <?php foreach($guru as $g){ ?>
         <div class="col-lg-4">
             <div class="box-rounded">
-                <img class="img-fluid" src="<?php echo base_url();?>assets/img/gallery-1.jpg" />
+                <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
                 <hr>
-                <p class="text-center font-weight-bold"> Yanuar Wanda Putra </p>
-                <p class="text-center"> 195289381923192839 </p>
-                <p class="text-center"> Pemrograman Web Dinamis </p>
-                <p class="text-center"> 087825418390 </p>
+                <p class="text-center font-weight-bold"> <?php echo $g['nama_guru']; ?> </p>
+                <p class="text-center"> <?php echo $g['nip']; ?> </p>
+                <p class="text-center"> <?php echo $g['deskripsi_guru']; ?> </p>
+                <p class="text-center"> <?php echo $g['no_hp']; ?> </p>
                 <hr>
                 <div class="d-flex justify-content-center">
                     <a href="#">

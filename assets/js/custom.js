@@ -35,4 +35,14 @@ $('.remove').on('click', function(){
         }
     });
 });
+
+$('.show').on('click', function(){
+    $id = $(this).attr('data-panel');
+    $('#'+$id).slideToggle('slow');
+});
+
+$('.card-reveal .close').on('click', function(){
+    $id = $(this).attr('data-panel');
+    $('#'+$id).slideToggle('slow');
+});
 /* -------------------------------------- */

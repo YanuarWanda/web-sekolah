@@ -124,9 +124,9 @@ Class Admin extends CI_Controller{
         }else{
             if($this->upload->do_upload('gambar')){
                 unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
-                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
-                redirect('admin/berita');
             }
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
+            redirect('admin/berita');
         }
     }
 
@@ -186,6 +186,7 @@ Class Admin extends CI_Controller{
             redirect('admin/berita');
         }else{
             $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal dihapus!", "error")</script>');
+            redirect('admin/berita');
         }
     }
 
@@ -217,9 +218,6 @@ Class Admin extends CI_Controller{
            //$this->session->set_flashdata('pesan', "<script> alert ('Data harus di isi') </script>");
         }
 	}
-    /* .Agenda */
-
-    /* Guru */
 
     public function ambil_ubah_agenda(){
         if(empty($this->session->userdata['email'])){
@@ -245,11 +243,12 @@ Class Admin extends CI_Controller{
         }
 
     function hapus_agenda(){
-            $this->modelweb->hapus_agenda();
-            redirect('admin/agenda');
-        }
+        $this->modelweb->hapus_agenda();
+        redirect('admin/agenda');
+    }
+    /* .Agenda */
 
-
+    /* Guru */
     public function guru(){
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');
@@ -257,9 +256,141 @@ Class Admin extends CI_Controller{
 
         $data['title']  = "Guru ";
         $data['isi']    = "admin/guru";
-        $data['record'] = $this->modelweb->lihat_agenda();
+        $data['guru']   = $this->modelweb->getDataGuru(FALSE, FALSE, FALSE);
 
         $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function tambahGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']  = "Tambah Guru ";
+        $data['isi']    = "admin/guru/tambahGuru";
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function addGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $fileName   = time().'_'.$_FILES['gambar']['name'];
+
+        $data = array(
+            'nip'               => $_POST['nip'],
+            'nama_guru'         => $_POST['nama'],
+            'deskripsi_guru'    => $_POST['mapel'],
+            'jabatan_guru'      => $_POST['jabatan'],
+            'email'             => $_POST['email'],
+            'no_hp'             => $_POST['hp'],
+            'gambar'            => $fileName
+        );
+
+        $config = array(
+            'file_name'     => $fileName,
+            'upload_path'   => './assets/img/foto-guru/',
+            'allowed_types' => 'gif|jpg|png|ico|jpeg',
+            'overwrite'     => TRUE,
+            'max_size'      => '2048000',
+            'max_height'    => '5000',
+            'max_width'     => '5000'
+        );
+
+        $this->load->library('upload', $config);
+
+        if($this->modelweb->tambahGuru($data) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
+            redirect('admin/tambahGuru');
+        }else{
+            if($this->upload->do_upload('gambar')){
+                $data = array($this->upload->data());
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
+                redirect('admin/guru');
+            }
+        }
+    }
+
+    public function deleteGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $guru   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        if($this->modelweb->hapusData('guru', $where) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
+            redirect('admin/guru');
+        }else{
+            unlink('./assets/img/foto-guru/'.$guru['0']['gambar']);
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
+            redirect('admin/guru');
+        }
+    }
+
+    public function editGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']  = "Edit Guru ";
+        $data['isi']    = "admin/guru/editGuru";
+        $data['guru']   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function updateGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $guru   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        $fileName   = time().'_'.$_FILES['gambar']['name'];
+
+        $data = array(
+            'nip'               => $_POST['nip'],
+            'nama_guru'         => $_POST['nama'],
+            'deskripsi_guru'    => $_POST['mapel'],
+            'jabatan_guru'      => $_POST['jabatan'],
+            'email'             => $_POST['email'],
+            'no_hp'             => $_POST['hp'],
+            'gambar'            => $fileName
+        );
+
+        $config = array(
+            'file_name'     => $fileName,
+            'upload_path'   => './assets/img/foto-guru/',
+            'allowed_types' => 'gif|jpg|png|ico|jpeg',
+            'overwrite'     => TRUE,
+            'max_size'      => '2048000',
+            'max_height'    => '5000',
+            'max_width'     => '5000'
+        );
+
+        $this->load->library('upload', $config);
+
+        if($this->modelweb->updateData('guru', $data, $where) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error');</script>");
+            redirect('admin/editGuru?i='.$guru['0']['id']);
+        }else{
+            if($this->upload->do_upload('gambar')){
+                unlink('./assets/img/foto-guru/'.$guru['0']['gambar']);
+            }
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success');</script>");
+            redirect('admin/guru');
+        }
     }
     /* .Guru */
 

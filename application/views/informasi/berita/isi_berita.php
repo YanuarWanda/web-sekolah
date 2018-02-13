@@ -50,34 +50,71 @@
     </div>
 </nav>
 
+<?php foreach($berita as $b){ ?>
 <div class="container mb-3">
     <div class="box-rounded">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Berita</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi/berita">Berita</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $b['judul_berita']; ?></li>
             </ol>
         </nav>
     </div>
-    <?php foreach($berita as $b){ ?>
-    <div class="box-rounded">
-        <div class="row">
-            <div class="col-lg-3">
-                <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="box-rounded">
+                <img class="img-fluid imgZoom" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" alt="<?php echo $b['judul_berita']; ?>"/>
             </div>
-            <div class="col-lg-9">
-                <h2 class="display-4"><?php echo $b['judul_berita']; ?></h2>
+            <div class="box-rounded">
+                <small class="text-muted">Dipost pada : <?php echo $b['tanggal_berita']; ?></small>
+            </div>
+            <div class="box-rounded">
+                <p class="text-justify"><?php echo $b['isi_berita']; ?></p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="box-rounded">
+                <h3 class="text-center"> Berita Terbaru </h3>
+            </div>
+            <?php foreach($beritaTerbaru as $bt){ ?>
+            <div class="box-rounded">
+                <h6 class="text-center"><?php echo $bt['judul_berita']; ?></h6>
+                <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $bt['link']; ?>"><img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $bt['gambar']; ?>" /></a>
+            </div>
+            <?php } ?>
+            <div class="box-rounded">
+                <h3 class="text-center"> Bagikan Berita </h3>
                 <hr>
-                <small class="text-muted ml-2">Dipost pada <?php echo $b['tanggal_berita']; ?> pada kategori ?</small>
-                <p><?php echo word_limiter($b['isi_berita'], 40); ?></p>
-                <hr>
-                <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya</a>
+                <div class="d-flex justify-content-center">
+                    <span class="fa-stack fa-lg">
+                        <a href="#">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </a>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <a href="#">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </a>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <a href="#">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                        </a>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <a href="#">
+                            <i class="fa fa-square fa-stack-2x fa-red"></i>
+                            <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                        </a>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
-    <?php } ?>
-    <div class="box-rounded">
-        <?php echo $this->pagination->create_links(); ?>
-    </div>
 </div>
+<?php } ?>

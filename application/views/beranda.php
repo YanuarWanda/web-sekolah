@@ -123,38 +123,37 @@
     <div class="bg-custom-3">
         <div class="parallax"></div>
     </div>
-    <div class="bg-custom-3 container">
-        <div class="box mb-3">
+    <div class="bg-custom-3 container mb-3">
+        <div class="box">
             <h1 class="display-2 text-center">Menu</h1>
-            <hr>
-            <div class="row d-flex justify-content-center">
-                <div class="col-sm-5">
-                    <div class="box-rounded">
-                        <a class="informasi-menu" href="<?php echo base_url();?>tentang"><h1 class="h1 display-1 text-center"><i class="fa fa-info-circle fa-1x mr-1"></i></h1></a>
-                        <hr>
-                        <h1 class="display-4 text-center">Tentang</h1>
-                    </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+            <div class="col-sm-5">
+                <div class="box-rounded">
+                    <a class="informasi-menu" href="<?php echo base_url();?>tentang"><h1 class="h1 display-1 text-center"><i class="fa fa-info-circle fa-1x mr-1"></i></h1></a>
+                    <hr>
+                    <h1 class="display-4 text-center">Tentang</h1>
                 </div>
-                <div class="col-sm-5">
-                    <div class="box-rounded">
-                        <a class="informasi-menu" href="<?php echo base_url();?>informasi"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
-                        <hr>
-                        <h1 class="display-4 text-center">Informasi</h1>
-                    </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="box-rounded">
+                    <a class="informasi-menu" href="<?php echo base_url();?>informasi"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
+                    <hr>
+                    <h1 class="display-4 text-center">Informasi</h1>
                 </div>
-                <div class="col-sm-5">
-                    <div class="box-rounded">
-                        <a class="informasi-menu" href="<?php echo base_url();?>pengumuman"><h1 class="h1 display-1 text-center"><i class="fa fa-bell fa-1x mr-1"></i></h1></a>
-                        <hr>
-                        <h1 class="display-4 text-center">Pengumuman</h1>
-                    </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="box-rounded">
+                    <a class="informasi-menu" href="<?php echo base_url();?>pengumuman"><h1 class="h1 display-1 text-center"><i class="fa fa-bell fa-1x mr-1"></i></h1></a>
+                    <hr>
+                    <h1 class="display-4 text-center">Pengumuman</h1>
                 </div>
-                <div class="col-sm-5">
-                    <div class="box-rounded">
-                        <a class="informasi-menu" href="<?php echo base_url();?>buku_tamu"><h1 class="h1 display-1 text-center"><i class="fa fa-book fa-1x mr-1"></i></h1></a>
-                        <hr>
-                        <h1 class="display-4 text-center">Buku Tamu</h1>
-                    </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="box-rounded">
+                    <a class="informasi-menu" href="<?php echo base_url();?>buku_tamu"><h1 class="h1 display-1 text-center"><i class="fa fa-book fa-1x mr-1"></i></h1></a>
+                    <hr>
+                    <h1 class="display-4 text-center">Buku Tamu</h1>
                 </div>
             </div>
         </div>

@@ -125,6 +125,7 @@
         </div>
 
         <div class="tab-pane fade show active" id="struktur" role="tabpanel" aria-labelledby="contact-tab">
+
             <div class="row">
                 <div class="col-sm-3">
                     <div class="box-rounded ">
@@ -202,6 +203,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="box-rounded m-0 p-0"><hr></div>
             <div class="row">
                 <div class="col-sm-3">
