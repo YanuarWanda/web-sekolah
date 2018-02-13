@@ -96,10 +96,14 @@
 				</ul>
 			</div>
             <div class="page-content">
-                <?php echo form_open('admin/updateBerita?i='.$berita['0']['id']); ?>
+                <?php echo form_open_multipart('admin/updateBerita?i='.$berita['0']['id']); ?>
 					<div class="form-group">
 						<label for="judul">Judul Berita</label>
 						<input type="text" class="form-control" name="judul" value="<?php echo $berita['0']['judul_berita']; ?>"></input>
+					</div>
+					<div class="form-group">
+						<label for="gambar">Gambar</label>
+						<input type="file" name="gambar" size="20"/>
 					</div>
 					<div class="form-group">
 						<label for="berita">Isi Berita</label>

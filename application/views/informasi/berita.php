@@ -78,25 +78,6 @@
     </div>
     <?php } ?>
     <div class="box-rounded">
-        <!-- <ul class="pagination justify-content-center m-0">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-arrow-left fa-height-auto"></i></a>
-            </li>
-            <li class="page-item"><a class="page-link auto" href="">1</a></li>
-            <li class="page-item"><a class="page-link auto" href="#">2</a></li>
-            <li class="page-item"><a class="page-link auto" href="#">3</a></li>
-            <li class="page-item"><a class="page-link auto" href="#">4</a></li>
-            <li class="page-item"><a class="page-link auto" href="#">5</a></li>
-            <li class="page-item"><a class="page-link auto" href="#">6</a></li>
-            <li class="page-item">
-                <a class="page-link auto"><?php echo $this->pagination->create_links(); ?></a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#" tabindex="+1"><i class="fa fa-arrow-right fa-height-auto"></i></a>
-            </li>
-        </ul> -->
-        <div class="d-flex justify-content-center m-0 p-0">
-            <?php echo $this->pagination->create_links(); ?>
-        </div>
+        <?php echo $this->pagination->create_links(); ?>
     </div>
 </div>

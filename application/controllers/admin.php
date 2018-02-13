@@ -90,38 +90,23 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
+        $link       = str_replace(' ', '-', strtolower($_POST['judul']));
+        $fileName   = time().'_'.$_FILES['gambar']['name'];
+        $berita     = $this->modelweb->getDataBerita(FALSE, FALSE, $_GET['i']);
+
         $data = array(
             'judul_berita'  => $_POST['judul'],
-            'isi_berita'    => $_POST['isi_berita']
+            'isi_berita'    => $_POST['isi_berita'],
+            'link'          => $link,
+            'gambar'        => $fileName
         );
 
         $where = array(
             'id'    => $_GET['i']
         );
 
-        $result = $this->modelweb->updateData('berita', $data, $where);
-        if($result == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error')</script>");
-            redirect('admin/editBerita?i='.$_GET['i']);
-        }else{
-            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
-            redirect('admin/berita');
-        }
-    }
-
-    public function addBerita(){
-        if(empty($this->session->userdata['email'])){
-            redirect('admin/login');
-        }
-
-        $data = array(
-            'judul_berita'  => $_POST['judul'],
-            'isi_berita'    => $_POST['isi_berita'],
-            'gambar'        => $_FILES['gambar']['name'],
-            'link'          => str_replace(' ', '-', strtolower($_POST['judul']))
-        );
-
         $config = array(
+            'file_name'     => $fileName,
             'upload_path'   => './assets/img/foto-berita/',
             'allowed_types' => 'gif|jpg|png|ico|jpeg',
             'overwrite'     => TRUE,
@@ -132,22 +117,55 @@ Class Admin extends CI_Controller{
 
         $this->load->library('upload', $config);
 
-        if($this->upload->do_upload('gambar')){
-            print_r($this->upload->data());
+        $result = $this->modelweb->updateData('berita', $data, $where);
+        if($result == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error')</script>");
+            redirect('admin/editBerita?i='.$_GET['i']);
+        }else{
+            if($this->upload->do_upload('gambar')){
+                unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
+                redirect('admin/berita');
+            }
         }
+    }
 
-        // if($this->modelweb->tambahBerita($data) == 1){
-        //     $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
-        //     redirect('admin/tambahBerita');
-        // }else{
-        //     if($this->upload->do_upload('gambar')){
-        //         $data = array($this->upload->data());
-        //         print_r($data);
-        //         $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
-        //         redirect('admin/berita');
-        //     }else{
-        //     }
-        // }
+    public function addBerita(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+        $fileName = time().'_'.$_FILES['gambar']['name'];
+
+        $data = array(
+            'judul_berita'  => $_POST['judul'],
+            'isi_berita'    => $_POST['isi_berita'],
+            'gambar'        => $fileName,
+            'link'          => str_replace(' ', '-', strtolower($_POST['judul']))
+        );
+
+        $config = array(
+            'file_name'     => $fileName,
+            'upload_path'   => './assets/img/foto-berita/',
+            'allowed_types' => 'gif|jpg|png|ico|jpeg',
+            'overwrite'     => TRUE,
+            'max_size'      => '2048000',
+            'max_height'    => '5000',
+            'max_width'     => '5000'
+        );
+
+        $this->load->library('upload', $config);
+
+        if($this->modelweb->tambahBerita($data) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
+            redirect('admin/tambahBerita');
+        }else{
+            if($this->upload->do_upload('gambar')){
+                $data = array($this->upload->data());
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
+                redirect('admin/berita');
+            }else{
+            }
+        }
     }
 
     public function deleteBerita(){
@@ -155,12 +173,15 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
+        $berita = $this->modelweb->getDataBerita(FALSE, FALSE, $id);
+
         $id = array(
             'id' => $_GET['i']
         );
 
         $result = $this->modelweb->hapusData('berita', $id);
         if($result != 1){
+            unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
             $this->session->set_flashdata('pesan', '<script>swal("Terhapus!", "Data telah berhasil dihapus!", "success");</script>');
             redirect('admin/berita');
         }else{

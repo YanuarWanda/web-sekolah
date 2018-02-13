@@ -24,11 +24,6 @@
 			$this->db->order_by('berita.id', 'DESC');
 			return $this->db->get('berita')->result_array();
 		}
-
-		function getDataAkun($email){
-			$this->db->where('email', $email);
-			return $this->db->get('users')->result_array();
-		}
 		/* .Get Data */
 
 		/* Update Data */

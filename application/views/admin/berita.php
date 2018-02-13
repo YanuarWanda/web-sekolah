@@ -94,7 +94,7 @@
 			<div class="page-content">
 				<a href="<?php echo base_url();?>admin/tambahBerita" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<?php foreach($berita as $b){ ?>
-					<div class="box-rounded small">
+					<div class="box-rounded">
 						<div class="row">
 							<div class="col-sm-12 col-lg-3">
 								<img class="img-responsive" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>"/>
