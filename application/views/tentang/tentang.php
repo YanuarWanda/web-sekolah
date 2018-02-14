@@ -204,7 +204,7 @@
             <?php } ?>
         </div>
         <div class="tab-pane fade box" id="kurikulum" role="tabpanel" aria-labelledby="contact-tab">Kurikulum RPL</div>
-        <div class="tab-pane fade box" id="kerja" role="tabpanel" aria-labelledby="contact-tab">Peluang Kerja</div>
+        <div class="tab-pane fade box" id="kerja" role="tabpanel" aria-labelledby="contact-tab">
             <div class="box-rounded">
                 <blockquote class="blockquote">
                     <p class="mb-0"><?php echo $tentang->peluang_kerja; ?></p>
