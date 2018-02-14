@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2018 at 07:55 AM
+-- Generation Time: Feb 14, 2018 at 09:11 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -153,8 +153,7 @@ INSERT INTO `guru` (`id`, `nip`, `nama_guru`, `deskripsi_guru`, `jabatan_guru`, 
 CREATE TABLE `pengumuman` (
   `id` int(11) NOT NULL,
   `judul_pengumuman` varchar(100) NOT NULL,
-  `tanggal_pengumuman` date NOT NULL,
-  `jam_pengumuman` time DEFAULT NULL,
+  `tanggal_pengumuman` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isi_pengumuman` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -162,12 +161,12 @@ CREATE TABLE `pengumuman` (
 -- Dumping data for table `pengumuman`
 --
 
-INSERT INTO `pengumuman` (`id`, `judul_pengumuman`, `tanggal_pengumuman`, `jam_pengumuman`, `isi_pengumuman`) VALUES
-(1, 'Info Kelulusan Tahun Ajaran 2017/2018', '2018-02-06', '19:00:00', 'Hasil kelulusan akan dibagikan ke tempat tinggal masing-masing melalui POS pada tanggal 2 Mei 2018\r\nTerima Kasih'),
-(2, 'Pendaftaran Wifi/Mac Address Siswa', '2017-08-02', '08:00:00', 'Silahkan klik link dibawah ini untuk mengisi mac address laptop:\r\n\r\n<a href=\"https://tinyurl.com/daftar-wifisiswa\">Link Daftar Wifi Siswa</a>'),
-(3, 'Info PPDB 2016 SMKN 11 Bandung', '2016-05-10', '08:00:00', 'Penerimaan Peserta Didik Baru 2016 SMKN 11 Akan dilaksanakan:\r\n\r\na)     Jalur Non Akademik (Prestasi dan Affirmasi)\r\n\r\nPendaftaran dilakukan secara kolektif oleh sekolah asal\r\n\r\nTanggal   : 15 s.d. 18 Juni 2016\r\n\r\nPukul       : 08.00 – 14.00 WIB\r\n\r\nTempat    : Ruang RAP Bawah\r\n\r\n                SMK Negeri 11 Bandung\r\n\r\n \r\n\r\nb)    Jalur Akademik\r\n\r\nPendaftaran dilakukan oleh peserta didik didampingi orang tua yang bersangkutan.\r\n\r\nTanggal   : 27 Juni s.d. 30 Juni 2016\r\n\r\nPukul       : 08.00 – 14.00 WIB\r\n\r\nTempat    : Ruang RAP Bawah\r\n\r\n                SMK Negeri 11 Bandung'),
-(4, 'Format EVADIR Untuk Guru', '2016-09-05', '08:00:00', 'Berikut Link untuk format EVADIR:\r\n\r\nFormat Evadir'),
-(5, 'Kejuaraan Lomba Catur', '2018-02-15', '09:00:00', 'Harap Disimak\r\n');
+INSERT INTO `pengumuman` (`id`, `judul_pengumuman`, `tanggal_pengumuman`, `isi_pengumuman`) VALUES
+(1, 'Info Kelulusan Tahun Ajaran 2017/2018', '2018-02-05 17:00:00', 'Hasil kelulusan akan dibagikan ke tempat tinggal masing-masing melalui POS pada tanggal 2 Mei 2018\r\nTerima Kasih'),
+(2, 'Pendaftaran Wifi/Mac Address Siswa', '2017-08-01 17:00:00', 'Silahkan klik link dibawah ini untuk mengisi mac address laptop:\r\n\r\n<a href=\"https://tinyurl.com/daftar-wifisiswa\">Link Daftar Wifi Siswa</a>'),
+(3, 'Info PPDB 2016 SMKN 11 Bandung', '2016-05-09 17:00:00', 'Penerimaan Peserta Didik Baru 2016 SMKN 11 Akan dilaksanakan:\r\n\r\na)     Jalur Non Akademik (Prestasi dan Affirmasi)\r\n\r\nPendaftaran dilakukan secara kolektif oleh sekolah asal\r\n\r\nTanggal   : 15 s.d. 18 Juni 2016\r\n\r\nPukul       : 08.00 – 14.00 WIB\r\n\r\nTempat    : Ruang RAP Bawah\r\n\r\n                SMK Negeri 11 Bandung\r\n\r\n \r\n\r\nb)    Jalur Akademik\r\n\r\nPendaftaran dilakukan oleh peserta didik didampingi orang tua yang bersangkutan.\r\n\r\nTanggal   : 27 Juni s.d. 30 Juni 2016\r\n\r\nPukul       : 08.00 – 14.00 WIB\r\n\r\nTempat    : Ruang RAP Bawah\r\n\r\n                SMK Negeri 11 Bandung'),
+(5, 'Kejuaraan Lomba Catur', '2018-02-14 17:00:00', 'Harap Disimak\r\n'),
+(6, 'Hari Minggu Libur 2', '2018-02-14 01:27:06', '<p>Diberitahukan kepada kelas XIII RPL 4 bahwa pada hari Minggu,  42 Februari 3009 belajar di rumah.</p>');
 
 -- --------------------------------------------------------
 
@@ -305,7 +304,7 @@ ALTER TABLE `guru`
 -- AUTO_INCREMENT for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tentang_rpl`

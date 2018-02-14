@@ -395,16 +395,108 @@ Class Admin extends CI_Controller{
     /* .Guru */
 
     /* Pengumuman */
-    public function pengumuman(){
+    public function pengumuman($offset = 0){
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');
         }
 
-        $data['title']  = "Pengumuman ";
-        $data['isi']    = "admin/pengumuman";
-        $data['record'] = $this->modelweb->lihat_agenda();
+        $data['title']          = "Pengumuman ";
+        $data['isi']            = "admin/pengumuman";
+
+        $config['base_url']     = base_url() . 'admin/pengumuman';
+        $config['total_rows']   = $this->db->count_all('pengumuman');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
+
+        $data['pengumuman']     = $this->modelweb->getDataPengumuman($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function tambahPengumuman(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']  = "Tambah Pengumuman ";
+        $data['isi']    = 'admin/pengumuman/tambahPengumuman';
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function addPengumuman(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data = array(
+            'judul_pengumuman'  => $_POST['judul'],
+            'isi_pengumuman'    => $_POST['isi']
+        );
+
+        if($this->modelweb->tambahPengumuman($data) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error');</script>");
+            redirect('admin/tambahPengumuman');
+        }else{
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success');</script>");
+            redirect('admin/pengumuman');
+        }
+    }
+
+    public function hapusPengumuman(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        if($this->modelweb->hapusData('pengumuman', $where) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal dihapus!', 'error');</script>");
+            redirect('admin/pengumuman');
+        }else{
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil dihapus!', 'success');</script>");
+            redirect('admin/pengumuman');
+        }
+    }
+
+    public function editPengumuman(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['pengumuman'] = $this->modelweb->getDataPengumuman(FALSE, FALSE, $_GET['i']);
+        $data['title']      = "Edit Pengumuman ";
+        $data['isi']        = "admin/pengumuman/editPengumuman";
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function updatePengumuman(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        $data = array(
+            'judul_pengumuman'  => $_POST['judul'],
+            'isi_pengumuman'    => $_POST['isi']
+        );
+
+        if($this->modelweb->updateData('pengumuman', $data, $where) == 1){
+            $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal diubah!", "error");</script>');
+            redirect('admin/pengumuman');
+        }else{
+            $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil diubah!", "success");</script>');
+            redirect('admin/pengumuman');
+        }
     }
     /* .Pengumuman */
 

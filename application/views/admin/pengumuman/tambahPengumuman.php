@@ -92,19 +92,20 @@
 				</ul>
 			</div>
 			<div class="page-content">
-				<a href="<?php echo base_url();?>admin/tambahPengumuman" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-				<?php foreach($pengumuman as $p){ ?>
-				<div class="box-rounded">
-						<h1 class="text-center"><?php echo $p['judul_pengumuman']; ?></h1>
-						<hr>
-						<small class="text-muted">Dipost pada : <?php echo $p['tanggal_pengumuman']; ?></small>
-						<p><?php echo word_limiter($p['isi_pengumuman'], 50); ?></p>
-						<hr>
-						<a href="<?php echo base_url();?>admin/editPengumuman?i=<?php echo $p['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
-						<button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/hapusPengumuman?i=<?php echo $p['id']; ?>"><i class="fa fa-trash fa-2x"></i></button>
-				</div>
-				<?php } ?>
-				<?php echo $this->pagination->create_links(); ?>
-			</div>
-		</div>
-	</div>
+                <?php echo form_open('admin/addPengumuman'); ?>
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <input type="text" name="judul" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="isi">Isi Pengumuman</label>
+                        <textarea name="isi" id="isi" class="form-control"></textarea>
+                        <script>
+                            CKEDITOR.replace('isi');
+                        </script>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus fa-2x"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -35,6 +35,17 @@
 			$this->db->order_by('guru.id', 'DESC');
 			return $this->db->get('guru')->result_array();
 		}
+
+		public function getDataPengumuman($limit = FALSE, $offset = FALSE, $where = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
+			$this->db->order_by('pengumuman.id', 'DESC');
+			return $this->db->get('pengumuman')->result_array();
+		}
 		/* .Get Data */
 
 		/* Update Data */
@@ -54,6 +65,10 @@
 
 		public function tambahGuru($data){
 			$this->db->insert('guru', $data);
+		}
+
+		public function tambahPengumuman($data){
+			$this->db->insert('pengumuman', $data);
 		}
 		/* .Tambah Data */
 
