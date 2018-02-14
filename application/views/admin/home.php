@@ -169,6 +169,25 @@
 					      		</div>
 					    	</div>
 					  	</div>
+					  	<div class="panel panel-default">
+					    	<div class="panel-heading" role="tab" id="headingFour">
+					      		<h4 class="panel-title">
+					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+					          			Peluang Kerja
+				        			</a>
+					      		</h4>
+					    	</div>
+					    	<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+					      		<div class="panel-body">
+									<div clas="form-group">
+										<textarea id="peluang_kerja" name="peluang_kerja" class="form-control"><?php echo $tentang->peluang_kerja; ?></textarea>
+										<script>
+											CKEDITOR.replace( 'peluang_kerja' );
+										</script>
+									</div>
+					      		</div>
+					    	</div>
+					  	</div>
 					</div>
 					<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
 				</form>
