@@ -68,7 +68,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
-                                <p class="text-justify"><?php echo $d['deskripsi_file']; ?></p>
+                                <p class="text-justify"><?php echo word_limiter($d['deskripsi_file'], 5); ?></p>
                             </div>
                             <hr>
                             <div class="col-lg-6">
@@ -80,9 +80,9 @@
                     </div>
                 </div>
             <?php  } ?>
-            <div class="box-rouded">
-                <?php echo $this->pagination->create_links(); ?>
-            </div>
+        </div>
+        <div class="box-rounded">
+            <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>
 </div>

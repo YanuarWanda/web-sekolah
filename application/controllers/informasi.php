@@ -88,7 +88,7 @@ class Informasi extends CI_Controller {
 
 		$config['base_url']     = base_url() . 'admin/download';
         $config['total_rows']   = $this->db->count_all('file_download');
-        $config['per_page']     = 3;
+        $config['per_page']     = 2;
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
