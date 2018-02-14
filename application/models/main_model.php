@@ -18,14 +18,17 @@
 			return $this->db->get('berita')->result_array();
 		}
 
-        public function getDataGuru($limit = FALSE, $offset = FALSE, $where = FALSE){
+        public function getDataGuru($limit = FALSE, $offset = FALSE, $where = FALSE, $jabatan = FALSE){
             if($where){
                 $this->db->where('id', $where);
+            }
+            if($jabatan){
+                $this->db->where('jabatan_guru !=', 'Guru Tetap');
             }
             if($limit){
                 $this->db->limit($limit, $offset);
             }
-            $this->db->order_by('guru.id', 'DESC');
+            $this->db->order_by('id', 'DESC');
             return $this->db->get('guru')->result_array();
         }
 
