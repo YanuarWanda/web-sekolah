@@ -92,6 +92,10 @@
 		public function tambahPengumuman($data){
 			$this->db->insert('pengumuman', $data);
 		}
+
+		public function tambahDownload($data){
+			$this->db->insert('file_download', $data);
+		}
 		/* .Tambah Data */
 
 		/* Hapus Data */

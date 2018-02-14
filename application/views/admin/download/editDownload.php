@@ -92,17 +92,24 @@
 				</ul>
 			</div>
 			<div class="page-content">
-                <a href="<?php echo base_url();?>admin/tambahDownload" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-				<?php foreach($download as $d){ ?>
-                <div class="box-rounded ">
-                    <h1 class="text-center"><?php echo $d['nama_file']; ?></h1>
-                    <hr>
-                    <p> <?php echo $d['deskripsi_file']; ?> </p>
-                    <hr>
-                    <a href="<?php echo base_url();?>admin/editDownload?i=<?php echo $d['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
-                    <button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/deleteDownload?i=<?php echo $d['id']; ?>"><i class="fa fa-trash fa-2x"></i></button>
-                </div>
-                <?php } ?>
+                <?php echo form_open_multipart('admin/updateDownload?i='.$download['0']['id']); ?>
+                    <div class="form-group">
+                        <label for="nama_file">Nama File</label>
+                        <input type="text" name="nama_file" class="form-control" value="<?php echo $download['0']['nama_file']; ?>"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi File</label>
+                        <textarea name="deskripsi" id="deskripsi" size="20" class="form-control"><?php echo $download['0']['deskripsi_file']; ?></textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.replace('deskripsi');
+                        </script>
+                    </div>
+					<div class="form-group">
+						<label for="link">Link Google Drive</label>
+						<input type="text" name="link" class="form-control" placeholder="Copy-kan link dari google drive ke sini." value="<?php echo $download['0']['link_file']; ?>"/>
+					</div>
+					<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
+                </form>
             </div>
         </div>
     </div>

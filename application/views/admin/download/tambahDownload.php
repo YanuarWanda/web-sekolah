@@ -104,6 +104,11 @@
                             CKEDITOR.replace('deskripsi');
                         </script>
                     </div>
+					<div class="form-group">
+						<label for="link">Link Google Drive</label>
+						<input type="text" name="link" class="form-control" placeholder="Copy-kan link dari google drive ke sini."/>
+					</div>
+					<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus fa-2x"></i></button>
                 </form>
             </div>
         </div>

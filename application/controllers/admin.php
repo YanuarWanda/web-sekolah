@@ -602,6 +602,80 @@ Class Admin extends CI_Controller{
 
         $this->load->view('layout_admin/wrapper', $data);
     }
+
+    public function addDownload(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data = array(
+            'nama_file'         => $_POST['nama_file'],
+            'deskripsi_file'    => $_POST['deskripsi'],
+            'link_file'         => $_POST['link']
+        );
+
+        if($this->modelweb->tambahDownload($data) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan', 'error');</script>");
+            redirect('admin/download');
+        }else{
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan', 'success');</script>");
+            redirect('admin/download');
+        }
+    }
+
+    public function deleteDownload(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        if($this->modelweb->hapusData('file_download', $where) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal dihapus!', 'error');</script>");
+            redirect('admin/download');
+        }else{
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil dihapus!', 'success');</script>");
+            redirect('admin/download');
+        }
+    }
+
+    public function editDownload(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']      = "Edit Download ";
+        $data['isi']        = "admin/download/editDownload";
+        $data['download']   = $this->modelweb->getDataDownload(FALSE, FALSE, $_GET['i']);
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function updateDownload(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        $data = array(
+            'nama_file'         => $_POST['nama_file'],
+            'deskripsi_file'    => $_POST['deskripsi'],
+            'link_file'         => $_POST['link']
+        );
+
+        if($this->modelweb->updateData('file_download', $data, $where) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error'); </script>");
+            redirect('admin/editDownload?i='.$_GET['i']);
+        }else{
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success'); </script>");
+            redirect('admin/download');
+        }
+    }
     /* .Download */
 
     /* Login */
