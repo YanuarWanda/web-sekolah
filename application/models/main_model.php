@@ -39,4 +39,15 @@
 			$this->db->order_by('pengumuman.id', 'DESC');
 			return $this->db->get('pengumuman')->result_array();
 		}
+
+        public function getDataAgenda($limit = FALSE, $offset = FALSE, $where = FALSE){
+            if($where){
+                $this->db->where('id', $where);
+            }
+            if($limit){
+                $this->db->limit($limit, $offset);
+            }
+            $this->db->order_by('agenda.id', 'DESC');
+            return $this->db->get('agenda')->result_array();
+        }
     }

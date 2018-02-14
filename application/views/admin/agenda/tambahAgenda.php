@@ -103,7 +103,7 @@
 					</div>
 					<div class="form-group">
 		                <label for="tanggal">Tanggal Agenda</label>
-		                <input type="text" name="tanggal" class="tanggal form-control" placeholder="dd/mm/yyyy" />
+		                <input type="text" name="tanggal" class="tanggal form-control" placeholder="yyyy-mm-dd" />
 		            </div>
 					<div class="form-group">
 						<label for="agenda">Isi Agenda</label>

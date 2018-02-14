@@ -28,7 +28,8 @@ Class Admin extends CI_Controller{
             'visi'  => $_POST['visi'],
             'misi'  => $_POST['misi'],
             'deskripsi' => $_POST['deskripsi'],
-            'sejarah'   => $_POST['sejarah']
+            'sejarah'   => $_POST['sejarah'],
+            'peluang_kerja'=> $_POST['peluang_kerja']
         );
 
         $where = array(

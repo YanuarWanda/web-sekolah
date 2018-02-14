@@ -54,9 +54,30 @@ class Informasi extends CI_Controller {
 		$this->load->view("layout/wrapper", $data);
 	}
 
-	public function agenda(){
-		$data['title'] 	= "Agenda ";
+	public function agenda($offset = 0){
+		$data['title']	= "Agenda ";
 		$data['isi']	= "informasi/agenda";
+
+		$config['base_url']		= base_url().'informasi/agenda/';
+		$config['total_rows']	= $this->db->count_all('agenda');
+		$config['per_page']		= 3;
+		$config['uri_segment']	= 3;
+		$config['attributes']	= array('class' => 'pagination-link');
+
+		$this->pagination->initialize($config);
+        $data['agenda'] = $this->main_model->getDataAgenda($config['per_page'], $offset);
+
+		$this->load->view('layout/wrapper', $data);
+	}
+
+	public function isi_agenda(){
+		$agenda					= $this->main_model->getDataAgenda(FALSE, FALSE, FALSE, $this->uri->segment(4));
+		$agendaTerbaru			= $this->main_model->getDataAgenda(3, 0);
+
+		$data['title']			= $berita['0']['judul_agenda'].' ';
+		$data['isi']			= "informasi/agenda/isi_agenda";
+		$data['agenda']			= $agenda;
+		$data['agendaTerbaru'] 	= $agendaTerbaru;
 
 		$this->load->view('layout/wrapper', $data);
 	}
