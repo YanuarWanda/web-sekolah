@@ -60,26 +60,18 @@
         </nav>
     </div>
     <div class="row">
-        <?php for($n=1;$n<=3;$n++){ ?>
+        <?php foreach($pengumuman as $p){ ?>
         <div class="col-lg-6">
             <div class="box-rounded">
-                <h1 class="h3 text-center"> Judul Pengumuman 1 </h1>
+                <h1 class="h3 text-center"> <?php echo $p['judul_pengumuman']; ?> </h1>
                 <hr>
-                <small class="text-muted">Dipost pada ? oleh ? pada kategori ?</small>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="box-rounded">
-                <h1 class="h3 text-center"> Judul Pengumuman 2 </h1>
-                <hr>
-                <small class="text-muted">Dipost pada ? oleh ? pada kategori ?</small>
+                <small class="text-muted">Dipost pada : <?php echo $p['tanggal_pengumuman']; ?></small>
+                <p class="text-justify"> <?php echo word_limiter($p['isi_pengumuman'], 50); ?></p>
             </div>
         </div>
         <?php } ?>
     </div>
     <div class="box-rounded">
-        <div class="d-flex justify-content-center m-0 p-0">
-            <?php echo $this->pagination->create_links(); ?>
-        </div>
+        <?php echo $this->pagination->create_links(); ?>
     </div>
 </div>
