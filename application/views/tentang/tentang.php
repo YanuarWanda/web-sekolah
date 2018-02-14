@@ -125,31 +125,29 @@
         </div>
 
         <div class="tab-pane fade show active" id="struktur" role="tabpanel" aria-labelledby="contact-tab">
-
-            <div class="row">
+            <?php foreach($guru as $g){ ?>
+            <div class="row box">
                 <div class="col-sm-3">
                     <div class="box-rounded ">
-                        <img class="img-fluid imgZoom" width="225px" height="150px" src="http://berkas.siap.id/ptk2014/202/19175/20219175100024.1410356524" alt="Yudi Subekti S,MT."/>
+                        <img class="img-fluid imgZoom" width="225px" height="150px" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
                     </div>
                     <div class="box-rounded">
-                        <p class="text-center m-0"> Yudi Subekti S.Mt.</p>
+                        <p class="text-center m-0"> <?php echo $g['nama_guru']; ?></p>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="box-rounded">
-                        <h2 class="text-center">Kepala Jurusan</h2>
+                        <h2 class="text-center"><?php echo $g['jabatan_guru']; ?></h2>
                     </div>
                     <div class="box-rounded">
                         <ul>
-                            <li class="square-list">NIP : 1952812739101231</li>
-                            <li>Alamat : Jln Jln Jn J jJjJjJj</li>
+                            <li class="square-list">NIP : <?php echo $g['nip']; ?></li>
                         </ul>
                     </div>
                     <div class="box-rounded">
-                        <dl class="ml-5 m-0">
+                        <dl class="ml-2 m-0">
                             <dt>Bidang Keahlian</dt>
-                            <dd> - Pemrograman Basis dan Data</dd>
-                            <dd> - Pemrograman Desktop dan Data</dd>
+                            <dd> - <?php echo $g['deskripsi_guru']; ?></dd>
                         </dl>
                     </div>
                 </div>
@@ -158,8 +156,8 @@
                         <h2 class="text-center"> Kontak </h2>
                     </div>
                     <div class="box-rounded">
-                        E-Mail : yudi.subekti@hotmail.org<br>
-                        No HP : 07822372829193
+                        E-Mail : <?php echo $g['email']; ?><br>
+                        No HP : <?php echo $g['no_hp']; ?>
                     </div>
                     <div class="box-rounded text-center">
                         <h1 class="h1 text-center"> Sosial Media </h1>
@@ -203,86 +201,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="box-rounded m-0 p-0"><hr></div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="box-rounded">
-                        <img class="img-fluid imgZoom" width="300px" height="150px" src="http://berkas.siap.id/ptk2014/202/19175/20219175100002.1410312450" alt="ANI NURAENI"/>
-                    </div>
-                    <div class="box-rounded">
-                        <p class="text-center m-0"> Ani Nuraeni</p>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="box-rounded">
-                        <h2 class="text-center">Wakil Kepala Jurusan</h2>
-                    </div>
-                    <div class="box-rounded">
-                        <ul>
-                            <li class="square-list">NIP : 1952222739101231</li>
-                            <li>Alamat : Jln Jln Jn J ABCDEFGHI</li>
-                        </ul>
-                    </div>
-                    <div class="box-rounded">
-                        <dl class="ml-5 m-0">
-                            <dt>Bidang Keahlian</dt>
-                            <dd> - Desain Web dan Data</dd>
-                            <dd> - Desain Desktop dan Data</dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="box-rounded p-0 pt-1 pb-1">
-                        <h2 class="text-center"> Kontak </h2>
-                    </div>
-                    <div class="box-rounded">
-                        E-Mail : ani.nuraeni@hotmail.org<br>
-                        No HP : 082728191282
-                    </div>
-                    <div class="box-rounded text-center">
-                        <h1 class="h1 text-center"> Sosial Media </h1>
-                        <hr>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-light"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-instagram fa-stack-1x fa-light"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-youtube fa-stack-1x fa-light"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-github fa-stack-1x fa-light"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-google-plus fa-stack-1x fa-light"></i>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="box-rounded m-0 p-0"><hr></div>
+            <?php } ?>
         </div>
         <div class="tab-pane fade box" id="kurikulum" role="tabpanel" aria-labelledby="contact-tab">Kurikulum RPL</div>
         <div class="tab-pane fade box" id="kerja" role="tabpanel" aria-labelledby="contact-tab">Peluang Kerja</div>
