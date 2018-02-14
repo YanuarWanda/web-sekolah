@@ -120,6 +120,7 @@
                         <li>Mendidik siswa mengimplementasikan aplikasi-aplikasi pemrograman, dan pengembangan web.</li>
                         <li>Mendidik siswa mengimplementasikan pemrograman berbasis client server dan desktop</li>
                     </ol> -->
+                    <footer class="blockquote-footer text-center">Misi RPL di SMKN 11 Bandung</footer>
                 </blockquote>
             </div>
         </div>
