@@ -193,58 +193,120 @@ Class Admin extends CI_Controller{
     /* .Berita */
 
     /* Agenda */
-    public function agenda(){
+    public function agenda($offset = 0){
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');
         }
+
+        $config['base_url']     = base_url() . 'admin/agenda';
+        $config['total_rows']   = $this->db->count_all('agenda');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
 
         $data['title']  = "Agenda ";
         $data['isi']    = "admin/agenda";
-        $data['record'] = $this->modelweb->lihat_agenda();
+
+        $data['agenda'] = $this->modelweb->getDataAgenda($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
-    function tambah_agenda(){
-       $data = array(
-           'judul_agenda' => $this->input->post('judul'),
-           'tanggal_agenda' => $this->input->post('tanggal'),
-    	   'isi_agenda' => $this->input->post('isi')
-       );
 
-       if(!empty($data['judul_agenda']) && !empty($data['tanggal_agenda']) && !empty($data['isi_agenda'])){
-         $this->modelweb->tambah_agenda($data);
-         redirect(base_url()."admin/agenda");
-        }else{
-           //$this->session->set_flashdata('pesan', "<script> alert ('Data harus di isi') </script>");
-        }
-	}
-
-    public function ambil_ubah_agenda(){
+    public function tambahAgenda(){
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');
         }
 
-        $data['title']  = "Agenda ";
-        $data['isi']    = "admin/ubah_agenda";
-        $data['record'] = $this->modelweb->lihat_agenda($data);
+        $data['title']  = "Tambah Agenda ";
+        $data['isi']    = "admin/agenda/tambahAgenda";
 
         $this->load->view('layout_admin/wrapper', $data);
     }
 
-    function ubah_agenda(){
-            $data = array('isi_agenda'  => $_POST['isi_agenda'],);
-
-            if(!empty($data['isi_agenda'])){
-                $this->modelweb->ubah_agenda($data);
-            }else{
-                $alert = $this->session->set_flashdata('pesan', "<script> alert ('Data harus di isi') </script>");
-            }
-            redirect('admin/agenda');
+    public function editAgenda(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
         }
 
-    function hapus_agenda(){
-        $this->modelweb->hapus_agenda();
-        redirect('admin/agenda');
+        $data['title']  = "Edit Agenda ";
+        $data['isi']    = "admin/agenda/editAgenda";
+        $data['agenda'] = $this->modelweb->getDataAgenda(FALSE, FALSE, $_GET['i']);
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function updateAgenda(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+        $agenda     = $this->modelweb->getDataAgenda(FALSE, FALSE, $_GET['i']);
+
+        $data = array(
+            'judul_agenda'  => $_POST['judul'],
+            'tanggal_agenda'=> $_POST['tanggal'],
+            'isi_agenda'    => $_POST['isi_agenda']
+        );
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        $this->load->library('upload', $config);
+
+        $result = $this->modelweb->updateData('agenda', $data, $where);
+        if($result == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error')</script>");
+            redirect('admin/editAgenda?i='.$_GET['i']);
+        }else{
+            if($this->upload->do_upload('gambar')){
+                unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
+            }
+            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
+            redirect('admin/agenda');
+        }
+    }
+
+    public function addAgenda(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data = array(
+            'judul_agenda'  => $_POST['judul'],
+            'tanggal_agenda'=> $_POST['tanggal'],
+            'isi_agenda'    => $_POST['isi_agenda']
+        );
+
+        if($this->modelweb->tambahAgenda($data) == 1){
+            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
+            redirect('admin/tambahAgenda');
+        }else{
+             $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
+             redirect('admin/agenda');
+        }
+    }
+
+    public function deleteAgenda(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $admin = $this->modelweb->getDataAgenda(FALSE, FALSE, $id);
+
+        $id = array(
+            'id' => $_GET['i']
+        );
+
+        $result = $this->modelweb->hapusData('agenda', $id);
+        if($result != 1){
+            $this->session->set_flashdata('pesan', '<script>swal("Terhapus!", "Data telah berhasil dihapus!", "success");</script>');
+            redirect('admin/agenda');
+        }else{
+            $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal dihapus!", "error")</script>');
+            redirect('admin/agenda');
+        }
     }
     /* .Agenda */
 

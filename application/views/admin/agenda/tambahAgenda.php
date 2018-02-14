@@ -85,30 +85,35 @@
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
-					<li class="active">
+					<li>
 						<i class="ace-icon fa fa-newspaper-o home-icon"></i>
-						Agenda
+						<a href="<?php echo base_url();?>admin/agenda">Agenda</a>
 					</li>
+                    <li class="active">
+                        <i class="ace-icon fa fa-plus home-icon"></i>
+                        Tambah Agenda
+                    </li>
 				</ul>
 			</div>
 			<div class="page-content">
-				<a href="<?php echo base_url();?>admin/tambahAgenda" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-				<?php foreach($agenda as $b){ ?>
-					<div class="box-rounded">
-						<div class="row">
-							<div class="col-sm-12 col-lg-9">
-								<h1> <?php echo $b['judul_agenda']; ?> </h1>
-								<hr>
-								<small class="text-muted">Dipost pada : <?php echo $b['tanggal_agenda']; ?></small>
-								<p class="text-justify text-truncate"> <?php echo word_limiter($b['isi_agenda'], 25); ?> </p>
-								<hr>
-								<a href="<?php echo base_url();?>admin/editAgenda?i=<?php echo $b['id']; ?>"><button class="btn btn-primary" role="button"><i class="fa fa-edit fa-2x"></i></button></a>
-								<button href="<?php echo base_url();?>admin/deleteAgenda?i=<?php echo $b['id']; ?>" class="btn btn-danger remove" role="button"><i class="fa fa-trash fa-2x"></i></button>
-							</div>
-						</div>
+				<?php echo form_open_multipart('admin/addAgenda'); ?>
+					<div class="form-group">
+						<label for="judul">Judul Agenda</label>
+						<input type="text" name="judul" class="form-control"></input>
 					</div>
-				<?php } ?>
-				<?php echo $this->pagination->create_links(); ?>
+					<div class="form-group">
+		                <label for="tanggal">Tanggal Agenda</label>
+		                <input type="text" name="tanggal" class="tanggal form-control" placeholder="dd/mm/yyyy" />
+		            </div>
+					<div class="form-group">
+						<label for="agenda">Isi Agenda</label>
+						<textarea id="isi_agenda" name="isi_agenda" class="form-control"></textarea>
+						<script>
+							CKEDITOR.replace('isi_agenda');
+						</script>
+					</div>
+					<button role="button" type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus fa-2x"></i></button>
+				</form>
 			</div>
-		</div>
-	</div>
+        </div>
+    </div>

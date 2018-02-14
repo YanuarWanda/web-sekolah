@@ -36,7 +36,15 @@
 	<script src="<?php echo base_url()?>assets/js/dataTables.select.min.js"></script>
 	<script src="<?php echo base_url()?>assets/js/ace-elements.min.js"></script>
 	<script src="<?php echo base_url()?>assets/js/ace.min.js"></script>
-
+    <script src="<?php echo base_url()?>assets/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('.tanggal').datepicker({
+                    format: "yyyy-mm-dd",
+                    autoclose:true
+                });
+            });
+        </script>
 	<script type="text/javascript">
 
     			jQuery(function($) {

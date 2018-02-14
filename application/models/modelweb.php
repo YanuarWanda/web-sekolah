@@ -35,6 +35,17 @@
 			$this->db->order_by('guru.id', 'DESC');
 			return $this->db->get('guru')->result_array();
 		}
+
+		public function getDataAgenda($limit = FALSE, $offset = FALSE, $where = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
+			$this->db->order_by('agenda.id', 'DESC');
+			return $this->db->get('agenda')->result_array();
+		}
 		/* .Get Data */
 
 		/* Update Data */
@@ -44,7 +55,7 @@
 		/* .Update Data */
 
 		/* Tambah Data */
-		public function tambah_agenda($data){
+		public function tambahAgenda($data){
 			$this->db->insert('agenda', $data);
 		}
 
