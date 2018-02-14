@@ -12,7 +12,7 @@
     <body>
         <form class="form-signin" method="POST" action="<?php echo base_url().'admin/signin';?>">
             <div class="text-center mb-4">
-                <img class="mb-4" src="<?php echo base_url().'assets/img/smkn12.png';?>" alt="" width="144" height="144">
+                <img class="mb-4" src="<?php echo base_url().'assets/img/icon.png';?>" alt="" width="144" height="144">
                 <h1 class="h3 mb-3 font-weight-normal">Login Admin</h1>
             </div>
 

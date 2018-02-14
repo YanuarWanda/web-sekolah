@@ -36,24 +36,37 @@
 			return $this->db->get('guru')->result_array();
 		}
 
-<<<<<<< HEAD
 		public function getDataAgenda($limit = FALSE, $offset = FALSE, $where = FALSE){
-=======
-		public function getDataPengumuman($limit = FALSE, $offset = FALSE, $where = FALSE){
->>>>>>> 0799d6bb6307e6f2ec8efeb7e022bcfab5091358
 			if($where){
 				$this->db->where('id', $where);
 			}
 			if($limit){
 				$this->db->limit($limit, $offset);
 			}
-<<<<<<< HEAD
 			$this->db->order_by('agenda.id', 'DESC');
 			return $this->db->get('agenda')->result_array();
-=======
+		}
+
+		public function getDataPengumuman($limit = FALSE, $offset = FALSE, $where = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
 			$this->db->order_by('pengumuman.id', 'DESC');
 			return $this->db->get('pengumuman')->result_array();
->>>>>>> 0799d6bb6307e6f2ec8efeb7e022bcfab5091358
+		}
+
+		public function getDataDownload($limit = FALSE, $offset = FALSE, $where = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
+			$this->db->order_by('file_download.id', 'DESC');
+			return $this->db->get('file_download')->result_array();
 		}
 		/* .Get Data */
 

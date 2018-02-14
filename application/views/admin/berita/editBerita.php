@@ -65,9 +65,9 @@
     			<b class="arrow"></b>
     		</li>
     		<li class="">
-    			<a href="<?php echo base_url();?>admin/gallery">
-    				<i class="menu-icon fa fa-picture-o"></i>
-    				<span class="menu-text"> Gallery </span>
+    			<a href="<?php echo base_url();?>admin/download">
+    				<i class="menu-icon fa fa-download"></i>
+    				<span class="menu-text"> Download </span>
     			</a>
     			<b class="arrow"></b>
     		</li>

@@ -9,7 +9,7 @@ class Pengumuman  extends CI_Controller {
 
 		$config['base_url']		= base_url().'pengumuman/index/';
 		$config['total_rows']	= $this->db->count_all('pengumuman');
-		$config['per_page']		= 3;
+		$config['per_page']		= 4;
 		$config['uri_segment']	= 3;
 		$config['attributes']	= array('class' => 'pagination-link');
 

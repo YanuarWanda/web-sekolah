@@ -94,26 +94,26 @@
     </div>
     <div class="container-fluid bg-custom-3 mb-3">
         <div class="box">
-            <h1 class="display-1 text-center">Kelebihan RPL</h1>
+            <h1 class="display-4 text-center">Kelebihan RPL</h1>
             <hr>
             <div class="row container-fluid d-flex justify-content-center">
-                <div class="col-sm-4">
+                <div class="col-sm-12 col-lg-4">
                     <div class="box-rounded small">
                         <img class="img-fluid" src="<?php echo base_url();?>assets/img/beranda/small-banner-1.png" />
-                        <h1 class="text-center p-2">Lebih lieur.</h1>
+                        <h2 class="text-center p-2">Lebih lieur.</h2>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-12 col-lg-4">
                     <div class="box-rounded small">
                         <img class="img-fluid" src="<?php echo base_url();?>assets/img/beranda/small-banner-1.png" />
-                        <h1 class="text-center p-2">Lebih sering olab.</h1>
+                        <h2 class="text-center p-2">Lebih sering olab.</h2>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-12 col-lg-4">
                     <div class="box-rounded small">
                         <img class="img-fluid" src="<?php echo base_url();?>assets/img/beranda/small-banner-1.png" />
                         <div class="br-small-text p-2">
-                            <h1 class="text-center">Lebih cepat gila.</h1>
+                            <h2 class="text-center">Lebih cepat gila.</h2>
                         </div>
                     </div>
                 </div>
@@ -128,28 +128,28 @@
             <h1 class="display-2 text-center">Menu</h1>
         </div>
         <div class="row d-flex justify-content-between">
-            <div class="col-sm-5">
+            <div class="col-sm-12 col-lg-5">
                 <div class="box-rounded">
                     <a class="informasi-menu" href="<?php echo base_url();?>tentang"><h1 class="h1 display-1 text-center"><i class="fa fa-info-circle fa-1x mr-1"></i></h1></a>
                     <hr>
                     <h1 class="display-4 text-center">Tentang</h1>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-12 col-lg-5">
                 <div class="box-rounded">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
                     <hr>
                     <h1 class="display-4 text-center">Informasi</h1>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-12 col-lg-5">
                 <div class="box-rounded">
                     <a class="informasi-menu" href="<?php echo base_url();?>pengumuman"><h1 class="h1 display-1 text-center"><i class="fa fa-bell fa-1x mr-1"></i></h1></a>
                     <hr>
                     <h1 class="display-4 text-center">Pengumuman</h1>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-12 col-lg-5">
                 <div class="box-rounded">
                     <a class="informasi-menu" href="<?php echo base_url();?>buku_tamu"><h1 class="h1 display-1 text-center"><i class="fa fa-book fa-1x mr-1"></i></h1></a>
                     <hr>

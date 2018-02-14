@@ -24,7 +24,6 @@
                 <h6 class="h6">Link</h6>
                 <hr>
                 <a class="font-white" href="http://www.smkn11bdg.sch.id/"><img class="img-fluid" src="<?php echo base_url();?>assets/img/icon.png" alt="Website SMKN 11 Bandung"/></a>
-                <a class="font-white" href="http://www.smkn12bdg.sch.id/"><img class="img-fluid" src="<?php echo base_url();?>assets/img/smkn12.png" alt="Website SMKN 12 Bandung"/></a>
             </div>
         </div>
         <div class="bg-custom-2 p-2 font-white">

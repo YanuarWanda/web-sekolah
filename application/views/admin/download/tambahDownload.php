@@ -57,14 +57,14 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
-            <li class="active open">
+            <li class="">
     			<a href="<?php echo base_url();?>admin/pengumuman">
     				<i class="menu-icon fa fa-bell"></i>
     				<span class="menu-text"> Pengumuman </span>
     			</a>
     			<b class="arrow"></b>
     		</li>
-    		<li class="">
+    		<li class="active open">
     			<a href="<?php echo base_url();?>admin/download">
     				<i class="menu-icon fa fa-download"></i>
     				<span class="menu-text"> Download </span>
@@ -86,25 +86,24 @@
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
 					<li class="active">
-						<i class="ace-icon fa fa-bell home-icon"></i>
-						Pengumuman
+						<i class="ace-icon fa fa-download home-icon"></i>
+						Download
 					</li>
 				</ul>
 			</div>
 			<div class="page-content">
-                <?php echo form_open('admin/updatePengumuman?i='.$pengumuman['0']['id']); ?>
+                <?php echo form_open_multipart('admin/addDownload'); ?>
                     <div class="form-group">
-                        <label for="judul">Judul</label>
-                        <input type="text" name="judul" class="form-control" value="<?php echo $pengumuman['0']['judul_pengumuman']; ?>"/>
+                        <label for="nama_file">Nama File</label>
+                        <input type="text" name="nama_file" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label for="isi">Isi Pengumuman</label>
-                        <textarea name="isi" id="isi" class="form-control"><?php echo $pengumuman['0']['isi_pengumuman']; ?></textarea>
-                        <script>
-                            CKEDITOR.replace('isi');
+                        <label for="deskripsi">Deskripsi File</label>
+                        <textarea name="deskripsi" id="deskripsi" size="20" class="form-control"></textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.replace('deskripsi');
                         </script>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
                 </form>
             </div>
         </div>

@@ -562,6 +562,39 @@ Class Admin extends CI_Controller{
     }
     /* .Pengumuman */
 
+    /* Download */
+    public function download($offset = 0){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']      = "Download ";
+        $data['isi']        = "admin/download";
+
+        $config['base_url']     = base_url() . 'admin/download';
+        $config['total_rows']   = $this->db->count_all('file_download');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
+        $data['download']   = $this->modelweb->getDataDownload($config['per_page'], $offset);
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function tambahDownload(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']  = "Tambah Download ";
+        $data['isi']    = "admin/download/tambahDownload";
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+    /* .Download */
+
     /* Login */
     public function login(){
         if(!empty($this->session->userdata('email'))){

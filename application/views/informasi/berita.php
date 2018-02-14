@@ -50,34 +50,36 @@
     </div>
 </nav>
 
-<div class="container mb-3">
-    <div class="box-rounded">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Berita</li>
-            </ol>
-        </nav>
-    </div>
-    <?php foreach($berita as $b){ ?>
-    <div class="box-rounded">
-        <div class="row">
-            <div class="col-lg-3">
-                <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
-            </div>
-            <div class="col-lg-9">
-                <h2 class="display-4"><?php echo $b['judul_berita']; ?></h2>
-                <hr>
-                <small class="text-muted ml-2">Dipost pada <?php echo $b['tanggal_berita']; ?> pada kategori ?</small>
-                <p><?php echo word_limiter($b['isi_berita'], 40); ?></p>
-                <hr>
-                <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya</a>
+<div class="bg-custom-4">
+    <div class="container p-3">
+        <div class="box-rounded">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Berita</li>
+                </ol>
+            </nav>
+        </div>
+        <?php foreach($berita as $b){ ?>
+        <div class="box-rounded">
+            <div class="row">
+                <div class="col-sm-12 col-lg-3">
+                    <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
+                </div>
+                <div class="col-sm-12 col-lg-9">
+                    <p class="display-4 text-center"><?php echo $b['judul_berita']; ?></p>
+                    <hr>
+                    <small class="text-muted ml-2">Dipost pada <?php echo $b['tanggal_berita']; ?> pada kategori ?</small>
+                    <p><?php echo word_limiter($b['isi_berita'], 40); ?></p>
+                    <hr>
+                    <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya</a>
+                </div>
             </div>
         </div>
-    </div>
-    <?php } ?>
-    <div class="box-rounded">
-        <?php echo $this->pagination->create_links(); ?>
+        <?php } ?>
+        <div class="box-rounded">
+            <?php echo $this->pagination->create_links(); ?>
+        </div>
     </div>
 </div>

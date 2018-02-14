@@ -13,6 +13,10 @@
 .bg-custom-3{
     background-color: #f6f6f6;
 }
+
+.bg-custom-4{
+    background-color: #eeeeee;
+}
 /* --- END --- */
 
 /*
@@ -328,5 +332,11 @@ a.pagination-link{
 .card-reveal p{
     color: rgba(0, 0, 0, 0.71);
     margin:20px ;
+}
+.box.off{
+    box-shadow: 0 0 0 0;
+}
+.bg-image{
+    background-image: url('../img/bg-1.png');
 }
 /* --- END --- */

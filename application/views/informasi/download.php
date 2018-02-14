@@ -49,15 +49,16 @@
         </ul>
     </div>
 </nav>
-
-<div class="container mb-3">
-    <div class="box-rounded">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Download</li>
-            </ol>
-        </nav>
+<div class="bg-custom-4">
+    <div class="container p-3">
+        <div class="box-rounded">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Download</li>
+                </ol>
+            </nav>
+        </div>
     </div>
 </div>
