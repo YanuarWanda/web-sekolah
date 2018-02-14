@@ -95,7 +95,7 @@
 				<a href="<?php echo base_url();?>admin/tambahGuru" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<div class="row">
 					<?php foreach($guru as $g){ ?>
-					<div class="col-lg-3">
+					<div class="col-sm-12 col-lg-4">
 						<div class="box-rounded">
 							<img class="img-responsive" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
 							<hr>
@@ -133,6 +133,7 @@
 						</div>
 					</div>
 					<?php } ?>
+					<?php echo $this->pagination->create_links(); ?>
 				</div>
 			</div>
 		</div>

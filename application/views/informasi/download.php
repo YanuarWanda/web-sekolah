@@ -60,5 +60,29 @@
                 </ol>
             </nav>
         </div>
+        <div class="row">
+            <?php foreach($download as $d){ ?>
+                <div class="col-lg-6">
+                    <div class="box-rounded">
+                        <h1 class="text-center"><?php echo $d['nama_file']; ?></h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p class="text-justify"><?php echo $d['deskripsi_file']; ?></p>
+                            </div>
+                            <hr>
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-center">
+                                    <a class="informasi-menu" href="#"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x mr-1"></i></h1></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php  } ?>
+            <div class="box-rouded">
+                <?php echo $this->pagination->create_links(); ?>
+            </div>
+        </div>
     </div>
 </div>

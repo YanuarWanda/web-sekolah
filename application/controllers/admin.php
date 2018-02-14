@@ -312,14 +312,22 @@ Class Admin extends CI_Controller{
     /* .Agenda */
 
     /* Guru */
-    public function guru(){
+    public function guru($offset = 0){
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');
         }
 
+        $config['base_url']     = base_url() . 'admin/guru';
+        $config['total_rows']   = $this->db->count_all('guru');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
+
         $data['title']  = "Guru ";
         $data['isi']    = "admin/guru";
-        $data['guru']   = $this->modelweb->getDataGuru(FALSE, FALSE, FALSE);
+        $data['guru']   = $this->modelweb->getDataGuru($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
     }

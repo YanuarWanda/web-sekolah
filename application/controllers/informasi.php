@@ -50,7 +50,7 @@ class Informasi extends CI_Controller {
 
 		$this->pagination->initialize($config);
 		$data['guru']	= $this->main_model->getDataGuru($config['per_page'], $offset);
-		
+
 		$this->load->view("layout/wrapper", $data);
 	}
 
@@ -82,9 +82,18 @@ class Informasi extends CI_Controller {
 		$this->load->view('layout/wrapper', $data);
 	}
 
-	public function download(){
+	public function download($offset = 0){
 		$data['title'] 	= "Download ";
 		$data['isi']	= "informasi/download";
+
+		$config['base_url']     = base_url() . 'admin/download';
+        $config['total_rows']   = $this->db->count_all('file_download');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
+        $data['download']   = $this->main_model->getDataDownload($config['per_page'], $offset);
 
 		$this->load->view("layout/wrapper", $data);
 	}

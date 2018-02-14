@@ -61,21 +61,21 @@
                 </ol>
             </nav>
         </div>
-    </div>
-     <?php foreach($agenda as $b){ ?>
-    <div class="box-rounded">
-        <div class="row">
-            <div class="col-lg-9">
-                <h3><?php echo $b['judul_agenda']; ?></h3> 
-                <small class="text-muted ml-2">Dilaksanakan pada <?php echo $b['tanggal_agenda']; ?></small>
-                <hr>
-                <p><?php echo $b['isi_agenda']; ?></p>
-                <hr>
+         <?php foreach($agenda as $b){ ?>
+        <div class="box-rounded">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3><?php echo $b['judul_agenda']; ?></h3>
+                    <small class="text-muted ml-2">Dilaksanakan pada <?php echo $b['tanggal_agenda']; ?></small>
+                    <hr>
+                    <p><?php echo $b['isi_agenda']; ?></p>
+                    <hr>
+                </div>
             </div>
         </div>
-    </div>
-    <?php } ?>
-    <div class="box-rounded">
-        <?php echo $this->pagination->create_links(); ?>
+        <?php } ?>
+        <div class="box-rounded">
+            <?php echo $this->pagination->create_links(); ?>
+        </div>
     </div>
 </div>

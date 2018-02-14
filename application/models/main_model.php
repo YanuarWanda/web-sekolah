@@ -53,4 +53,14 @@
             $this->db->order_by('agenda.id', 'DESC');
             return $this->db->get('agenda')->result_array();
         }
+        public function getDataDownload($limit = FALSE, $offset = FALSE, $where = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
+			$this->db->order_by('file_download.id', 'DESC');
+			return $this->db->get('file_download')->result_array();
+		}
     }
