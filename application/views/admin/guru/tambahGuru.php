@@ -96,42 +96,47 @@
 				</ul>
 			</div>
             <div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
                 <?php echo form_open_multipart('admin/addGuru'); ?>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="nip">NIP</label>
-                                <input type="text" name="nip" class="form-control" />
+                                <input type="text" name="nip" class="form-control" value="<?php echo set_value('nip'); ?>"/>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" name="nama" class="form-control" />
+                                <input type="text" name="nama" class="form-control" value="<?php echo set_value('nama'); ?>" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="mapel">Mata Pelajaran</label>
-                                <input type="text" name="mapel" class="form-control" />
+                                <input type="text" name="mapel" class="form-control" value="<?php echo set_value('mapel'); ?>" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="jabatan">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" />
+                                <input type="text" name="jabatan" class="form-control" value="<?php echo set_value('jabatan'); ?>" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email">E-Mail</label>
-                                <input type="text" name="email" class="form-control" />
+                                <input type="text" name="email" class="form-control" value="<?php echo set_value('email'); ?>" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="hp">No HP</label>
-                                <input type="text" name="hp" class="form-control" />
+                                <input type="text" name="hp" class="form-control" value="<?php echo set_value('hp'); ?>" />
                             </div>
                         </div>
                         <div class="col-lg-12">

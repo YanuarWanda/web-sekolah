@@ -85,28 +85,37 @@
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
-					<li class="active">
+					<li>
 						<i class="ace-icon fa fa-download home-icon"></i>
-						Download
+						<a href="<?php echo base_url();?>admin/download">Download</a>
+					</li>
+					<li class="active">
+						<i class="ace-icon fa fa-plus home-icon"></i>
+						Tambah Download
 					</li>
 				</ul>
 			</div>
 			<div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
                 <?php echo form_open_multipart('admin/addDownload'); ?>
                     <div class="form-group">
                         <label for="nama_file">Nama File</label>
-                        <input type="text" name="nama_file" class="form-control" />
+                        <input type="text" name="nama_file" class="form-control" value="<?php echo set_value('nama_file'); ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi File</label>
-                        <textarea name="deskripsi" id="deskripsi" size="20" class="form-control"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" size="20" class="form-control"><?php echo set_value('deskripsi'); ?></textarea>
                         <script type="text/javascript">
                             CKEDITOR.replace('deskripsi');
                         </script>
                     </div>
 					<div class="form-group">
 						<label for="link">Link Google Drive</label>
-						<input type="text" name="link" class="form-control" placeholder="Copy-kan link dari google drive ke sini."/>
+						<input type="text" name="link" class="form-control" placeholder="Copy-kan link dari google drive ke sini." value="<?php echo set_value('link'); ?>"/>
 					</div>
 					<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus fa-2x"></i></button>
                 </form>

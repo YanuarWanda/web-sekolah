@@ -61,7 +61,7 @@
             </nav>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="box-rounded">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi/berita"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
                     <hr>
@@ -70,9 +70,16 @@
             </div>
             <div class="col-sm-6">
                 <div class="box-rounded">
-                    <a class="informasi-menu" href="<?php echo base_url();?>informasi/guru"><h1 class="h1 display-1 text-center"><i class="fa fa-id-card fa-1x mr-1"></i></h1></a>
+                    <a class="informasi-menu" href="<?php echo base_url();?>informasi/kolom_guru"><h1 class="h1 display-1 text-center"><i class="fa fa-archive fa-1x mr-1"></i></h1></a>
                     <hr>
                     <p class="display-4 text-center"> Kolom Guru </p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="box-rounded">
+                    <a class="informasi-menu" href="<?php echo base_url();?>informasi/guru"><h1 class="h1 display-1 text-center"><i class="fa fa-id-card fa-1x mr-1"></i></h1></a>
+                    <hr>
+                    <p class="display-4 text-center"> Daftar Guru </p>
                 </div>
             </div>
             <div class="col-sm-6">

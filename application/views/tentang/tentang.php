@@ -53,13 +53,13 @@
     <div class="container p-3">
         <ul class="nav justify-content-center" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link box-rounded mr-2" id="home-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="home" aria-selected="true">Profil RPL</a>
+                <a class="nav-link box-rounded active mr-2" id="home-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="home" aria-selected="true">Profil RPL</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link box-rounded mr-2" id="profile-tab" data-toggle="tab" href="#visimisi" role="tab" aria-controls="profile" aria-selected="false">Visi Misi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link box-rounded active mr-2" id="contact-tab" data-toggle="tab" href="#struktur" role="tab" aria-controls="contact" aria-selected="false">Struktur Organisasi</a>
+                <a class="nav-link box-rounded mr-2" id="contact-tab" data-toggle="tab" href="#struktur" role="tab" aria-controls="contact" aria-selected="false">Struktur Organisasi</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link box-rounded mr-2" id="contact-tab" data-toggle="tab" href="#kurikulum" role="tab" aria-controls="contact" aria-selected="false">Kurikulum RPL</a>
@@ -71,7 +71,7 @@
 
         <div class="tab-content" id="myTabContent">
 
-            <div class="tab-pane fade" id="profil" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="home-tab">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="box-rounded">
@@ -115,51 +115,44 @@
                     <hr>
                     <blockquote class="blockquote">
                         <?php echo $tentang->misi; ?>
-                        <!-- <ol>
-                            <li>Mendidik siswa mengidentifikasi dan melakukan reparasi software untuk kebutuhan didunia usaha dan industri.</li>
-                            <li>Mendidik siswa mengimplementasikan aplikasi-aplikasi pemrograman, dan pengembangan web.</li>
-                            <li>Mendidik siswa mengimplementasikan pemrograman berbasis client server dan desktop</li>
-                        </ol> -->
                     </blockquote>
                 </div>
             </div>
 
-            <div class="tab-pane fade show active" id="struktur" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="tab-pane fade" id="struktur" role="tabpanel" aria-labelledby="contact-tab">
                 <?php foreach($guru as $g){ ?>
                 <div class="row box off">
-                    <div class="col-sm-12 col-lg-3">
-                        <div class="box-rounded ">
-                            <img class="img-fluid imgZoom" width="225px" height="150px" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
+                    <div class="col-sm-12 col-lg-3 box-border br-0">
+                        <div class="d-flex justify-content-center">
+                            <img class="img-fluid imgZoom p-2" width="225px" height="150px" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
                         </div>
-                        <div class="box-rounded">
-                            <p class="text-center m-0"> <?php echo $g['nama_guru']; ?></p>
+                        <div class="">
+                            <p class="text-center m-0 p-0"> <?php echo $g['nama_guru']; ?></p>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-lg-5">
-                        <div class="box-rounded">
+                    <div class="col-sm-12 col-lg-5 box-border">
+                        <div class="">
                             <h2 class="text-center"><?php echo $g['jabatan_guru']; ?></h2>
                         </div>
-                        <div class="box-rounded">
+                        <div class="">
                             <ul>
                                 <li class="square-list">NIP : <?php echo $g['nip']; ?></li>
+                                <li class="square-list">E-Mail : <?php echo $g['email']; ?></li>
+                                <li class="square-list">No HP : <?php echo $g['no_hp']; ?></li>
                             </ul>
                         </div>
-                        <div class="box-rounded">
+                        <div class="">
                             <dl class="ml-2 m-0">
                                 <dt>Bidang Keahlian</dt>
                                 <dd> - <?php echo $g['deskripsi_guru']; ?></dd>
                             </dl>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-lg-4">
+                    <div class="col-sm-12 col-lg-4 box-border bl-0">
                         <div class="box-rounded p-0 pt-1 pb-1 d-none">
                             <h2 class="text-center"> Kontak </h2>
                         </div>
-                        <div class="box-rounded">
-                            E-Mail : <?php echo $g['email']; ?><br>
-                            No HP : <?php echo $g['no_hp']; ?>
-                        </div>
-                        <div class="box-rounded text-center">
+                        <div class="text-center">
                             <h1 class="h1 text-center"> Sosial Media </h1>
                             <hr>
                             <a href="#">
@@ -203,8 +196,18 @@
                 </div>
                 <?php } ?>
             </div>
-            <div class="tab-pane fade box" id="kurikulum" role="tabpanel" aria-labelledby="contact-tab">Kurikulum RPL</div>
-            <div class="tab-pane fade box" id="kerja" role="tabpanel" aria-labelledby="contact-tab">Peluang Kerja</div>
+            <div class="tab-pane fade box" id="kurikulum" role="tabpanel" aria-labelledby="contact-tab">
+                <iframe src="<?php echo $tentang->kurikulum; ?>" class="embed-responsive embed-responsive-16by9" height="100%" allowfullscreen></iframe>
+                <!-- <iframe src="https://drive.google.com/file/d/1UJMm3ZdguG1EktnO1bHFqWW8rOyCdRCg/preview" class="embed-responsive embed-responsive-16by9" height="100%"></iframe> -->
+            </div>
+            <div class="tab-pane fade" id="kerja" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="box">
+                    <h1 class="display-4">Akan Menjadi Apa Saya Jika Lulus Dari RPL ?</h1>
+                </div>
+                <div class="box">
+                    <?php echo $tentang->peluang_kerja; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

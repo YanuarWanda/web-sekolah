@@ -61,7 +61,12 @@
                 </ol>
             </nav>
         </div>
-         <?php foreach($agenda as $b){ ?>
+        <div class="box-rounded pb-1">
+            <?php echo form_open('informasi/agenda'); ?>
+                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>" />
+            </form>
+        </div>
+         <?php if($agenda){foreach($agenda as $b){ ?>
         <div class="box-rounded">
             <div class="row">
                 <div class="col-lg-9">
@@ -72,6 +77,10 @@
                     <hr>
                 </div>
             </div>
+        </div>
+        <?php }}else{ ?>
+        <div class="box-rounded">
+            <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
         </div>
         <?php } ?>
         <div class="box-rounded">

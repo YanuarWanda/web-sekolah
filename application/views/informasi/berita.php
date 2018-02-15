@@ -61,22 +61,33 @@
                 </ol>
             </nav>
         </div>
-        <?php foreach($berita as $b){ ?>
-        <div class="box-rounded">
-            <div class="row">
-                <div class="col-sm-12 col-lg-3">
-                    <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
-                </div>
-                <div class="col-sm-12 col-lg-9">
-                    <p class="display-4 text-center"><?php echo $b['judul_berita']; ?></p>
-                    <hr>
-                    <small class="text-muted ml-2">Dipost pada <?php echo $b['tanggal_berita']; ?> pada kategori ?</small>
-                    <p><?php echo word_limiter($b['isi_berita'], 40); ?></p>
-                    <hr>
-                    <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya</a>
+        <div class="box-rounded pb-1">
+            <?php echo form_open('informasi/berita'); ?>
+                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>"/>
+            </form>
+        </div>
+        <?php if($berita){ ?>
+            <?php foreach($berita as $b){ ?>
+            <div class="box-rounded">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-3">
+                        <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
+                    </div>
+                    <div class="col-sm-12 col-lg-9">
+                        <p class="display-4"><?php echo $b['judul_berita']; ?></p>
+                        <hr>
+                        <small class="text-muted ml-2">Dipost pada <?php echo $b['tanggal_berita']; ?> pada kategori ?</small>
+                        <p><?php echo word_limiter($b['isi_berita'], 40); ?></p>
+                        <hr>
+                        <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya</a>
+                    </div>
                 </div>
             </div>
-        </div>
+            <?php } ?>
+        <?php }else{ ?>
+            <div class="box-rounded">
+                <h1 class="display-4 text-center"> Berita yang anda cari tidak ditemukan ... </h1>
+            </div>
         <?php } ?>
         <div class="box-rounded">
             <?php echo $this->pagination->create_links(); ?>

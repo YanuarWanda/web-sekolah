@@ -92,14 +92,19 @@
 				</ul>
 			</div>
 			<div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
                 <?php echo form_open('admin/addPengumuman'); ?>
                     <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" name="judul" class="form-control" />
+                        <input type="text" name="judul" class="form-control" value="<?php echo set_value('judul'); ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="isi">Isi Pengumuman</label>
-                        <textarea name="isi" id="isi" class="form-control"></textarea>
+                        <textarea name="isi" id="isi" class="form-control"><?php echo set_value('isi'); ?></textarea>
                         <script>
                             CKEDITOR.replace('isi');
                         </script>

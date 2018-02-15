@@ -29,14 +29,19 @@ Class Admin extends CI_Controller{
             'misi'  => $_POST['misi'],
             'deskripsi' => $_POST['deskripsi'],
             'sejarah'   => $_POST['sejarah'],
-            'peluang_kerja'=> $_POST['peluang_kerja']
+            'peluang_kerja'=> $_POST['peluang_kerja'],
+            'kurikulum' => $_POST['kurikulum']
         );
 
         $where = array(
             'id' => 1,
         );
 
-        $this->modelweb->updateData('tentang_rpl', $data, $where);
+        if($this->modelweb->updateData('tentang_rpl', $data, $where) == 1){
+            $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal diubah!", "error");</script>');
+        }else{
+            $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil diubah!", "success");</script>');
+        }
         redirect('admin');
     }
     /* .Tentang */
@@ -70,6 +75,7 @@ Class Admin extends CI_Controller{
 
         $data['title']  = "Tambah Berita ";
         $data['isi']    = "admin/berita/tambahBerita";
+        $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -82,6 +88,7 @@ Class Admin extends CI_Controller{
         $data['title']  = "Edit Berita ";
         $data['isi']    = "admin/berita/editBerita";
         $data['berita'] = $this->modelweb->getDataBerita(FALSE, FALSE, $_GET['i']);
+        $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -91,9 +98,15 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
-        $link       = str_replace(' ', '-', strtolower($_POST['judul']));
-        $fileName   = time().'_'.$_FILES['gambar']['name'];
         $berita     = $this->modelweb->getDataBerita(FALSE, FALSE, $_GET['i']);
+        $link       = str_replace(' ', '-', strtolower($_POST['judul']));
+        if($_FILES['gambar']['name']){
+            $fileName   = time().'_'.$_FILES['gambar']['name'];
+        }else if($berita['0']['gambar']){
+            $fileName   = $berita['0']['gambar'];
+        }else{
+            $fileName   = "no-image.jpg";
+        }
 
         $data = array(
             'judul_berita'  => $_POST['judul'],
@@ -118,16 +131,24 @@ Class Admin extends CI_Controller{
 
         $this->load->library('upload', $config);
 
-        $result = $this->modelweb->updateData('berita', $data, $where);
-        if($result == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error')</script>");
-            redirect('admin/editBerita?i='.$_GET['i']);
+        $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul Berita harus diisi!'));
+        $this->form_validation->set_rules('isi_berita', 'Isi Berita', 'required', array('required' => 'Isi Berita harus diisi!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Berita ','isi'=>'admin/berita/editBerita','berita'=>$berita,'errors'=>$this->form_validation->error_array()));
         }else{
-            if($this->upload->do_upload('gambar')){
-                unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
+            if($this->modelweb->updateData('berita', $data, $where) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error')</script>");
+                redirect('admin/editBerita?i='.$_GET['i']);
+            }else{
+                if($this->upload->do_upload('gambar')){
+                    if($berita['0']['gambar'] != "no-image.jpg"){
+                        unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
+                    }
+                }
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
+                redirect('admin/berita');
             }
-            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success')</script>");
-            redirect('admin/berita');
         }
     }
 
@@ -135,7 +156,12 @@ Class Admin extends CI_Controller{
         if(empty($this->session->userdata['email'])){
             redirect('admin/login');
         }
-        $fileName = time().'_'.$_FILES['gambar']['name'];
+
+        if($_FILES['gambar']['name']){
+            $fileName = time().'_'.$_FILES['gambar']['name'];
+        }else{
+            $fileName = "no-image.jpg";
+        }
 
         $data = array(
             'judul_berita'  => $_POST['judul'],
@@ -156,15 +182,19 @@ Class Admin extends CI_Controller{
 
         $this->load->library('upload', $config);
 
-        if($this->modelweb->tambahBerita($data) == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
-            redirect('admin/tambahBerita');
+        $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul Berita harus diisi!'));
+        $this->form_validation->set_rules('isi_berita', 'Isi Berita', 'required', array('required' => 'Isi Berita harus diisi!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Coba ','isi'=>'admin/berita/tambahBerita','errors'=>$this->form_validation->error_array()));
         }else{
-            if($this->upload->do_upload('gambar')){
-                $data = array($this->upload->data());
+            if($this->modelweb->tambahBerita($data) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
+                redirect('admin/tambahBerita');
+            }else{
+                $this->upload->do_upload('gambar');
                 $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
                 redirect('admin/berita');
-            }else{
             }
         }
     }
@@ -182,7 +212,9 @@ Class Admin extends CI_Controller{
 
         $result = $this->modelweb->hapusData('berita', $id);
         if($result != 1){
-            unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
+            if(!$berita['0']['gambar'] == "no-image.jpg"){
+                unlink('./assets/img/foto-berita/'.$berita['0']['gambar']);
+            }
             $this->session->set_flashdata('pesan', '<script>swal("Terhapus!", "Data telah berhasil dihapus!", "success");</script>');
             redirect('admin/berita');
         }else{
@@ -339,6 +371,7 @@ Class Admin extends CI_Controller{
 
         $data['title']  = "Tambah Guru ";
         $data['isi']    = "admin/guru/tambahGuru";
+        $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -348,7 +381,11 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
-        $fileName   = time().'_'.$_FILES['gambar']['name'];
+        if($_FILES['gambar']['name']){
+            $fileName   = time().'_'.$_FILES['gambar']['name'];
+        }else{
+            $fileName   = "no-image.jpg";
+        }
 
         $data = array(
             'nip'               => $_POST['nip'],
@@ -372,12 +409,20 @@ Class Admin extends CI_Controller{
 
         $this->load->library('upload', $config);
 
-        if($this->modelweb->tambahGuru($data) == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
-            redirect('admin/tambahGuru');
+        $this->form_validation->set_rules('nip', 'NIP', 'required|integer', array('required' => 'NIP wajib diisi!', 'integer' => 'NIP anda tidak valid! (Bukan Angka)'));
+        $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama wajib diisi!'));
+        $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required', array('required' => 'Mata Pelajaran wajib diisi!'));
+        $this->form_validation->set_rules('email', 'E-Mail', 'valid_email', array('valid_email' => 'E-Mail anda tidak valid!'));
+        $this->form_validation->set_rules('hp', 'No HP', 'integer', array('integer' => 'No HP anda tidak valid!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Guru ', 'isi'=>'admin/guru/tambahGuru', 'errors'=>$this->form_validation->error_array()));
         }else{
-            if($this->upload->do_upload('gambar')){
-                $data = array($this->upload->data());
+            if($this->modelweb->tambahGuru($data) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
+                redirect('admin/tambahGuru');
+            }else{
+                $this->upload->do_upload('gambar');
                 $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
                 redirect('admin/guru');
             }
@@ -399,7 +444,9 @@ Class Admin extends CI_Controller{
             $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
             redirect('admin/guru');
         }else{
-            unlink('./assets/img/foto-guru/'.$guru['0']['gambar']);
+            if($guru['0']['gambar'] != "no-image.jpg"){
+                unlink('./assets/img/foto-guru/'.$guru['0']['gambar']);
+            }
             $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success')</script>");
             redirect('admin/guru');
         }
@@ -413,6 +460,7 @@ Class Admin extends CI_Controller{
         $data['title']  = "Edit Guru ";
         $data['isi']    = "admin/guru/editGuru";
         $data['guru']   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+        $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -428,7 +476,13 @@ Class Admin extends CI_Controller{
             'id'    => $_GET['i']
         );
 
-        $fileName   = time().'_'.$_FILES['gambar']['name'];
+        if($_FILES['gambar']['name']){
+            $fileName   = time().'_'.$_FILES['gambar']['name'];
+        }else if($guru['0']['gambar']){
+            $fileName   = $guru['0']['gambar'];
+        }else{
+            $fileName   = "no-image.jpg";
+        }
 
         $data = array(
             'nip'               => $_POST['nip'],
@@ -452,15 +506,27 @@ Class Admin extends CI_Controller{
 
         $this->load->library('upload', $config);
 
-        if($this->modelweb->updateData('guru', $data, $where) == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error');</script>");
-            redirect('admin/editGuru?i='.$guru['0']['id']);
+        $this->form_validation->set_rules('nip', 'NIP', 'required|integer', array('required' => 'NIP wajib diisi!', 'integer' => 'NIP anda tidak valid! (Bukan Angka)'));
+        $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama wajib diisi!'));
+        $this->form_validation->set_rules('mapel', 'Mata Pelajaran', 'required', array('required' => 'Mata Pelajaran wajib diisi!'));
+        $this->form_validation->set_rules('email', 'E-Mail', 'valid_email', array('valid_email' => 'E-Mail anda tidak valid!'));
+        $this->form_validation->set_rules('hp', 'No HP', 'integer', array('integer' => 'No HP anda tidak valid!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Guru ', 'isi'=>'admin/guru/editGuru', 'guru'=>$guru, 'errors'=>$this->form_validation->error_array()));
         }else{
-            if($this->upload->do_upload('gambar')){
-                unlink('./assets/img/foto-guru/'.$guru['0']['gambar']);
+            if($this->modelweb->updateData('guru', $data, $where) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error');</script>");
+                redirect('admin/editGuru?i='.$guru['0']['id']);
+            }else{
+                if($this->upload->do_upload('gambar')){
+                    if($guru['0']['gambar'] != "no-image.jpg"){
+                        unlink('./assets/img/foto-guru/'.$guru['0']['gambar']);
+                    }
+                }
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success');</script>");
+                redirect('admin/guru');
             }
-            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success');</script>");
-            redirect('admin/guru');
         }
     }
     /* .Guru */
@@ -494,6 +560,7 @@ Class Admin extends CI_Controller{
 
         $data['title']  = "Tambah Pengumuman ";
         $data['isi']    = 'admin/pengumuman/tambahPengumuman';
+        $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -508,12 +575,19 @@ Class Admin extends CI_Controller{
             'isi_pengumuman'    => $_POST['isi']
         );
 
-        if($this->modelweb->tambahPengumuman($data) == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error');</script>");
-            redirect('admin/tambahPengumuman');
+        $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul harus diisi!'));
+        $this->form_validation->set_rules('isi', 'Isi Pengumuman', 'required', array('required' => 'Isi Pengumuman harus diisi!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Pengumuman ','isi'=>'admin/pengumuman/tambahPengumuman','errors'=>$this->form_validation->error_array()));
         }else{
-            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success');</script>");
-            redirect('admin/pengumuman');
+            if($this->modelweb->tambahPengumuman($data) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error');</script>");
+                redirect('admin/tambahPengumuman');
+            }else{
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan!', 'success');</script>");
+                redirect('admin/pengumuman');
+            }
         }
     }
 
@@ -543,6 +617,7 @@ Class Admin extends CI_Controller{
         $data['pengumuman'] = $this->modelweb->getDataPengumuman(FALSE, FALSE, $_GET['i']);
         $data['title']      = "Edit Pengumuman ";
         $data['isi']        = "admin/pengumuman/editPengumuman";
+        $data['errors']     = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -561,12 +636,19 @@ Class Admin extends CI_Controller{
             'isi_pengumuman'    => $_POST['isi']
         );
 
-        if($this->modelweb->updateData('pengumuman', $data, $where) == 1){
-            $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal diubah!", "error");</script>');
-            redirect('admin/pengumuman');
+        $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul harus diisi!'));
+        $this->form_validation->set_rules('isi', 'Isi Pengumuman', 'required', array('required' => 'Isi Pengumuman harus diisi!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Pengumuman ','isi'=>'admin/pengumuman/editPengumuman','pengumuman'=>$this->modelweb->getDataPengumuman(FALSE, FALSE, $_GET['i']),'errors'=>$this->form_validation->error_array()));
         }else{
-            $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil diubah!", "success");</script>');
-            redirect('admin/pengumuman');
+            if($this->modelweb->updateData('pengumuman', $data, $where) == 1){
+                $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal diubah!", "error");</script>');
+                redirect('admin/pengumuman');
+            }else{
+                $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil diubah!", "success");</script>');
+                redirect('admin/pengumuman');
+            }
         }
     }
     /* .Pengumuman */
@@ -599,6 +681,7 @@ Class Admin extends CI_Controller{
 
         $data['title']  = "Tambah Download ";
         $data['isi']    = "admin/download/tambahDownload";
+        $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -614,12 +697,19 @@ Class Admin extends CI_Controller{
             'link_file'         => $_POST['link']
         );
 
-        if($this->modelweb->tambahDownload($data) == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan', 'error');</script>");
-            redirect('admin/download');
+        $this->form_validation->set_rules('nama_file', 'Nama File', 'required', array('required' => 'Nama File harus diisi!'));
+        $this->form_validation->set_rules('link', 'Link File', 'required|valid_url', array('required' => 'Link File harus diisi!', 'valid_url' => 'Link File tidak valid! (harus ada http:// atau https://)'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Download ','isi'=>'admin/download/tambahDownload','errors'=>$this->form_validation->error_array()));
         }else{
-            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan', 'success');</script>");
-            redirect('admin/download');
+            if($this->modelweb->tambahDownload($data) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan', 'error');</script>");
+                redirect('admin/download');
+            }else{
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil ditambahkan', 'success');</script>");
+                redirect('admin/download');
+            }
         }
     }
 
@@ -631,6 +721,7 @@ Class Admin extends CI_Controller{
         $where = array(
             'id'    => $_GET['i']
         );
+
 
         if($this->modelweb->hapusData('file_download', $where) == 1){
             $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal dihapus!', 'error');</script>");
@@ -649,6 +740,7 @@ Class Admin extends CI_Controller{
         $data['title']      = "Edit Download ";
         $data['isi']        = "admin/download/editDownload";
         $data['download']   = $this->modelweb->getDataDownload(FALSE, FALSE, $_GET['i']);
+        $data['errors']     = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -668,12 +760,19 @@ Class Admin extends CI_Controller{
             'link_file'         => $_POST['link']
         );
 
-        if($this->modelweb->updateData('file_download', $data, $where) == 1){
-            $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error'); </script>");
-            redirect('admin/editDownload?i='.$_GET['i']);
+        $this->form_validation->set_rules('nama_file', 'Nama File', 'required', array('required' => 'Nama File harus diisi!'));
+        $this->form_validation->set_rules('link', 'Link File', 'required|valid_url', array('required' => 'Link File harus diisi!', 'valid_url' => 'Link File tidak valid! (harus ada http:// atau https://)'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Download ','isi'=>'admin/download/editDownload','download'=>$this->modelweb->getDataDownload(FALSE, FALSE, $_GET['i']),'errors'=>$this->form_validation->error_array()));
         }else{
-            $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success'); </script>");
-            redirect('admin/download');
+            if($this->modelweb->updateData('file_download', $data, $where) == 1){
+                $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal diubah!', 'error'); </script>");
+                redirect('admin/editDownload?i='.$_GET['i']);
+            }else{
+                $this->session->set_flashdata('pesan', "<script>swal('Berhasil!', 'Data berhasil diubah!', 'success'); </script>");
+                redirect('admin/download');
+            }
         }
     }
     /* .Download */
@@ -692,8 +791,10 @@ Class Admin extends CI_Controller{
 
     public function signin(){
         if($this->modelweb->getDataAkun($_POST['email'])){
+            $akun = $this->modelweb->getDataAkun($_POST['email']);
             $data = array(
                 'email' => $_POST['email'],
+                'name'  => $akun['0']['name']
             );
             $this->session->set_userdata($data);
             redirect('admin');

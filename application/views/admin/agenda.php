@@ -94,9 +94,9 @@
 			<div class="page-content">
 				<a href="<?php echo base_url();?>admin/tambahAgenda" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<?php foreach($agenda as $b){ ?>
-					<div class="box-rounded">
+					<div class="box-border p-1 mb-1">
 						<div class="row">
-							<div class="col-sm-12 col-lg-9">
+							<div class="col-sm-12 col-lg-12">
 								<h1> <?php echo $b['judul_agenda']; ?> </h1>
 								<hr>
 								<small class="text-muted">Dipost pada : <?php echo $b['tanggal_agenda']; ?></small>

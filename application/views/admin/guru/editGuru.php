@@ -90,12 +90,17 @@
                         <a href="<?php echo base_url();?>admin/guru">Guru</a>
                     </li>
 					<li class="active">
-						<i class="ace-icon fa fa-plus home-icon"></i>
-						Tambah Guru
+						<i class="ace-icon fa fa-edit home-icon"></i>
+						Edit Guru
 					</li>
 				</ul>
 			</div>
             <div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
                 <?php echo form_open_multipart('admin/updateGuru?i='.$guru['0']['id']); ?>
                     <div class="row">
                         <div class="col-lg-6">

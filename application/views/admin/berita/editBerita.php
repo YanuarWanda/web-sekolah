@@ -96,6 +96,11 @@
 				</ul>
 			</div>
             <div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
                 <?php echo form_open_multipart('admin/updateBerita?i='.$berita['0']['id']); ?>
 					<div class="form-group">
 						<label for="judul">Judul Berita</label>

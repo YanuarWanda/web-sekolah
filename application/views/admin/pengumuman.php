@@ -94,7 +94,7 @@
 			<div class="page-content">
 				<a href="<?php echo base_url();?>admin/tambahPengumuman" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<?php foreach($pengumuman as $p){ ?>
-				<div class="box-rounded">
+				<div class="box-border p-1 mb-1">
 						<h1 class="text-center"><?php echo $p['judul_pengumuman']; ?></h1>
 						<hr>
 						<small class="text-muted">Dipost pada : <?php echo $p['tanggal_pengumuman']; ?></small>

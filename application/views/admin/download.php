@@ -94,15 +94,16 @@
 			<div class="page-content">
                 <a href="<?php echo base_url();?>admin/tambahDownload" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<?php foreach($download as $d){ ?>
-                <div class="box-rounded ">
+                <div class="box-border p-1 mb-1 ">
                     <h1 class="text-center"><?php echo $d['nama_file']; ?></h1>
                     <hr>
-                    <p> <?php echo $d['deskripsi_file']; ?> </p>
+                    <p> <?php echo word_limiter($d['deskripsi_file'], 100); ?> </p>
                     <hr>
                     <a href="<?php echo base_url();?>admin/editDownload?i=<?php echo $d['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
                     <button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/deleteDownload?i=<?php echo $d['id']; ?>"><i class="fa fa-trash fa-2x"></i></button>
                 </div>
                 <?php } ?>
+				<?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

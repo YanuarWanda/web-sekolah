@@ -16,6 +16,10 @@ class Pengumuman  extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['pengumuman'] = $this->main_model->getDataPengumuman($config['per_page'], $offset);
 
+		if(!empty($_POST['search'])){
+			$data['pengumuman']	= $this->main_model->getDataPengumuman($config['per_page'], $offset, FALSE, $_POST['search']);
+		}
+
 		$this->load->view('layout/wrapper', $data);
 	}
 }

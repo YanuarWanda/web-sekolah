@@ -60,26 +60,34 @@
                 </ol>
             </nav>
         </div>
+        <div class="box-rounded pb-1">
+            <?php echo form_open('informasi/download'); ?>
+                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>" />
+            </form>
+        </div>
         <div class="row">
-            <?php foreach($download as $d){ ?>
+            <?php if($download){foreach($download as $d){ ?>
                 <div class="col-lg-6">
                     <div class="box-rounded">
                         <h1 class="text-center"><?php echo $d['nama_file']; ?></h1>
                         <hr>
-                        <div class="row">
+                        <div class="row container">
                             <div class="col-lg-6">
-                                <p class="text-justify"><?php echo word_limiter($d['deskripsi_file'], 5); ?></p>
+                                <p class="text-justify"><?php echo word_limiter($d['deskripsi_file'], 15); ?></p>
                             </div>
-                            <hr>
-                            <div class="col-lg-6">
-                                <div class="d-flex justify-content-center">
-                                    <a class="informasi-menu" href="#"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x mr-1"></i></h1></a>
-                                </div>
+                            <div class="col-lg-6 float-right">
+                                <a class="informasi-menu" href="#"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x ml-2"></i></h1></a>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php  } ?>
+            <?php  }}else{ ?>
+                <div class="col-sm-12">
+                    <div class="box-rounded">
+                        <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
         <div class="box-rounded">
             <?php echo $this->pagination->create_links(); ?>

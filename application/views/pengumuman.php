@@ -59,14 +59,25 @@
                 </ol>
             </nav>
         </div>
+        <div class="box-rounded pb-1">
+            <?php echo form_open('pengumuman'); ?>
+                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>" />
+            </form>
+        </div>
         <div class="row">
-            <?php foreach($pengumuman as $p){ ?>
+            <?php if($pengumuman){foreach($pengumuman as $p){ ?>
             <div class="col-lg-6">
                 <div class="box-rounded">
-                    <h1 class="h3 text-center"> <?php echo $p['judul_pengumuman']; ?> </h1>
+                    <h1 class="h3"> <?php echo $p['judul_pengumuman']; ?> </h1>
+                    <small class="text-muted ml-2">Dipost pada : <?php echo $p['tanggal_pengumuman']; ?></small>
                     <hr>
-                    <small class="text-muted">Dipost pada : <?php echo $p['tanggal_pengumuman']; ?></small>
                     <p class="text-justify"> <?php echo word_limiter($p['isi_pengumuman'], 50); ?></p>
+                </div>
+            </div>
+            <?php }}else{ ?>
+            <div class="col-sm-12">
+                <div class="box-rounded">
+                    <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
                 </div>
             </div>
             <?php } ?>

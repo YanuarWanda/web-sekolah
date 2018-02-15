@@ -65,6 +65,9 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="box-rounded">
+                    <h1 class="display-4 text-center"><?php echo $b['judul_berita']; ?> </h1>
+                </div>
+                <div class="box-rounded">
                     <img class="img-fluid imgZoom" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" alt="<?php echo $b['judul_berita']; ?>"/>
                 </div>
                 <div class="box-rounded">
@@ -77,13 +80,14 @@
             <div class="col-lg-3">
                 <div class="box-rounded">
                     <h3 class="text-center"> Berita Terbaru </h3>
+                    <?php foreach($beritaTerbaru as $bt){ ?>
+                        <hr>
+                        <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $bt['link']; ?>">
+                            <h6 class="text-center"><?php echo $bt['judul_berita']; ?></h6>
+                            <img class="img-fluid imgHover" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $bt['gambar']; ?>" />
+                        </a>
+                    <?php } ?>
                 </div>
-                <?php foreach($beritaTerbaru as $bt){ ?>
-                <div class="box-rounded">
-                    <h6 class="text-center"><?php echo $bt['judul_berita']; ?></h6>
-                    <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $bt['link']; ?>"><img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $bt['gambar']; ?>" /></a>
-                </div>
-                <?php } ?>
                 <div class="box-rounded">
                     <h3 class="text-center"> Bagikan Berita </h3>
                     <hr>

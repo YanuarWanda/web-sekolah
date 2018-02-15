@@ -189,6 +189,11 @@
 					    	</div>
 					  	</div>
 					</div>
+					<div class="form-group">
+						<label for="kurikulum">Kurikulum</label>
+						<input type="text" name="kurikulum" class="form-control" placeholder="Isi dengan link embed dari google drive dalam bentuk pdf/word ." value="<?php echo $tentang->kurikulum; ?>" />
+						<small class="text-red ml-2">*Kurikulum diisi dengan link embed dari file pdf/word yang telah di upload ke google drive. Tutorial cari sendiri. Akan ditambahkan nanti kalo keburu.</small>
+					</div>
 					<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
 				</form>
 			</div>

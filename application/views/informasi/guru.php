@@ -60,46 +60,58 @@
                 </ol>
             </nav>
         </div>
+        <div class="box-rounded pb-1">
+            <?php echo form_open('informasi/guru'); ?>
+                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>">
+            </form>
+        </div>
         <div class="row">
-            <?php foreach($guru as $g){ ?>
-            <div class="col-lg-4">
-                <div class="box-rounded">
-                    <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
-                    <hr>
-                    <p class="text-center font-weight-bold"> <?php echo $g['nama_guru']; ?> </p>
-                    <p class="text-center"> <?php echo $g['nip']; ?> </p>
-                    <p class="text-center"> <?php echo $g['deskripsi_guru']; ?> </p>
-                    <p class="text-center"> <?php echo $g['no_hp']; ?> </p>
-                    <hr>
-                    <div class="d-flex justify-content-center">
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
+            <?php if($guru){ ?>
+                <?php foreach($guru as $g){ ?>
+                <div class="col-lg-4">
+                    <div class="box-rounded">
+                        <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
+                        <hr>
+                        <p class="text-center font-weight-bold"> <?php echo $g['nama_guru']; ?> </p>
+                        <p class="text-center"> <?php echo $g['nip']; ?> </p>
+                        <p class="text-center"> <?php echo $g['deskripsi_guru']; ?> </p>
+                        <p class="text-center"> <?php echo $g['no_hp']; ?> </p>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
+        <?php }}else{ ?>
+        <div class="col-sm-12">
+            <div class="box-rounded">
+                <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ... </h1>
             </div>
-            <?php } ?>
+        </div>
+        <?php } ?>
         </div>
         <div class="box-rounded d-flex justify-content-center p-0 mb-2 pt-3">
             <?php echo $this->pagination->create_links(); ?>

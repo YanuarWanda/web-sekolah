@@ -10,7 +10,7 @@ class Informasi extends CI_Controller {
 		$this->load->view('layout/wrapper', $data);
 	}
 
-	public function berita($offset = 0){
+	public function berita($offset = 0, $search = false){
 		$data['title']	= "Berita ";
 		$data['isi']	= "informasi/berita";
 
@@ -22,6 +22,11 @@ class Informasi extends CI_Controller {
 
 		$this->pagination->initialize($config);
         $data['berita'] = $this->main_model->getDataBerita($config['per_page'], $offset);
+
+		if(!empty($_POST['search'])){
+			$search = $_POST['search'];
+			$data['berita'] = $this->main_model->getDataBerita($config['per_page'], $offset, FALSE, FALSE, $search);
+		}
 
 		$this->load->view('layout/wrapper', $data);
 	}
@@ -51,6 +56,10 @@ class Informasi extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['guru']	= $this->main_model->getDataGuru($config['per_page'], $offset);
 
+		if(!empty($_POST['search'])){
+			$data['guru'] = $this->main_model->getDataGuru($config['per_page'], $offset, FALSE, FALSE, $_POST['search']);
+		}
+
 		$this->load->view("layout/wrapper", $data);
 	}
 
@@ -66,6 +75,10 @@ class Informasi extends CI_Controller {
 
 		$this->pagination->initialize($config);
         $data['agenda'] = $this->main_model->getDataAgenda($config['per_page'], $offset);
+
+		if(!empty($_POST['search'])){
+			$data['agenda']	= $this->main_model->getDataAgenda($config['per_page'], $offset, FALSE, $_POST['search']);
+		}
 
 		$this->load->view('layout/wrapper', $data);
 	}
@@ -94,6 +107,10 @@ class Informasi extends CI_Controller {
 
         $this->pagination->initialize($config);
         $data['download']   = $this->main_model->getDataDownload($config['per_page'], $offset);
+
+		if(!empty($_POST['search'])){
+			$data['download']	= $this->main_model->getDataDownload($config['per_page'], $offset, FALSE, $_POST['search']);
+		}
 
 		$this->load->view("layout/wrapper", $data);
 	}

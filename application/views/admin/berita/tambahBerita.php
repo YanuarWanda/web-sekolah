@@ -96,18 +96,23 @@
 				</ul>
 			</div>
 			<div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
 				<?php echo form_open_multipart('admin/addBerita'); ?>
 					<div class="form-group">
 						<label for="judul">Judul Berita</label>
-						<input type="text" class="form-control" name="judul"></input>
+						<input type="text" class="form-control" name="judul" value="<?php echo set_value('judul'); ?>"></input>
 					</div>
 					<div class="form-group">
 						<label for="gambar">Gambar</label>
 						<input type="file" name="gambar" size="20"/>
 					</div>
 					<div class="form-group">
-						<label for="berita">Isi Berita</label>
-						<textarea id="isi_berita" name="isi_berita" class="form-control"></textarea>
+						<label for="isi_berita">Isi Berita</label>
+						<textarea id="isi_berita" name="isi_berita" class="form-control"><?php echo set_value('isi_berita'); ?></textarea>
 						<script>
 							CKEDITOR.replace('isi_berita');
 						</script>

@@ -95,11 +95,11 @@
 				<a href="<?php echo base_url();?>admin/tambahGuru" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<div class="row">
 					<?php foreach($guru as $g){ ?>
-					<div class="col-sm-12 col-lg-4">
-						<div class="box-rounded">
-							<img class="img-responsive" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
+					<div class="col-sm-6 col-lg-4">
+						<div class="box-border mb-1">
+							<img class="img-responsive" width="100%" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
 							<hr>
-							<div class="d-flex">
+							<div class="d-flex justify-content-center">
 								<button type="button" data-panel="<?php echo $g['id']; ?>" class="btn btn-info show">
 									<i class="fa fa-info fa-2x"></i>
 								</button>
@@ -133,6 +133,8 @@
 						</div>
 					</div>
 					<?php } ?>
+				</div>
+				<div class="d-flex justify-content-center">
 					<?php echo $this->pagination->create_links(); ?>
 				</div>
 			</div>

@@ -11,7 +11,7 @@
     <div id="navbar" class="navbar navbar-default ace-save-state">
     	<div class="navbar-container ace-save-state" id="navbar-container">
     		<div class="navbar-header pull-left">
-    			<a href="index.html" class="navbar-brand">
+    			<a href="<?php echo base_url();?>admin" class="navbar-brand">
     				<small>
     					<i class="fa fa-home"></i>Admin Web RPL
     				</small>
@@ -23,7 +23,7 @@
     					<a data-toggle="dropdown" href="#" class="dropdown-toggle">
     						<img class="nav-user-photo" src="<?php echo base_url()?>assets/img/avatar2.png" alt="Avatar" />
     						<span class="user-info">
-    							<small>Welcome,</small>Admin
+    							<small>Welcome,</small><?php echo $this->session->userdata('name'); ?>
     						</span>
     						<i class="ace-icon fa fa-caret-down"></i>
     					</a>

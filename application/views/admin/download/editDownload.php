@@ -87,11 +87,20 @@
 					</li>
 					<li class="active">
 						<i class="ace-icon fa fa-download home-icon"></i>
-						Download
+						<a href="<?php echo base_url();?>admin/download">Download</a>
+					</li>
+					<li class="active">
+						<i class="ace-icon fa fa-edit home-icon"></i>
+						Edit Download
 					</li>
 				</ul>
 			</div>
 			<div class="page-content">
+				<?php foreach($errors as $error){ ?>
+					<div class="box-rounded-red">
+						<b><?php echo $error; ?></b>
+					</div>
+				<?php } ?>
                 <?php echo form_open_multipart('admin/updateDownload?i='.$download['0']['id']); ?>
                     <div class="form-group">
                         <label for="nama_file">Nama File</label>
