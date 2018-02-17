@@ -186,7 +186,7 @@ Class Admin extends CI_Controller{
         $this->form_validation->set_rules('isi_berita', 'Isi Berita', 'required', array('required' => 'Isi Berita harus diisi!'));
 
         if($this->form_validation->run() == FALSE){
-            $this->load->view('layout_admin/wrapper', array('title'=>'Coba ','isi'=>'admin/berita/tambahBerita','errors'=>$this->form_validation->error_array()));
+            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Berita ','isi'=>'admin/berita/tambahBerita','errors'=>$this->form_validation->error_array()));
         }else{
             if($this->modelweb->tambahBerita($data) == 1){
                 $this->session->set_flashdata('pesan', "<script>swal('Gagal!', 'Data gagal ditambahkan!', 'error')</script>");
@@ -530,6 +530,125 @@ Class Admin extends CI_Controller{
         }
     }
     /* .Guru */
+
+    /* Kolom Guru */
+    public function kolom_guru($offset = 0){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']          = "Kolom Guru ";
+        $data['isi']            = "admin/kolom_guru";
+
+        $config['base_url']     = base_url() . 'admin/kolom_guru';
+        $config['total_rows']   = $this->db->count_all('kolom_guru');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
+
+        $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset);
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+    public function tambahKolomGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']          = "Tambah Kolom Guru ";
+        $data['isi']            = "admin/kolom_guru/tambahKolom";
+        $data['errors']         = $this->form_validation->error_array();
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+    public function addKolomGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data = array(
+            'judul' => $_POST['judul'],
+            'isi'   => $_POST['isi']
+        );
+
+        $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul harus diisi!'));
+        $this->form_validation->set_rules('isi', 'Isi', 'required', array('required' => 'Isi harus diisi!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Kolom Guru ', 'isi'=>'admin/kolom_guru/tambahKolom', 'errors'=>$this->form_validation->error_array()));
+        }else{
+            if($this->modelweb->tambahKolomGuru($data) == 1){
+                $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal ditambahkan!", "error");</script>');
+                redirect('admin/tambahKolomGuru');
+            }else{
+                $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil ditambahkan!", "success");</script>');
+                redirect('admin/kolom_guru');
+            }
+        }
+    }
+    public function hapusKolomGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        if($this->modelweb->hapusData('kolom_guru', $where) == 1){
+            $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal dihapus!", "error");</script>');
+            redirect('admin/kolom_guru');
+        }else{
+            $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil dihapus!", "success");</script>');
+            redirect('admin/kolom_guru');
+        }
+    }
+    public function editKolomGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $data['title']          = "Edit Kolom Guru ";
+        $data['isi']            = "admin/kolom_guru/editKolom";
+        $data['kolom']          = $this->modelweb->getDataKolomGuru(FALSE, FALSE, $_GET['i']);
+        $data['errors']         = $this->form_validation->error_array();
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+    public function updateKolomGuru(){
+        if(empty($this->session->userdata['email'])){
+            redirect('admin/login');
+        }
+
+        $kolom = $this->modelweb->getDataKolomGuru(FALSE, FALSE, $_GET['i']);
+
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        $data = array(
+            'judul' => $_POST['judul'],
+            'isi'   => $_POST['isi']
+        );
+
+        $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul harus diisi!'));
+        $this->form_validation->set_rules('isi', 'Isi', 'required', array('required' => 'Isi harus diisi!'));
+
+        if($this->form_validation->run() == FALSE){
+            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Kolom Guru ', 'isi'=>'admin/kolom_guru/editKolom', 'kolom' => $kolom, 'errors'=>$this->form_validation->error_array()));
+        }else{
+            if($this->modelweb->updateData('kolom_guru', $data, $where) == 1){
+                $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal diubah!", "error");</script>');
+                redirect('admin/editKolomGuru?i='.$kolom['0']['id']);
+            }else{
+                $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil diubah!", "success");</script>');
+                redirect('admin/kolom_guru');
+            }
+        }
+    }
+    /* .Kolom Guru */
 
     /* Pengumuman */
     public function pengumuman($offset = 0){

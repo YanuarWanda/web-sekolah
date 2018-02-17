@@ -114,4 +114,23 @@ class Informasi extends CI_Controller {
 
 		$this->load->view("layout/wrapper", $data);
 	}
+	public function kolom_guru($offset = 0){
+		$data['title']	= "Kolom Guru ";
+		$data['isi']	= "informasi/kolom_guru";
+
+		$config['base_url']     = base_url() . 'informasi/kolom_guru';
+        $config['total_rows']   = $this->db->count_all('kolom_guru');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        $this->pagination->initialize($config);
+        $data['kolom']	= $this->main_model->getDataKolomGuru($config['per_page'], $offset);
+
+		if(!empty($_POST['search'])){
+			$data['kolom']	= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+		}
+
+		$this->load->view("layout/wrapper", $data);
+	}
 }

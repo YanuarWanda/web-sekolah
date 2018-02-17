@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-custom-1">
+<nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
             <a class="nav-link" href="#">
@@ -50,16 +50,18 @@
     </div>
 </nav>
 
-<div class="container mb-3">
-    <div class="box-rounded">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Buku Tamu</li>
-            </ol>
-        </nav>
-    </div>
-    <div class="box-rounded">
-            
+<div class="parallax pt-1 pb-1">
+    <div class="container mb-3">
+        <div class="box-rounded">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Buku Tamu</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="box-rounded">
+
+        </div>
     </div>
 </div>

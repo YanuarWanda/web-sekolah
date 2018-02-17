@@ -57,6 +57,12 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
+			<li class="">
+				<a href="<?php echo base_url();?>admin/kolom_guru">
+					<i class="menu-icon fa fa-archive"></i>
+					<span class="menu-text">Kolom Guru</span>
+				</a>
+			</li>
             <li class="">
     			<a href="<?php echo base_url();?>admin/pengumuman">
     				<i class="menu-icon fa fa-bell"></i>
@@ -91,9 +97,9 @@
 				<form method="POST" action="<?php echo base_url();?>admin/update_tentang">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			  			<div class="panel panel-default">
-				    		<div class="panel-heading" role="tab" id="headingOne">
+				    		<div class="panel-heading imgHover" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-controls="collapseOne" role="tab" id="headingOne">
 				      			<h4 class="panel-title">
-				        			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				        			<a role="button" aria-expanded="true">
 					          			Visi
 					        		</a>
 					      		</h4>
@@ -111,9 +117,9 @@
 					  	</div>
 
 					  	<div class="panel panel-default">
-					    	<div class="panel-heading" role="tab" id="headingTwo">
+					    	<div class="panel-heading imgHover" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="tab" id="headingTwo">
 					      		<h4 class="panel-title">
-					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					        		<a class="collapsed" role="button">
 					          			Misi
 				        			</a>
 					      		</h4>
@@ -131,9 +137,9 @@
 					  	</div>
 
 					  	<div class="panel panel-default">
-					    	<div class="panel-heading" role="tab" id="headingThree">
+					    	<div class="panel-heading imgHover" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 					      		<h4 class="panel-title">
-					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					        		<a class="collapsed" role="button">
 					          			Sejarah
 				        			</a>
 					      		</h4>
@@ -151,9 +157,9 @@
 					  	</div>
 
 						<div class="panel panel-default">
-					    	<div class="panel-heading" role="tab" id="headingFour">
+					    	<div class="panel-heading imgHover" role="tab" id="headingFour" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 					      		<h4 class="panel-title">
-					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					        		<a class="collapsed" role="button">
 					          			Deskripsi
 				        			</a>
 					      		</h4>
@@ -170,9 +176,9 @@
 					    	</div>
 					  	</div>
 					  	<div class="panel panel-default">
-					    	<div class="panel-heading" role="tab" id="headingFour">
+					    	<div class="panel-heading imgHover" role="tab" id="headingFour" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
 					      		<h4 class="panel-title">
-					        		<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+					        		<a class="collapsed" role="button">
 					          			Peluang Kerja
 				        			</a>
 					      		</h4>

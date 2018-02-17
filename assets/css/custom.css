@@ -17,6 +17,21 @@
 .bg-custom-4{
     background-color: #eeeeee;
 }
+
+.bg-custom-image-1{
+    background-image: url("../img/banner-blur-example-1.png");
+}
+
+.bg-custom-gradient-1{
+    background: #ADA996;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg-custom-gradient-transparent-1{
+    background: linear-gradient(to left, rgba(234, 234, 234, .1), rgba(219, 219, 219, .1), rgba(242, 242, 242, .1), rgba(173, 169, 150, .1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px;
+}
 /* --- END --- */
 
 /*
@@ -119,6 +134,12 @@ a.page-link.auto{
 .text-red{
     color: red;
 }
+.text-black{
+    color: black;
+}
+.font-sans-serif{
+    font-family: impact;
+}
 /* --- END --- */
 
 /*
@@ -156,6 +177,10 @@ hr .black-hr{
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
+.box.transparent{
+    background-color: rgba(255, 255, 255 , .1);
+}
+
 .box.off{
     box-shadow: 0 0 0 0;
 }
@@ -187,7 +212,20 @@ hr .black-hr{
     margin-top: 15px;
     padding: 1rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+.box-rounded.transparent{
+    background-color: rgba(255, 255, 255, .1);
+    color: white;
+}
+
+.box-rounded.white{
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.box-rounded.grey{
+    background: linear-gradient(to left, rgba(234, 234, 234, .9), rgba(219, 219, 219, .9), rgba(242, 242, 242, .9), rgba(173, 169, 150, .9));
 }
 
 .box-rounded-red{
@@ -238,11 +276,19 @@ a{
 }
 
 a.informasi-menu{
-    color: red;
+    color: grey;
 }
 
 a.informasi-menu:hover{
-    color: rgba(255,0,0,.5);
+    color: rgba(128, 128, 128, .5);
+}
+
+a.informasi-menu-beranda{
+    color: white;
+}
+
+a.informasi-menu-beranda:hover{
+    color: rgba(255, 255, 255, .5);
 }
 
 a.nav-link.active i{
@@ -264,13 +310,13 @@ a.nav-link.active i{
     by : Yanuar Wanda Putra
 */
 .breadcrumb{
-    background-color: white;
+    background-color: inherit;
     padding: 0;
     margin: 0;
 }
 
 .breadcrumb.normal{
-    background-color: transparent;
+    background-color: inherit;
     margin: 1em;
 }
 /* --- END --- */
@@ -421,7 +467,7 @@ a.pagination-link{
     background-image: url("../img/beranda/banner-2.jpg");
 
     /* Set a specific height */
-    height: 500px;
+    height: inherit;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -449,6 +495,9 @@ a.pagination-link{
 }
 .d-flex{
     display: flex;
+}
+.justify-content-center{
+    justify-content: center;
 }
 .align-self-center{
     align-self: center;

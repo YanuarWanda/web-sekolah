@@ -78,4 +78,17 @@
 			$this->db->order_by('file_download.id', 'DESC');
 			return $this->db->get('file_download')->result_array();
 		}
+        public function getDataKolomGuru($limit = FALSE, $offset = FALSE, $where = FALSE, $search = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
+            if($search){
+                $this->db->like('judul', $search);
+            }
+			$this->db->order_by('kolom_guru.id', 'DESC');
+			return $this->db->get('kolom_guru')->result_array();
+		}
     }

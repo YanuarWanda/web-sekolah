@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-custom-1">
+<nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
             <a class="nav-link" href="#">
@@ -49,7 +49,7 @@
         </ul>
     </div>
 </nav>
-<div class="bg-custom-4">
+<div class="bg-custom-image-1 parallax">
     <div class="container p-3">
         <ul class="nav justify-content-center" id="myTab" role="tablist">
             <li class="nav-item">

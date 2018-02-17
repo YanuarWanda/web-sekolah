@@ -57,6 +57,12 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
+			<li class="">
+				<a href="<?php echo base_url();?>admin/kolom_guru">
+					<i class="menu-icon fa fa-archive"></i>
+					<span class="menu-text">Kolom Guru</span>
+				</a>
+			</li>
             <li class="">
     			<a href="<?php echo base_url();?>admin/pengumuman">
     				<i class="menu-icon fa fa-bell"></i>
@@ -96,11 +102,10 @@
 				<div class="row">
 					<?php foreach($guru as $g){ ?>
 					<div class="col-sm-6 col-lg-4">
-						<div class="box-border mb-1">
-							<img class="img-responsive" width="100%" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" />
-							<hr>
+						<div class="box-border">
+							<img class="img-responsive imgZoom" width="100%" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
 							<div class="d-flex justify-content-center">
-								<button type="button" data-panel="<?php echo $g['id']; ?>" class="btn btn-info show">
+								<button type="button" data-panel="<?php echo $g['id']; ?>" class="btn btn-info btn-block show">
 									<i class="fa fa-info fa-2x"></i>
 								</button>
 								<a href="<?php echo base_url();?>admin/editGuru?i=<?php echo $g['id']; ?>">

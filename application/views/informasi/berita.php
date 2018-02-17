@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-custom-1">
+<nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
             <a class="nav-link" href="#">
@@ -50,7 +50,7 @@
     </div>
 </nav>
 
-<div class="bg-custom-4">
+<div class="parallax">
     <div class="container p-3">
         <div class="box-rounded">
             <nav aria-label="breadcrumb">
@@ -61,7 +61,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded pb-1">
+        <div class="box-rounded small mr-0 ml-0">
             <?php echo form_open('informasi/berita'); ?>
                 <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>"/>
             </form>
@@ -71,7 +71,7 @@
             <div class="box-rounded">
                 <div class="row">
                     <div class="col-sm-12 col-lg-3">
-                        <img class="img-fluid" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
+                        <img class="img-fluid img-full" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
                     </div>
                     <div class="col-sm-12 col-lg-9">
                         <p class="display-4"><?php echo $b['judul_berita']; ?></p>
@@ -89,7 +89,7 @@
                 <h1 class="display-4 text-center"> Berita yang anda cari tidak ditemukan ... </h1>
             </div>
         <?php } ?>
-        <div class="box-rounded">
+        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

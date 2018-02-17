@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-custom-1">
+<nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
             <a class="nav-link" href="#">
@@ -50,7 +50,7 @@
     </div>
 </nav>
 
-<div class="bg-custom-4">
+<div class="parallax">
     <div class="container p-3" id="box-informasi">
         <div class="box-rounded">
             <nav aria-label="breadcrumb">

@@ -57,6 +57,12 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
+			<li class="">
+				<a href="<?php echo base_url();?>admin/kolom_guru">
+					<i class="menu-icon fa fa-archive"></i>
+					<span class="menu-text">Kolom Guru</span>
+				</a>
+			</li>
             <li class="active open">
     			<a href="<?php echo base_url();?>admin/pengumuman">
     				<i class="menu-icon fa fa-bell"></i>

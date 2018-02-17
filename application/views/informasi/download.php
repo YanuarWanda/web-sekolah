@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-custom-1">
+<nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
             <a class="nav-link" href="#">
@@ -49,7 +49,7 @@
         </ul>
     </div>
 </nav>
-<div class="bg-custom-4">
+<div class="parallax">
     <div class="container p-3">
         <div class="box-rounded">
             <nav aria-label="breadcrumb">
@@ -60,7 +60,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded pb-1">
+        <div class="box-rounded small mr-0 ml-0">
             <?php echo form_open('informasi/download'); ?>
                 <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>" />
             </form>
@@ -89,7 +89,7 @@
                 </div>
             <?php } ?>
         </div>
-        <div class="box-rounded">
+        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

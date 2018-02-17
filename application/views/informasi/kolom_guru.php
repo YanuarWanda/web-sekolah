@@ -49,6 +49,7 @@
         </ul>
     </div>
 </nav>
+
 <div class="parallax">
     <div class="container p-3">
         <div class="box-rounded">
@@ -56,63 +57,31 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Guru</li>
+                    <li class="breadcrumb-item active" aria-current="page">Agenda</li>
                 </ol>
             </nav>
         </div>
         <div class="box-rounded small mr-0 ml-0">
-            <?php echo form_open('informasi/guru'); ?>
-                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>">
+            <?php echo form_open('informasi/kolom_guru'); ?>
+                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>" />
             </form>
         </div>
-        <div class="row">
-            <?php if($guru){ ?>
-                <?php foreach($guru as $g){ ?>
-                <div class="col-lg-4">
-                    <div class="box-rounded">
-                        <img class="img-fluid img-full imgZoom" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
-                        <hr>
-                        <p class="text-center font-weight-bold"> <?php echo $g['nama_guru']; ?> </p>
-                        <p class="text-center"> <?php echo $g['nip']; ?> </p>
-                        <p class="text-center"> <?php echo $g['deskripsi_guru']; ?> </p>
-                        <p class="text-center"> <?php echo $g['no_hp']; ?> </p>
-                        <hr>
-                        <div class="d-flex justify-content-center">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-square fa-stack-2x fa-red"></i>
-                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
+         <?php if($kolom){foreach($kolom as $b){ ?>
+        <div class="box-rounded">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3><?php echo $b['judul']; ?></h3>
+                    <small class="text-muted ml-2">Dipost pada : <?php echo $b['dibuat_pada']; ?></small>
+                    <hr>
+                    <p><?php echo word_limiter($b['isi'], 50); ?></p>
                 </div>
-        <?php }}else{ ?>
-        <div class="col-sm-12">
-            <div class="box-rounded">
-                <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ... </h1>
             </div>
         </div>
-        <?php } ?>
+        <?php }}else{ ?>
+        <div class="box-rounded">
+            <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
         </div>
+        <?php } ?>
         <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>

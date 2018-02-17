@@ -50,14 +50,14 @@
     				<b class="arrow"></b>
     			</a>
     		</li>
-    		<li class="active open">
+    		<li class="">
     			<a href="<?php echo base_url();?>admin/guru">
     				<i class="menu-icon fa fa-id-card"></i>
     				<span class="menu-text"> Guru </span>
     			</a>
     			<b class="arrow"></b>
     		</li>
-			<li class="">
+			<li class="active open">
 				<a href="<?php echo base_url();?>admin/kolom_guru">
 					<i class="menu-icon fa fa-archive"></i>
 					<span class="menu-text">Kolom Guru</span>
@@ -92,65 +92,32 @@
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
                     <li>
-                        <i class="ace-icon fa fa-id-card home-icon"></i>
-                        <a href="<?php echo base_url();?>admin/guru">Guru</a>
+                        <i class="ace-icon fa fa-archive home-icon"></i>
+                        <a href="<?php echo base_url();?>admin/kolom_guru">Kolom Guru</a>
                     </li>
-					<li class="active">
-						<i class="ace-icon fa fa-edit home-icon"></i>
-						Edit Guru
-					</li>
+                    <li class="active">
+                        <i class="ace-icon fa fa-edit home-icon"></i>
+                        Edit Kolom Guru
+                    </li>
 				</ul>
 			</div>
             <div class="page-content">
-				<?php foreach($errors as $error){ ?>
+                <?php foreach($errors as $error){ ?>
 					<div class="box-rounded-red">
 						<b><?php echo $error; ?></b>
 					</div>
 				<?php } ?>
-                <?php echo form_open_multipart('admin/updateGuru?i='.$guru['0']['id']); ?>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="nip">NIP</label>
-                                <input type="text" name="nip" class="form-control" value="<?php echo $guru['0']['nip']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" name="nama" class="form-control" value="<?php echo $guru['0']['nama_guru']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="mapel">Mata Pelajaran</label>
-                                <input type="text" name="mapel" class="form-control" value="<?php echo $guru['0']['deskripsi_guru']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="jabatan">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" value="<?php echo $guru['0']['jabatan_guru']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="text" name="email" class="form-control" value="<?php echo $guru['0']['email']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="hp">No HP</label>
-                                <input type="text" name="hp" class="form-control" value="<?php echo $guru['0']['no_hp']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="gambar">Foto</label>
-                                <input type="file" name="gambar" size="20"/>
-                            </div>
-                        </div>
+                <?php echo form_open('admin/updateKolomGuru?i='.$kolom['0']['id']); ?>
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <input type="text" name="judul" class="form-control" value="<?php echo $kolom['0']['judul']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="isi">Isi</label>
+                        <textarea name="isi" id="isi" class="form-control"><?php echo $kolom['0']['isi']; ?></textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.replace( 'isi' );
+                        </script>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
                 </form>

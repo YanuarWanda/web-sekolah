@@ -1,5 +1,5 @@
-    <footer>
-        <div class="row bg-custom-1 font-white font-small m-0">
+    <footer class="bg-custom-image-1">
+        <div class="row bg-custom-1 font-white font-small m-0 bg-custom-image-1">
             <div class="col-lg-4 col-sm-12 m-2">
                 <h6 class="h6">Kontak</h6>
                 <hr>
@@ -26,9 +26,7 @@
                 <a class="font-white" href="http://www.smkn11bdg.sch.id/"><img class="img-fluid" src="<?php echo base_url();?>assets/img/icon.png" alt="Website SMKN 11 Bandung"/></a>
             </div>
         </div>
-        <div class="bg-custom-2 p-2 font-white">
-            <small><center>&copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved.</center></small>
-        </div>
+        <small class="text-center font-white"><center>&copy; Copyright Tim 7 @ SMKN 11 Bandung. All Rights Reserved.</center></small>
     </footer>
 
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-3.3.1.min.js"></script>

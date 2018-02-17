@@ -68,6 +68,17 @@
 			$this->db->order_by('file_download.id', 'DESC');
 			return $this->db->get('file_download')->result_array();
 		}
+
+		public function getDataKolomGuru($limit = FALSE, $offset = FALSE, $where = FALSE){
+			if($where){
+				$this->db->where('id', $where);
+			}
+			if($limit){
+				$this->db->limit($limit, $offset);
+			}
+			$this->db->order_by('kolom_guru.id', 'DESC');
+			return $this->db->get('kolom_guru')->result_array();
+		}
 		/* .Get Data */
 
 		/* Update Data */
@@ -80,21 +91,20 @@
 		public function tambahAgenda($data){
 			$this->db->insert('agenda', $data);
 		}
-
 		public function tambahBerita($data){
 			$this->db->insert('berita', $data);
 		}
-
 		public function tambahGuru($data){
 			$this->db->insert('guru', $data);
 		}
-
 		public function tambahPengumuman($data){
 			$this->db->insert('pengumuman', $data);
 		}
-
 		public function tambahDownload($data){
 			$this->db->insert('file_download', $data);
+		}
+		public function tambahKolomGuru($data){
+			$this->db->insert('kolom_guru', $data);
 		}
 		/* .Tambah Data */
 

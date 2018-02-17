@@ -50,14 +50,14 @@
     				<b class="arrow"></b>
     			</a>
     		</li>
-    		<li class="active open">
+    		<li class="">
     			<a href="<?php echo base_url();?>admin/guru">
     				<i class="menu-icon fa fa-id-card"></i>
     				<span class="menu-text"> Guru </span>
     			</a>
     			<b class="arrow"></b>
     		</li>
-			<li class="">
+			<li class="active open">
 				<a href="<?php echo base_url();?>admin/kolom_guru">
 					<i class="menu-icon fa fa-archive"></i>
 					<span class="menu-text">Kolom Guru</span>
@@ -91,69 +91,26 @@
 						<i class="ace-icon fa fa-home home-icon"></i>
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
-                    <li>
-                        <i class="ace-icon fa fa-id-card home-icon"></i>
-                        <a href="<?php echo base_url();?>admin/guru">Guru</a>
+                    <li class="active">
+                        <i class="ace-icon fa fa-archive home-icon"></i>
+                        Kolom Guru
                     </li>
-					<li class="active">
-						<i class="ace-icon fa fa-edit home-icon"></i>
-						Edit Guru
-					</li>
 				</ul>
 			</div>
             <div class="page-content">
-				<?php foreach($errors as $error){ ?>
-					<div class="box-rounded-red">
-						<b><?php echo $error; ?></b>
-					</div>
+                <a href="<?php echo base_url();?>admin/tambahKolomGuru" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                <?php foreach($kolom_guru as $p){ ?>
+				<div class="box-border p-1 mb-1">
+						<h1 class="text-center"><?php echo $p['judul']; ?></h1>
+						<hr>
+						<small class="text-muted">Dipost pada : <?php echo $p['dibuat_pada']; ?></small>
+						<p><?php echo word_limiter($p['isi'], 50); ?></p>
+						<hr>
+						<a href="<?php echo base_url();?>admin/editKolomGuru?i=<?php echo $p['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
+						<button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/hapusKolomGuru?i=<?php echo $p['id']; ?>"><i class="fa fa-trash fa-2x"></i></button>
+				</div>
 				<?php } ?>
-                <?php echo form_open_multipart('admin/updateGuru?i='.$guru['0']['id']); ?>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="nip">NIP</label>
-                                <input type="text" name="nip" class="form-control" value="<?php echo $guru['0']['nip']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" name="nama" class="form-control" value="<?php echo $guru['0']['nama_guru']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="mapel">Mata Pelajaran</label>
-                                <input type="text" name="mapel" class="form-control" value="<?php echo $guru['0']['deskripsi_guru']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="jabatan">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" value="<?php echo $guru['0']['jabatan_guru']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="text" name="email" class="form-control" value="<?php echo $guru['0']['email']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="hp">No HP</label>
-                                <input type="text" name="hp" class="form-control" value="<?php echo $guru['0']['no_hp']; ?>"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="gambar">Foto</label>
-                                <input type="file" name="gambar" size="20"/>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-edit fa-2x"></i></button>
-                </form>
+				<?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-custom-1">
+<nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
             <a class="nav-link" href="#">
@@ -49,7 +49,7 @@
         </ul>
     </div>
 </nav>
-<div class="bg-custom-4">
+<div class="parallax">
     <?php foreach($berita as $b){ ?>
     <div class="container p-3">
         <div class="box-rounded">
@@ -68,7 +68,7 @@
                     <h1 class="display-4 text-center"><?php echo $b['judul_berita']; ?> </h1>
                 </div>
                 <div class="box-rounded">
-                    <img class="img-fluid imgZoom" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" alt="<?php echo $b['judul_berita']; ?>"/>
+                    <img class="img-fluid imgZoom img-full" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" alt="<?php echo $b['judul_berita']; ?>"/>
                 </div>
                 <div class="box-rounded">
                     <small class="text-muted">Dipost pada : <?php echo $b['tanggal_berita']; ?></small>
@@ -78,16 +78,6 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="box-rounded">
-                    <h3 class="text-center"> Berita Terbaru </h3>
-                    <?php foreach($beritaTerbaru as $bt){ ?>
-                        <hr>
-                        <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $bt['link']; ?>">
-                            <h6 class="text-center"><?php echo $bt['judul_berita']; ?></h6>
-                            <img class="img-fluid imgHover" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $bt['gambar']; ?>" />
-                        </a>
-                    <?php } ?>
-                </div>
                 <div class="box-rounded">
                     <h3 class="text-center"> Bagikan Berita </h3>
                     <hr>
@@ -117,6 +107,16 @@
                             </a>
                         </span>
                     </div>
+                </div>
+                <div class="box-rounded">
+                    <h3 class="text-center"> Berita Terbaru </h3>
+                    <?php foreach($beritaTerbaru as $bt){ ?>
+                        <hr>
+                        <a href="<?php echo base_url();?>informasi/berita/isi/<?php echo $bt['link']; ?>">
+                            <h6 class="text-center"><?php echo $bt['judul_berita']; ?></h6>
+                            <img class="img-fluid imgHover img-full" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $bt['gambar']; ?>" />
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
