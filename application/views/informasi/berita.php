@@ -63,7 +63,10 @@
         </div>
         <div class="box-rounded small mr-0 ml-0">
             <?php echo form_open('informasi/berita'); ?>
-                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>"/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php if(!empty($this->session->flashdata('search_berita'))){ echo $this->session->flashdata('search_berita'); } else { set_value('search'); }?>"/>
+                </div>
             </form>
         </div>
         <?php if($berita){ ?>

@@ -1,3 +1,4 @@
+<!-- <script src="https://cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script> -->
 <nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
@@ -61,7 +62,35 @@
             </nav>
         </div>
         <div class="box-rounded">
-
+            <h1 class="text-center">Pesan, Kritik dan Saran</h1>
+            <hr>
+            <?php if($errors){foreach($errors as $error){ ?>
+                <div class="box-rounded-red">
+                    <b><?php echo $error; ?></b>
+                </div>
+            <?php }} ?>
+            <?php echo form_open('buku_tamu/kirimPesan'); ?>
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" name="nama" placeholder="Nama pengirim ..." class="form-control" value="<?php echo set_value('nama'); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="asal">Asal</label>
+                    <input type="text" name="asal" placeholder="Asal pengirim ..." class="form-control" value="<?php echo set_value('asal'); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="text" name="email" placeholder="Email pengirim ..." class="form-control" value="<?php echo set_value('email'); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="isi">Isi Pesan</label>
+                    <textarea name="isi" class="form-control"><?php echo set_value('isi'); ?></textarea>
+                    <script type="text/javascript">
+                        CKEDITOR.replace( 'isi' );
+                    </script>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-send fa-2x"></i></button>
+            </form>
         </div>
     </div>
 </div>

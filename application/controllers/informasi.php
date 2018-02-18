@@ -10,7 +10,7 @@ class Informasi extends CI_Controller {
 		$this->load->view('layout/wrapper', $data);
 	}
 
-	public function berita($offset = 0, $search = false){
+	public function berita($offset = 0){
 		$data['title']	= "Berita ";
 		$data['isi']	= "informasi/berita";
 
@@ -20,13 +20,19 @@ class Informasi extends CI_Controller {
 		$config['uri_segment']	= 3;
 		$config['attributes']	= array('class' => 'pagination-link');
 
-		$this->pagination->initialize($config);
-        $data['berita'] = $this->main_model->getDataBerita($config['per_page'], $offset);
-
-		if(!empty($_POST['search'])){
-			$search = $_POST['search'];
-			$data['berita'] = $this->main_model->getDataBerita($config['per_page'], $offset, FALSE, FALSE, $search);
+		if(isset($_POST['search'])){
+			$data['berita']			= $this->main_model->getDataBerita($config['per_page'], $offset, FALSE, FALSE, $_POST['search']);
+			$config['total_rows']	= count($this->main_model->getDataBerita(FALSE, FALSE, FALSE, FALSE, $_POST['search']));
+			$this->session->set_flashdata('search_berita', $_POST['search']);
+		}else if($this->session->flashdata('search_berita')){
+			$data['berita']			= $this->main_model->getDataBerita($config['per_page'], $offset, FALSE, FALSE, $this->session->flashdata('search_berita'));
+			$config['total_rows']	= count($this->main_model->getDataBerita(FALSE, FALSE, FALSE, FALSE, $this->session->flashdata('search_berita')));
+			$this->session->set_flashdata('search_berita', $this->session->flashdata('search_berita'));
+		}else{
+			$data['berita']			= $this->main_model->getDataBerita($config['per_page'], $offset);
 		}
+
+		$this->pagination->initialize($config);
 
 		$this->load->view('layout/wrapper', $data);
 	}
@@ -53,12 +59,19 @@ class Informasi extends CI_Controller {
 		$config['uri_segment']	= 3;
 		$config['attributes']	= array('class' => 'pagination-link');
 
-		$this->pagination->initialize($config);
-		$data['guru']	= $this->main_model->getDataGuru($config['per_page'], $offset);
-
-		if(!empty($_POST['search'])){
-			$data['guru'] = $this->main_model->getDataGuru($config['per_page'], $offset, FALSE, FALSE, $_POST['search']);
+		if(isset($_POST['search'])){
+			$data['guru']			= $this->main_model->getDataGuru($config['per_page'], $offset, FALSE, FALSE, $_POST['search']);
+			$config['total_rows']	= count($this->main_model->getDataGuru(FALSE, FALSE, FALSE, FALSE, $_POST['search']));
+			$this->session->set_flashdata('search_guru', $_POST['search']);
+		}else if($this->session->flashdata('search_guru')){
+			$data['guru']			= $this->main_model->getDataGuru($config['per_page'], $offset, FALSE, FALSE, $this->session->flashdata('search_guru'));
+			$config['total_rows']	= count($this->main_model->getDataGuru(FALSE, FALSE, FALSE, FALSE, $this->session->flashdata('search_guru')));
+			$this->session->set_flashdata('search_guru', $this->session->flashdata('search_guru'));
+		}else{
+			$data['guru']			= $this->main_model->getDataGuru($config['per_page'], $offset);
 		}
+
+		$this->pagination->initialize($config);
 
 		$this->load->view("layout/wrapper", $data);
 	}
@@ -73,12 +86,19 @@ class Informasi extends CI_Controller {
 		$config['uri_segment']	= 3;
 		$config['attributes']	= array('class' => 'pagination-link');
 
-		$this->pagination->initialize($config);
-        $data['agenda'] = $this->main_model->getDataAgenda($config['per_page'], $offset);
-
-		if(!empty($_POST['search'])){
-			$data['agenda']	= $this->main_model->getDataAgenda($config['per_page'], $offset, FALSE, $_POST['search']);
+		if(isset($_POST['search'])){
+			$data['agenda']			= $this->main_model->getDataAgenda($config['per_page'], $offset, FALSE, $_POST['search']);
+			$config['total_rows']	= count($this->main_model->getDataAgenda(FALSE, FALSE, FALSE, $_POST['search']));
+			$this->session->set_flashdata('search_agenda', $_POST['search']);
+		}else if($this->session->flashdata('search_agenda')){
+			$data['agenda']			= $this->main_model->getDataAgenda($config['per_page'], $offset, FALSE, $this->session->flashdata('search_agenda'));
+			$config['total_rows']	= count($this->main_model->getDataAgenda(FALSE, FALSE, FALSE, $this->session->flashdata('search_agenda')));
+			$this->session->set_flashdata('search_agenda', $this->session->flashdata('search_agenda'));
+		}else{
+			$data['agenda']			= $this->main_model->getDataAgenda($config['per_page'], $offset);
 		}
+
+		$this->pagination->initialize($config);
 
 		$this->load->view('layout/wrapper', $data);
 	}
@@ -105,12 +125,19 @@ class Informasi extends CI_Controller {
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
-        $this->pagination->initialize($config);
-        $data['download']   = $this->main_model->getDataDownload($config['per_page'], $offset);
-
-		if(!empty($_POST['search'])){
-			$data['download']	= $this->main_model->getDataDownload($config['per_page'], $offset, FALSE, $_POST['search']);
+		if(isset($_POST['search'])){
+			$data['download']			= $this->main_model->getDataDownload($config['per_page'], $offset, FALSE, $_POST['search']);
+			$config['total_rows']		= count($this->main_model->getDataDownload(FALSE, FALSE, FALSE, $_POST['search']));
+			$this->session->set_flashdata('search_download', $_POST['search']);
+		}else if($this->session->flashdata('search_download')){
+			$data['download']			= $this->main_model->getDataDownload($config['per_page'], $offset, FALSE, $this->session->flashdata('search_download'));
+			$config['total_rows']		= count($this->main_model->getDataDownload(FALSE, FALSE, FALSE, $this->session->flashdata('search_download')));
+			$this->session->set_flashdata('search_download', $this->session->flashdata('search_download'));
+		}else{
+			$data['download']			= $this->main_model->getDataDownload($config['per_page'], $offset);
 		}
+
+        $this->pagination->initialize($config);
 
 		$this->load->view("layout/wrapper", $data);
 	}
@@ -124,12 +151,19 @@ class Informasi extends CI_Controller {
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
-        $this->pagination->initialize($config);
-        $data['kolom']	= $this->main_model->getDataKolomGuru($config['per_page'], $offset);
-
-		if(!empty($_POST['search'])){
-			$data['kolom']	= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+		if(isset($_POST['search'])){
+			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+			$config['total_rows']	= count($this->main_model->getDataKolomGuru(FALSE, FALSE, FALSE, $_POST['search']));
+			$this->session->set_flashdata('search_kolom', $_POST['search']);
+		}else if($this->session->flashdata('search_kolom')){
+			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_kolom'));
+			$config['total_rows']	= count($this->main_model->getDataKolomGuru(FALSE, FALSE, FALSE, $this->session->flashdata('search_kolom')));
+			$this->session->set_flashdata('search_kolom', $this->session->flashdata('search_kolom'));
+		}else{
+			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset);
 		}
+
+        $this->pagination->initialize($config);
 
 		$this->load->view("layout/wrapper", $data);
 	}

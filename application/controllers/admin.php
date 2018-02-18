@@ -58,12 +58,23 @@ Class Admin extends CI_Controller{
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
+        if(isset($_POST['search'])){
+            $data['berita']         = $this->modelweb->getDataBerita($config['per_page'], $offset, FALSE, $_POST['search']);
+            $config['total_rows']   = count($this->modelweb->getDataBerita(FALSE, FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_berita', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_berita')){
+            $data['berita']         = $this->modelweb->getDataBerita($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_berita'));
+            $config['total_rows']   = count($this->modelweb->getDataBerita(FALSE, FALSE ,FALSE, $this->session->flashdata('search_admin_berita')));
+            $this->session->set_flashdata('search_admin_berita', $this->session->flashdata('search_admin_berita'));
+        }else{
+            $data['berita']         = $this->modelweb->getDataBerita($config['per_page'], $offset);
+            $config['total_rows']   = $this->db->count_all('berita');
+        }
+
         $this->pagination->initialize($config);
 
         $data['title']  = "Berita ";
         $data['isi']    = "admin/berita";
-
-        $data['berita'] = $this->modelweb->getDataBerita($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -237,12 +248,22 @@ Class Admin extends CI_Controller{
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
+        if(isset($_POST['search'])){
+            $data['agenda']         = $this->modelweb->getDataAgenda($config['per_page'], $offset, FALSE, $_POST['search']);
+            $config['total_rows']   = count($this->modelweb->getDataAgenda(FALSE, FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_agenda', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_agenda')){
+            $data['agenda']         = $this->modelweb->getDataAgenda($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_agenda'));
+            $config['total_rows']   = count($this->modelweb->getDataAgenda(FALSE, FALSE, FALSE, $this->session->flashdata('search_admin_agenda')));
+            $this->session->set_flashdata('search_admin_agenda', $this->session->flashdata('search_admin_agenda'));
+        }else{
+            $data['agenda']         = $this->modelweb->getDataAgenda($config['per_page'], $offset);
+        }
+
         $this->pagination->initialize($config);
 
         $data['title']  = "Agenda ";
         $data['isi']    = "admin/agenda";
-
-        $data['agenda'] = $this->modelweb->getDataAgenda($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -350,16 +371,27 @@ Class Admin extends CI_Controller{
         }
 
         $config['base_url']     = base_url() . 'admin/guru';
-        $config['total_rows']   = $this->db->count_all('guru');
         $config['per_page']     = 3;
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
+
+        if(isset($_POST['search'])){
+            $data['guru']           = $this->modelweb->getDataGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+            $config['total_rows']   = count($this->modelweb->getDataGuru(FALSE, FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_guru', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_guru')){
+            $data['guru']           = $this->modelweb->getDataGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_guru'));
+            $config['total_rows']   = count($this->modelweb->getDataGuru(FALSE, FALSE, FALSE, $this->session->flashdata('search_admin_guru')));
+            $this->session->set_flashdata('search_admin_guru', $this->session->flashdata('search_admin_guru'));
+        }else{
+            $data['guru']   = $this->modelweb->getDataGuru($config['per_page'], $offset);
+            $config['total_rows']   = $this->db->count_all('guru');
+        }
 
         $this->pagination->initialize($config);
 
         $data['title']  = "Guru ";
         $data['isi']    = "admin/guru";
-        $data['guru']   = $this->modelweb->getDataGuru($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -546,9 +578,19 @@ Class Admin extends CI_Controller{
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
-        $this->pagination->initialize($config);
+        if(isset($_POST['search'])){
+            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+            $config['total_rows']   = count($this->modelweb->getDataKolomGuru(FALSE, FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_kolom', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_kolom')){
+            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_kolom'));
+            $config['total_rows']   = count($this->modelweb->getDataKolomGuru(FALSE, FALSE, FALSE , $this->session->flashdata('search_admin_kolom')));
+            $this->session->set_flashdata('search_admin_kolom', $this->session->flashdata('search_admin_kolom'));
+        }else{
+            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset);
+        }
 
-        $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset);
+        $this->pagination->initialize($config);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -665,9 +707,19 @@ Class Admin extends CI_Controller{
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
-        $this->pagination->initialize($config);
+        if(isset($_POST['search'])){
+            $data['pengumuman']         = $this->modelweb->getDataPengumuman($config['per_page'], $offset, FALSE, $_POST['search']);
+            $config['total_rows']       = count($this->modelweb->getDataPengumuman(FALSE, FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_pengumuman', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_pengumuman')){
+            $data['pengumuman']         = $this->modelweb->getDataPengumuman($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_pengumuman'));
+            $config['total_rows']       = count($this->modelweb->getDataPengumuman(FALSE, FALSE, FALSE, $this->session->flashdata('search_admin_pengumuman')));
+            $this->session->set_flashdata('search_admin_pengumuman', $this->session->flashdata('search_admin_pengumuman'));
+        }else{
+            $data['pengumuman']         = $this->modelweb->getDataPengumuman($config['per_page'], $offset);
+        }
 
-        $data['pengumuman']     = $this->modelweb->getDataPengumuman($config['per_page'], $offset);
+        $this->pagination->initialize($config);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -787,8 +839,19 @@ Class Admin extends CI_Controller{
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
+        if(isset($_POST['search'])){
+            $data['download']       = $this->modelweb->getDataDownload($config['per_page'], $offset, FALSE, $_POST['search']);
+            $config['total_rows']   = count($this->modelweb->getDataDownload(FALSE, FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_download', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_download')){
+            $data['download']       = $this->modelweb->getDataDownload($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_download'));
+            $config['total_rows']   = count($this->modelweb->getDataDownload(FALSE, FALSE, FALSE, $this->session->flashdata('search_admin_download')));
+            $this->session->set_flashdata('search_admin_download', $this->session->flashdata('search_admin_download'));
+        }else{
+            $data['download']       = $this->modelweb->getDataDownload($config['per_page'], $offset);
+        }
+
         $this->pagination->initialize($config);
-        $data['download']   = $this->modelweb->getDataDownload($config['per_page'], $offset);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -895,6 +958,53 @@ Class Admin extends CI_Controller{
         }
     }
     /* .Download */
+
+    /* Pesan */
+    public function pesan($offset = 0){
+        if(empty($this->session->userdata('email'))){
+            redirect('admin/login');
+        }
+
+        $config['base_url']     = base_url() . 'admin/pesan';
+        $config['total_rows']   = $this->db->count_all('buku_tamu');
+        $config['per_page']     = 3;
+        $config['uri_segment']  = 3;
+        $config['attributes']   = array('class' => 'pagination-link');
+
+        if(isset($_POST['search'])){
+            $data['pesan']         = $this->modelweb->getDataPesan($config['per_page'], $offset, $_POST['search']);
+            $config['total_rows']   = count($this->modelweb->getDataPesan(FALSE, FALSE, $_POST['search']));
+            $this->session->set_flashdata('search_admin_pesan', $_POST['search']);
+        }else if($this->session->flashdata('search_admin_pesan')){
+            $data['pesan']         = $this->modelweb->getDataPesan($config['per_page'], $offset, $this->session->flashdata('search_admin_pesan'));
+            $config['total_rows']   = count($this->modelweb->getDataPesan(FALSE, FALSE , $this->session->flashdata('search_admin_pesan')));
+            $this->session->set_flashdata('search_admin_pesan', $this->session->flashdata('search_admin_pesan'));
+        }else{
+            $data['pesan']         = $this->modelweb->getDataPesan($config['per_page'], $offset);
+        }
+
+        $this->pagination->initialize($config);
+
+        $data['title']  = "Pesan ";
+        $data['isi']    = "admin/pesan";
+
+        $this->load->view('layout_admin/wrapper', $data);
+    }
+
+    public function hapusPesan(){
+        $where = array(
+            'id'    => $_GET['i']
+        );
+
+        if($this->modelweb->hapusData('buku_tamu', $where) == 1){
+            $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal dihapus!", "error");</script>');
+            redirect('admin/pesan');
+        }else{
+            $this->session->set_flashdata('pesan', '<script>swal("Berhasil!", "Data berhasil dihapus!", "success");</script>');
+            redirect('admin/pesan');
+        }
+    }
+    /* .Pesan */
 
     /* Login */
     public function login(){

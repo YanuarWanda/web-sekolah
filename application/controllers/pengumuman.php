@@ -13,12 +13,19 @@ class Pengumuman  extends CI_Controller {
 		$config['uri_segment']	= 3;
 		$config['attributes']	= array('class' => 'pagination-link');
 
-		$this->pagination->initialize($config);
-		$data['pengumuman'] = $this->main_model->getDataPengumuman($config['per_page'], $offset);
-
-		if(!empty($_POST['search'])){
-			$data['pengumuman']	= $this->main_model->getDataPengumuman($config['per_page'], $offset, FALSE, $_POST['search']);
+		if(isset($_POST['search'])){
+			$data['pengumuman']			= $this->main_model->getDataPengumuman($config['per_page'], $offset, FALSE, $_POST['search']);
+			$config['total_rows']		= count($this->main_model->getDataPengumuman(FALSE, FALSE, FALSE, $_POST['search']));
+			$this->session->set_flashdata('search_pengumuman', $_POST['search']);
+		}else if($this->session->flashdata('search_pengumuman')){
+			$data['pengumuman']			= $this->main_model->getDataPengumuman($config['per_page'], $offset, FALSE, $this->session->flashdata('search_pengumuman'));
+			$config['total_rows']		= count($this->main_model->getDataPengumuman(FALSE, FALSE, FALSE, $this->session->flashdata('search_pengumuman')));
+			$this->session->set_flashdata('search_pengumuman', $this->session->flashdata('search_pengumuman'));
+		}else{
+			$data['pengumuman']			= $this->main_model->getDataPengumuman($config['per_page'], $offset);
 		}
+
+		$this->pagination->initialize($config);
 
 		$this->load->view('layout/wrapper', $data);
 	}

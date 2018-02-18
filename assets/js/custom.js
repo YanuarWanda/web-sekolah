@@ -45,4 +45,13 @@ $('.card-reveal .close').on('click', function(){
     $id = $(this).attr('data-panel');
     $('#'+$id).slideToggle('slow');
 });
+
+// window.addEventListener("load", function(){
+//     var load_screen = document.getElementById('loading-screen');
+//     document.body.removeChild(load_screen);
+// });
+
+$(window).on('load', function(){
+    $('#loading-screen').remove();
+});
 /* -------------------------------------- */

@@ -61,7 +61,10 @@
         </div>
         <div class="box-rounded small mr-0 ml-0">
             <?php echo form_open('pengumuman'); ?>
-                <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo set_value('search'); ?>" />
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php if(!empty($this->session->flashdata('search_pengumuman'))){ echo $this->session->flashdata('search_pengumuman'); } else { set_value('search'); }?>" />
+                </div>
             </form>
         </div>
         <div class="row">

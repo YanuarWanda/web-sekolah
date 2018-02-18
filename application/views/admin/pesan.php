@@ -70,14 +70,14 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
-    		<li class="active open">
+    		<li class="">
     			<a href="<?php echo base_url();?>admin/download">
     				<i class="menu-icon fa fa-download"></i>
     				<span class="menu-text"> Download </span>
     			</a>
     			<b class="arrow"></b>
     		</li>
-			<li class="">
+			<li class="active open">
 				<a href="<?php echo base_url();?>admin/pesan">
 					<i class="menu-icon fa fa-envelope"></i>
 					<span class="menu-text"> Pesan </span>
@@ -98,36 +98,34 @@
 						<a href="<?php echo base_url();?>admin">Home</a>
 					</li>
 					<li class="active">
-						<i class="ace-icon fa fa-download home-icon"></i>
-						Download
+						<i class="ace-icon fa fa-envelope home-icon"></i>
+						Pesan
 					</li>
 				</ul>
 			</div>
 			<div class="page-content">
-				<?php echo form_open('admin/download'); ?>
+                <?php echo form_open('admin/pesan'); ?>
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-search"></i></span>
-							<input type="text" name="search" placeholder="Search ..." class="form-control" value="<?php if(!empty($this->session->flashdata('search_admin_download'))){ echo $this->session->flashdata('search_admin_download'); } else { set_value('search'); }?>" />
+							<input type="text" name="search" placeholder="Search ..." class="form-control" value="<?php if(!empty($this->session->flashdata('search_admin_pesan'))){ echo $this->session->flashdata('search_admin_pesan'); } else { echo set_value('search'); }?>" />
 						</div>
 					</div>
 				</form>
-                <a href="<?php echo base_url();?>admin/tambahDownload" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-				<?php if($download){foreach($download as $d){ ?>
-                <div class="box-border p-1 mb-1 ">
-                    <h1 class="text-center"><?php echo $d['nama_file']; ?></h1>
-                    <hr>
-                    <p> <?php echo word_limiter($d['deskripsi_file'], 100); ?> </p>
-                    <hr>
-                    <a href="<?php echo base_url();?>admin/editDownload?i=<?php echo $d['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
-                    <button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/deleteDownload?i=<?php echo $d['id']; ?>"><i class="fa fa-trash fa-2x"></i></button>
+                <?php if($pesan){foreach($pesan as $p){ ?>
+                    <div class="box-border p-1 mb-1">
+                        <h3><?php echo $p['nama']; ?> dari <?php echo $p['asal']; ?></h3>
+                        <small>Dikirim pada : <?php echo $p['dibuat_pada']; ?></small>
+                        <p> <?php echo $p['isi']; ?> </p>
+                        <hr>
+                        <button href="<?php echo base_url();?>admin/hapusPesan?i=<?php echo $p['id']; ?>" class="btn btn-danger remove"><i class="fa fa-trash fa-2x"></i></a>
+                    </div>
+                <?php }}else { ?>
+                <div class="box-border">
+                    <h1 class="text-center">Data yang anda cari tidak ditemukan ...</h1>
                 </div>
-				<?php }} else { ?>
-				<div class="box-border p-1">
-					<h1 class="text-center">Data yang anda cari tidak ditemukan ...</h1>
-				</div>
-				<?php } ?>
-				<?php echo $this->pagination->create_links(); ?>
+                <?php } ?>
+                <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

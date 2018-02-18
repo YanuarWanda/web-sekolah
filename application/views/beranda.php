@@ -225,12 +225,12 @@
             </div>
         </div>
     </div>
-    <div class="bg-custom-3">
+    <div class="bg-custom-3 pb-3">
         <div class="container">
             <div class="box mb-3">
                 <h1 class="text-center display-3">Lokasi Kita</h1>
             </div>
-            <div class="box mb-3 p-0">
+            <div class="box p-0">
                <iframe class="maps-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.002612100019!2d107.55619391442444!3d-6.8902891950211185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6bd6aaaaaab%3A0xf843088e2b5bf838!2sSMK+11+Bandung!5e0!3m2!1sen!2sid!4v1517989587366" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>

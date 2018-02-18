@@ -77,6 +77,12 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
+			<li class="">
+				<a href="<?php echo base_url();?>admin/pesan">
+					<i class="menu-icon fa fa-envelope"></i>
+					<span class="menu-text"> Pesan </span>
+				</a>
+			</li>
         </ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -98,8 +104,16 @@
 				</ul>
 			</div>
 			<div class="page-content">
+				<?php echo form_open('admin/berita'); ?>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-search"></i></span>
+							<input type="text" name="search" placeholder="Search ..." class="form-control" value="<?php if(!empty($this->session->flashdata('search_admin_berita'))){ echo $this->session->flashdata('search_admin_berita'); } else { echo set_value('search'); }?>" />
+						</div>
+					</div>
+				</form>
 				<a href="<?php echo base_url();?>admin/tambahBerita" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-				<?php foreach($berita as $b){ ?>
+				<?php if($berita){foreach($berita as $b){ ?>
 					<div class="box-border p-1 mb-1">
 						<div class="row">
 							<div class="col-sm-12 col-lg-3">
@@ -115,6 +129,10 @@
 								<button href="<?php echo base_url();?>admin/deleteBerita?i=<?php echo $b['id']; ?>" class="btn btn-danger remove" role="button"><i class="fa fa-trash fa-2x"></i></button>
 							</div>
 						</div>
+					</div>
+				<?php }}else{ ?>
+					<div class="box-border p-1">
+						<h1 class="text-center">Data yang anda cari tidak ditemukan ... </h1>
 					</div>
 				<?php } ?>
 				<?php echo $this->pagination->create_links(); ?>

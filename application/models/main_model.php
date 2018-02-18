@@ -26,7 +26,7 @@
                 $this->db->where('id', $where);
             }
             if($jabatan){
-                $this->db->where('jabatan_guru !=', 'Guru Tetap');
+                $this->db->where('jabatan_guru', 'Ketua Kompetensi Keahlian RPL');
             }
             if($nama){
                 $this->db->like('nama_guru', $nama);
@@ -91,4 +91,7 @@
 			$this->db->order_by('kolom_guru.id', 'DESC');
 			return $this->db->get('kolom_guru')->result_array();
 		}
+        public function kirimPesan($data){
+            $this->db->insert('buku_tamu', $data);
+        }
     }

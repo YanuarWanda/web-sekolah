@@ -77,6 +77,12 @@
     			</a>
     			<b class="arrow"></b>
     		</li>
+			<li class="">
+				<a href="<?php echo base_url();?>admin/pesan">
+					<i class="menu-icon fa fa-envelope"></i>
+					<span class="menu-text"> Pesan </span>
+				</a>
+			</li>
         </ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -98,9 +104,17 @@
 				</ul>
 			</div>
 			<div class="page-content">
+				<?php echo form_open('admin/guru'); ?>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-search"></i></span>
+							<input type="text" name="search" placeholder="Search ..." class="form-control" value="<?php if(!empty($this->session->flashdata('search_admin_guru'))){echo $this->session->flashdata('search_admin_guru');}else{echo set_value('search');}; ?>" />
+						</div>
+					</div>
+				</form>
 				<a href="<?php echo base_url();?>admin/tambahGuru" class="btn btn-info btn-fixed-bottom-right z-top"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 				<div class="row">
-					<?php foreach($guru as $g){ ?>
+					<?php if($guru){foreach($guru as $g){ ?>
 					<div class="col-sm-6 col-lg-4">
 						<div class="box-border">
 							<img class="img-responsive imgZoom" width="100%" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
@@ -137,7 +151,11 @@
 							</div>
 						</div>
 					</div>
-					<?php } ?>
+				<?php }}else{ ?>
+					<div class="box-border">
+						<h1 class="text-center">Data yang anda cari tidak ditemukan ...</h1>
+					</div>
+				<?php } ?>
 				</div>
 				<div class="d-flex justify-content-center">
 					<?php echo $this->pagination->create_links(); ?>

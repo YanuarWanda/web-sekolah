@@ -6,6 +6,10 @@
     	<div id="caption"></div>
     </div>
 
+    <div id="loading-screen">
+        <div id="loader"></div>
+    </div>
+
     <?php echo $this->session->flashdata('pesan'); ?>
 
     <div id="navbar" class="navbar navbar-default ace-save-state">
