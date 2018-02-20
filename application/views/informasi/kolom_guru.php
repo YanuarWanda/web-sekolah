@@ -57,7 +57,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>informasi">Informasi</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Agenda</li>
+                    <li class="breadcrumb-item active" aria-current="page">Kolom Guru</li>
                 </ol>
             </nav>
         </div>
@@ -69,22 +69,26 @@
                 </div>
             </form>
         </div>
+        <div class="row">
          <?php if($kolom){foreach($kolom as $b){ ?>
-        <div class="box-rounded">
-            <div class="row">
-                <div class="col-lg-12">
+             <div class="col-lg-6">
+                 <div class="box-rounded">
                     <h3><?php echo $b['judul']; ?></h3>
-                    <small class="text-muted ml-2">Dipost pada : <?php echo $b['dibuat_pada']; ?></small>
+                    <small class="text-muted ml-2">Dipost pada : <?php echo $b['dibuat_pada']; ?> | Karya : <?php echo $b['nama_guru']; ?></small>
                     <hr>
                     <p><?php echo word_limiter($b['isi'], 50); ?></p>
+                    <hr>
+                    <a href="<?php echo base_url();?>informasi/kolom_guru/isi/<?php echo $b['link']; ?>" class="btn btn-primary btn-block">Selengkapnya ...</a>
                 </div>
             </div>
-        </div>
         <?php }}else{ ?>
-        <div class="box-rounded">
-            <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
+        <div class="col-sm-12">
+            <div class="box-rounded">
+                <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
+            </div>
         </div>
         <?php } ?>
+        </div>
         <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>

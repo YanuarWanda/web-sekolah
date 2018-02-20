@@ -113,7 +113,7 @@
 						<b><?php echo $error; ?></b>
 					</div>
 				<?php } ?>
-                <?php echo form_open_multipart('admin/updateGuru?i='.$guru['0']['id']); ?>
+                <?php echo form_open_multipart('admin/updateGuru?i='.$guru['0']['id_guru']); ?>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">

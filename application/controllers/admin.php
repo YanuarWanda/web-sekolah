@@ -376,9 +376,9 @@ Class Admin extends CI_Controller{
         $config['attributes']   = array('class' => 'pagination-link');
 
         if(isset($_POST['search'])){
-            $data['guru']           = $this->modelweb->getDataGuru($config['per_page'], $offset, FALSE, $_POST['search']);
-            $config['total_rows']   = count($this->modelweb->getDataGuru(FALSE, FALSE, FALSE, $_POST['search']));
-            $this->session->set_flashdata('search_admin_guru', $_POST['search']);
+            $data['guru']           = $this->modelweb->getDataGuru($config['per_page'], $offset, FALSE, $this->input->post('search'));
+            $config['total_rows']   = count($this->modelweb->getDataGuru(FALSE, FALSE, FALSE, $this->input->post('search')));
+            $this->session->set_flashdata('search_admin_guru', $this->input->post('search'));
         }else if($this->session->flashdata('search_admin_guru')){
             $data['guru']           = $this->modelweb->getDataGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_guru'));
             $config['total_rows']   = count($this->modelweb->getDataGuru(FALSE, FALSE, FALSE, $this->session->flashdata('search_admin_guru')));
@@ -420,12 +420,12 @@ Class Admin extends CI_Controller{
         }
 
         $data = array(
-            'nip'               => $_POST['nip'],
-            'nama_guru'         => $_POST['nama'],
-            'deskripsi_guru'    => $_POST['mapel'],
-            'jabatan_guru'      => $_POST['jabatan'],
-            'email'             => $_POST['email'],
-            'no_hp'             => $_POST['hp'],
+            'nip'               => $this->input->post('nip'),
+            'nama_guru'         => $this->input->post('nama'),
+            'deskripsi_guru'    => $this->input->post('mapel'),
+            'jabatan_guru'      => $this->input->post('jabatan'),
+            'email'             => $this->input->post('email'),
+            'no_hp'             => $this->input->post('hp'),
             'gambar'            => $fileName
         );
 
@@ -466,10 +466,10 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
-        $guru   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+        $guru   = $this->modelweb->getDataGuru(FALSE, FALSE, $this->input->get('i'));
 
         $where = array(
-            'id'    => $_GET['i']
+            'id_guru'    => $this->input->get('i')
         );
 
         if($this->modelweb->hapusData('guru', $where) == 1){
@@ -491,7 +491,7 @@ Class Admin extends CI_Controller{
 
         $data['title']  = "Edit Guru ";
         $data['isi']    = "admin/guru/editGuru";
-        $data['guru']   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+        $data['guru']   = $this->modelweb->getDataGuru(FALSE, FALSE, $this->input->get('i'));
         $data['errors'] = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
@@ -502,10 +502,10 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
-        $guru   = $this->modelweb->getDataGuru(FALSE, FALSE, $_GET['i']);
+        $guru   = $this->modelweb->getDataGuru(FALSE, FALSE, $this->input->get('i'));
 
         $where = array(
-            'id'    => $_GET['i']
+            'id_guru'    => $this->input->get('i')
         );
 
         if($_FILES['gambar']['name']){
@@ -517,12 +517,12 @@ Class Admin extends CI_Controller{
         }
 
         $data = array(
-            'nip'               => $_POST['nip'],
-            'nama_guru'         => $_POST['nama'],
-            'deskripsi_guru'    => $_POST['mapel'],
-            'jabatan_guru'      => $_POST['jabatan'],
-            'email'             => $_POST['email'],
-            'no_hp'             => $_POST['hp'],
+            'nip'               => $this->input->post('nip'),
+            'nama_guru'         => $this->input->post('nama'),
+            'deskripsi_guru'    => $this->input->post('mapel'),
+            'jabatan_guru'      => $this->input->post('jabatan'),
+            'email'             => $this->input->post('email'),
+            'no_hp'             => $this->input->post('hp'),
             'gambar'            => $fileName
         );
 
@@ -572,6 +572,7 @@ Class Admin extends CI_Controller{
         $data['title']          = "Kolom Guru ";
         $data['isi']            = "admin/kolom_guru";
 
+
         $config['base_url']     = base_url() . 'admin/kolom_guru';
         $config['total_rows']   = $this->db->count_all('kolom_guru');
         $config['per_page']     = 3;
@@ -579,15 +580,15 @@ Class Admin extends CI_Controller{
         $config['attributes']   = array('class' => 'pagination-link');
 
         if(isset($_POST['search'])){
-            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']. TRUE);
             $config['total_rows']   = count($this->modelweb->getDataKolomGuru(FALSE, FALSE, FALSE, $_POST['search']));
             $this->session->set_flashdata('search_admin_kolom', $_POST['search']);
         }else if($this->session->flashdata('search_admin_kolom')){
-            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_kolom'));
+            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_admin_kolom'), TRUE);
             $config['total_rows']   = count($this->modelweb->getDataKolomGuru(FALSE, FALSE, FALSE , $this->session->flashdata('search_admin_kolom')));
             $this->session->set_flashdata('search_admin_kolom', $this->session->flashdata('search_admin_kolom'));
         }else{
-            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset);
+            $data['kolom_guru']     = $this->modelweb->getDataKolomGuru($config['per_page'], $offset, FALSE, FALSE, TRUE);
         }
 
         $this->pagination->initialize($config);
@@ -602,6 +603,7 @@ Class Admin extends CI_Controller{
         $data['title']          = "Tambah Kolom Guru ";
         $data['isi']            = "admin/kolom_guru/tambahKolom";
         $data['errors']         = $this->form_validation->error_array();
+        $data['guru']           = $this->modelweb->getDataGuru(FALSE, FALSE, FALSE, FALSE);
 
         $this->load->view('layout_admin/wrapper', $data);
     }
@@ -611,15 +613,18 @@ Class Admin extends CI_Controller{
         }
 
         $data = array(
-            'judul' => $_POST['judul'],
-            'isi'   => $_POST['isi']
+            'judul' => $this->input->post('judul'),
+            'karya' => $this->input->post('penulis'),
+            'link'  => str_replace(' ', '-', strtolower($this->input->post('judul'))),
+            'isi'   => $this->input->post('isi')
         );
 
         $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul harus diisi!'));
+        $this->form_validation->set_rules('penulis', 'Penulis', 'required', array('required' => 'Penulis harus diisi!'));
         $this->form_validation->set_rules('isi', 'Isi', 'required', array('required' => 'Isi harus diisi!'));
 
         if($this->form_validation->run() == FALSE){
-            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Kolom Guru ', 'isi'=>'admin/kolom_guru/tambahKolom', 'errors'=>$this->form_validation->error_array()));
+            $this->load->view('layout_admin/wrapper', array('title'=>'Tambah Kolom Guru ', 'isi'=>'admin/kolom_guru/tambahKolom', 'guru'=>$this->modelweb->getDataGuru(FALSE, FALSE, FALSE, FALSE), 'errors'=>$this->form_validation->error_array()));
         }else{
             if($this->modelweb->tambahKolomGuru($data) == 1){
                 $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal ditambahkan!", "error");</script>');
@@ -636,7 +641,7 @@ Class Admin extends CI_Controller{
         }
 
         $where = array(
-            'id'    => $_GET['i']
+            'id_kolom'    => $_GET['i']
         );
 
         if($this->modelweb->hapusData('kolom_guru', $where) == 1){
@@ -654,7 +659,8 @@ Class Admin extends CI_Controller{
 
         $data['title']          = "Edit Kolom Guru ";
         $data['isi']            = "admin/kolom_guru/editKolom";
-        $data['kolom']          = $this->modelweb->getDataKolomGuru(FALSE, FALSE, $_GET['i']);
+        $data['kolom']          = $this->modelweb->getDataKolomGuru(FALSE, FALSE, $this->input->get('i'), FALSE, TRUE);
+        $data['guru']           = $this->modelweb->getDataGuru();
         $data['errors']         = $this->form_validation->error_array();
 
         $this->load->view('layout_admin/wrapper', $data);
@@ -664,22 +670,23 @@ Class Admin extends CI_Controller{
             redirect('admin/login');
         }
 
-        $kolom = $this->modelweb->getDataKolomGuru(FALSE, FALSE, $_GET['i']);
-
         $where = array(
-            'id'    => $_GET['i']
+            'id_kolom'    => $this->input->get('i')
         );
 
         $data = array(
-            'judul' => $_POST['judul'],
-            'isi'   => $_POST['isi']
+            'judul' => $this->input->post('judul'),
+            'karya' => $this->input->post('penulis'),
+            'link'  => str_replace(' ', '-', strtolower($this->input->post('judul'))),
+            'isi'   => $this->input->post('isi')
         );
 
         $this->form_validation->set_rules('judul', 'Judul', 'required', array('required' => 'Judul harus diisi!'));
+        $this->form_validation->set_rules('penulis', 'Penulis', 'required', array('required' => 'Penulis harus diisi!'));
         $this->form_validation->set_rules('isi', 'Isi', 'required', array('required' => 'Isi harus diisi!'));
 
         if($this->form_validation->run() == FALSE){
-            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Kolom Guru ', 'isi'=>'admin/kolom_guru/editKolom', 'kolom' => $kolom, 'errors'=>$this->form_validation->error_array()));
+            $this->load->view('layout_admin/wrapper', array('title'=>'Edit Kolom Guru ', 'isi'=>'admin/kolom_guru/editKolom', 'kolom' => $this->modelweb->getDataKolomGuru(FALSE, FALSE, $_GET['i'], FALSE, TRUE), 'guru' => $this->modelweb->getDataGuru(), 'errors'=>$this->form_validation->error_array()));
         }else{
             if($this->modelweb->updateData('kolom_guru', $data, $where) == 1){
                 $this->session->set_flashdata('pesan', '<script>swal("Gagal!", "Data gagal diubah!", "error");</script>');

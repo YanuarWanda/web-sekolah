@@ -119,21 +119,21 @@
 						<div class="box-border">
 							<img class="img-responsive imgZoom" width="100%" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
 							<div class="d-flex justify-content-center">
-								<button type="button" data-panel="<?php echo $g['id']; ?>" class="btn btn-info btn-block show">
+								<button type="button" data-panel="<?php echo $g['id_guru']; ?>" class="btn btn-info btn-block show">
 									<i class="fa fa-info fa-2x"></i>
 								</button>
-								<a href="<?php echo base_url();?>admin/editGuru?i=<?php echo $g['id']; ?>">
+								<a href="<?php echo base_url();?>admin/editGuru?i=<?php echo $g['id_guru']; ?>">
 									<button type="button" class="btn btn-primary">
 										<i class="fa fa-edit fa-2x"></i>
 									</button>
 								</a>
-								<button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/deleteGuru?i=<?php echo $g['id']; ?>">
+								<button href="<?php echo base_url();?>admin/deleteGuru?i=<?php echo $g['id_guru']; ?>" type="button" class="btn btn-danger remove">
 									<i class="fa fa-trash fa-2x"></i>
 								</button>
 							</div>
 
-							<div class="card-reveal" id="<?php echo $g['id']; ?>">
-								<i data-panel="<?php echo $g['id']; ?>" class="fa fa-close close"></i>
+							<div class="card-reveal" id="<?php echo $g['id_guru']; ?>">
+								<i data-panel="<?php echo $g['id_guru']; ?>" class="fa fa-close close"></i>
 								<ul>
 									<li>NIP<br>
 										<?php echo $g['nip']; ?></li>

@@ -23,7 +23,7 @@
 
         public function getDataGuru($limit = FALSE, $offset = FALSE, $where = FALSE, $jabatan = FALSE, $nama = FALSE){
             if($where){
-                $this->db->where('id', $where);
+                $this->db->where('id_guru', $where);
             }
             if($jabatan){
                 $this->db->where('jabatan_guru', 'Ketua Kompetensi Keahlian RPL');
@@ -34,7 +34,7 @@
             if($limit){
                 $this->db->limit($limit, $offset);
             }
-            $this->db->order_by('id', 'DESC');
+            $this->db->order_by('id_guru', 'DESC');
             return $this->db->get('guru')->result_array();
         }
 
@@ -78,9 +78,9 @@
 			$this->db->order_by('file_download.id', 'DESC');
 			return $this->db->get('file_download')->result_array();
 		}
-        public function getDataKolomGuru($limit = FALSE, $offset = FALSE, $where = FALSE, $search = FALSE){
+        public function getDataKolomGuru($limit = FALSE, $offset = FALSE, $where = FALSE, $search = FALSE, $link = FALSE, $join = FALSE){
 			if($where){
-				$this->db->where('id', $where);
+				$this->db->where('id_kolom', $where);
 			}
 			if($limit){
 				$this->db->limit($limit, $offset);
@@ -88,7 +88,13 @@
             if($search){
                 $this->db->like('judul', $search);
             }
-			$this->db->order_by('kolom_guru.id', 'DESC');
+            if($link){
+                $this->db->where('link', $link);
+            }
+            if($join){
+                $this->db->join('guru', 'kolom_guru.karya = guru.id_guru', 'left');
+            }
+			$this->db->order_by('kolom_guru.id_kolom', 'DESC');
 			return $this->db->get('kolom_guru')->result_array();
 		}
         public function kirimPesan($data){

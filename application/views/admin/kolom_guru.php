@@ -117,11 +117,11 @@
 				<div class="box-border p-1 mb-1">
 						<h1 class="text-center"><?php echo $p['judul']; ?></h1>
 						<hr>
-						<small class="text-muted">Dipost pada : <?php echo $p['dibuat_pada']; ?></small>
+						<small class="text-muted">Dipost pada : <?php echo $p['dibuat_pada']; ?> | Karya : <?php echo $p['nama_guru']; ?></small>
 						<p><?php echo word_limiter($p['isi'], 50); ?></p>
 						<hr>
-						<a href="<?php echo base_url();?>admin/editKolomGuru?i=<?php echo $p['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
-						<button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/hapusKolomGuru?i=<?php echo $p['id']; ?>"><i class="fa fa-trash fa-2x"></i></button>
+						<a href="<?php echo base_url();?>admin/editKolomGuru?i=<?php echo $p['id_kolom']; ?>"><button type="button" class="btn btn-primary"><i class="fa fa-edit fa-2x"></i></button></a>
+						<button type="button" class="btn btn-danger remove" href="<?php echo base_url();?>admin/hapusKolomGuru?i=<?php echo $p['id_kolom']; ?>"><i class="fa fa-trash fa-2x"></i></button>
 				</div>
 				<?php }}else { ?>
 				<div class="box-border p-1 mb-1">

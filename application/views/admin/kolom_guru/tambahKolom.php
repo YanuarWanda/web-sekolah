@@ -118,6 +118,14 @@
                         <label for="judul">Judul</label>
                         <input type="text" name="judul" class="form-control" value="<?php echo set_value('judul'); ?>">
                     </div>
+					<div class="form-group">
+						<label for="penulis">Penulis</label>
+						<select class="form-control" name="penulis">
+							<?php foreach($guru as $g){ ?>
+								<option value="<?php echo $g['id_guru']; ?>"><?php echo $g['nama_guru']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
                     <div class="form-group">
                         <label for="isi">Isi</label>
                         <textarea name="isi" id="isi" class="form-control"><?php echo set_value('isi'); ?></textarea>

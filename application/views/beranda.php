@@ -176,14 +176,14 @@
             </div>
         </div>
     </div> -->
-    <div class="parallax pb-2 pt-2">
+    <div class="parallax pb-2 pt-2 animate-opacity">
         <div class="container">
-            <div class="box-rounded transparent p-0">
+            <div class="box-rounded transparent p-0 box-animate-left">
                 <h1 class="display-3 text-center">Menu</h1>
             </div>
             <div class="row d-flex justify-content-between">
                 <div class="col-sm-12 col-lg-5">
-                    <div class="box-rounded transparent">
+                    <div class="box-rounded transparent box-animate-left">
                         <a class="informasi-menu-beranda" href="<?php echo base_url();?>tentang">
                             <h1 class="h1 display-1 text-center"><i class="fa fa-info-circle fa-1x mr-1"></i></h1>
                             <h1 class="display-4 text-center">Tentang</h1>
@@ -193,7 +193,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-lg-5">
-                    <div class="box-rounded transparent">
+                    <div class="box-rounded transparent box-animate-left">
                         <a class="informasi-menu-beranda" href="<?php echo base_url();?>informasi">
                             <h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1>
                             <h1 class="display-4 text-center">Informasi</h1>
@@ -203,7 +203,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-lg-5">
-                    <div class="box-rounded transparent">
+                    <div class="box-rounded transparent box-animate-left">
                         <a class="informasi-menu-beranda" href="<?php echo base_url();?>pengumuman">
                             <h1 class="h1 display-1 text-center"><i class="fa fa-bell fa-1x mr-1"></i></h1>
                             <h1 class="display-4 text-center">Pengumuman</h1>
@@ -213,7 +213,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-lg-5">
-                    <div class="box-rounded transparent">
+                    <div class="box-rounded transparent box-animate-left">
                         <a class="informasi-menu-beranda" href="<?php echo base_url();?>buku_tamu">
                             <h1 class="h1 display-1 text-center"><i class="fa fa-book fa-1x mr-1"></i></h1>
                             <h1 class="display-4 text-center">Buku Tamu</h1>

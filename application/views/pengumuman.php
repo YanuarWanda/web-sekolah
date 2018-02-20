@@ -74,7 +74,7 @@
                     <h1 class="h3"> <?php echo $p['judul_pengumuman']; ?> </h1>
                     <small class="text-muted ml-2">Dipost pada : <?php echo $p['tanggal_pengumuman']; ?></small>
                     <hr>
-                    <p class="text-justify"> <?php echo word_limiter($p['isi_pengumuman'], 50); ?></p>
+                    <p class="text-justify"> <?php echo $p['isi_pengumuman']; ?></p>
                 </div>
             </div>
             <?php }}else{ ?>

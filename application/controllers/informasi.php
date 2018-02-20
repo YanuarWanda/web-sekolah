@@ -147,24 +147,35 @@ class Informasi extends CI_Controller {
 
 		$config['base_url']     = base_url() . 'informasi/kolom_guru';
         $config['total_rows']   = $this->db->count_all('kolom_guru');
-        $config['per_page']     = 3;
+        $config['per_page']     = 4;
         $config['uri_segment']  = 3;
         $config['attributes']   = array('class' => 'pagination-link');
 
 		if(isset($_POST['search'])){
-			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search']);
+			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $_POST['search'], FALSE, TRUE);
 			$config['total_rows']	= count($this->main_model->getDataKolomGuru(FALSE, FALSE, FALSE, $_POST['search']));
 			$this->session->set_flashdata('search_kolom', $_POST['search']);
 		}else if($this->session->flashdata('search_kolom')){
-			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_kolom'));
+			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, $this->session->flashdata('search_kolom'), FALSE, TRUE);
 			$config['total_rows']	= count($this->main_model->getDataKolomGuru(FALSE, FALSE, FALSE, $this->session->flashdata('search_kolom')));
 			$this->session->set_flashdata('search_kolom', $this->session->flashdata('search_kolom'));
 		}else{
-			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset);
+			$data['kolom']			= $this->main_model->getDataKolomGuru($config['per_page'], $offset, FALSE, FALSE, FALSE, TRUE);
 		}
 
         $this->pagination->initialize($config);
 
 		$this->load->view("layout/wrapper", $data);
+	}
+	public function isi_kolomguru(){
+		$kolom					= $this->main_model->getDataKolomGuru(FALSE, FALSE, FALSE, FALSE, $this->uri->segment(4), TRUE);
+		$kolomTerbaru			= $this->main_model->getDataKolomGuru(3, 0, FALSE, FALSE, FALSE, TRUE);
+
+		$data['title']			= $kolom['0']['judul'].' ';
+		$data['isi']			= "informasi/kolom_guru/isi_kolomguru";
+		$data['kolom']			= $kolom;
+		$data['kolomTerbaru'] 	= $kolomTerbaru;
+
+		$this->load->view('layout/wrapper', $data);
 	}
 }

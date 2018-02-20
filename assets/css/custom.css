@@ -284,6 +284,7 @@ a.informasi-menu:hover{
 }
 
 a.informasi-menu-beranda{
+    transition: all 0.3s ease-in;
     color: white;
 }
 
@@ -624,5 +625,34 @@ a.pagination-link{
   background-color: #eceeef;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem 0 0 0.25rem;
+}
+.nav-item .nav-link.active{
+    background-color: #ccc;
+}
+.box-animate-left:hover{
+    background-color: #aaa;
+}
+.box-animate-left{
+    animation: 2s ease-out 0s 1 slideInFromLeft;
+    transition: all 0.3s ease-in;
+}
+.animate-opacity{
+    animation: 500ms ease-out 0s 1 opacityFull;
+}
+@keyframes slideInFromLeft{
+    0% {
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes opacityFull{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 /* --- END --- */

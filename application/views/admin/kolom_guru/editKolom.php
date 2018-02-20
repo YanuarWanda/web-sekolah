@@ -113,11 +113,19 @@
 						<b><?php echo $error; ?></b>
 					</div>
 				<?php } ?>
-                <?php echo form_open('admin/updateKolomGuru?i='.$kolom['0']['id']); ?>
+                <?php echo form_open('admin/updateKolomGuru?i='.$this->input->get('i')); ?>
                     <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" name="judul" class="form-control" value="<?php echo $kolom['0']['judul']; ?>">
                     </div>
+					<div class="form-group">
+						<label for="penulis">Penulis</label>
+						<select class="form-control" name="penulis">
+							<?php foreach($guru as $g){ ?>
+								<option value="<?php echo $g['id_guru']; ?>" <?php if($g['id_guru'] == $kolom['0']['karya']){ ?> selected <?php } ?>><?php echo $g['nama_guru']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
                     <div class="form-group">
                         <label for="isi">Isi</label>
                         <textarea name="isi" id="isi" class="form-control"><?php echo $kolom['0']['isi']; ?></textarea>
