@@ -52,7 +52,7 @@
 
 <div class="parallax">
     <div class="container p-3" id="box-informasi">
-        <div class="box-rounded">
+        <div class="box-rounded transparent box-animate-top">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -62,35 +62,35 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="box-rounded">
+                <div class="box-rounded transparent box-animate-top">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi/berita"><h1 class="h1 display-1 text-center"><i class="fa fa-newspaper-o fa-1x mr-1"></i></h1></a>
                     <hr>
                     <p class="display-4 text-center"> Berita Terkini </p>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="box-rounded">
+                <div class="box-rounded transparent box-animate-left">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi/kolom_guru"><h1 class="h1 display-1 text-center"><i class="fa fa-archive fa-1x mr-1"></i></h1></a>
                     <hr>
                     <p class="display-4 text-center"> Kolom Guru </p>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="box-rounded">
+                <div class="box-rounded transparent box-animate-right">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi/guru"><h1 class="h1 display-1 text-center"><i class="fa fa-id-card fa-1x mr-1"></i></h1></a>
                     <hr>
                     <p class="display-4 text-center"> Daftar Guru </p>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="box-rounded">
+                <div class="box-rounded transparent box-animate-left">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi/agenda"><h1 class="h1 display-1 text-center"><i class="fa fa-calendar fa-1x mr-1"></i></h1></a>
                     <hr>
                     <p class="display-4 text-center"> Agenda </p>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="box-rounded">
+                <div class="box-rounded transparent box-animate-right">
                     <a class="informasi-menu" href="<?php echo base_url();?>informasi/download"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x mr-1"></i></h1></a>
                     <hr>
                     <p class="display-4 text-center"> Download </p>

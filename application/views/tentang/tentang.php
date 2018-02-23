@@ -53,19 +53,19 @@
     <div class="container p-3">
         <ul class="nav justify-content-center" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link box-rounded active mr-2" id="home-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="home" aria-selected="true">Profil RPL</a>
+                <a class="nav-link box-rounded transparent active mr-2" id="home-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="home" aria-selected="true">Profil RPL</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link box-rounded mr-2" id="profile-tab" data-toggle="tab" href="#visimisi" role="tab" aria-controls="profile" aria-selected="false">Visi Misi</a>
+                <a class="nav-link box-rounded transparent mr-2" id="profile-tab" data-toggle="tab" href="#visimisi" role="tab" aria-controls="profile" aria-selected="false">Visi Misi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link box-rounded mr-2" id="contact-tab" data-toggle="tab" href="#struktur" role="tab" aria-controls="contact" aria-selected="false">Struktur Organisasi</a>
+                <a class="nav-link box-rounded transparent mr-2" id="contact-tab" data-toggle="tab" href="#struktur" role="tab" aria-controls="contact" aria-selected="false">Struktur Organisasi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link box-rounded mr-2" id="contact-tab" data-toggle="tab" href="#kurikulum" role="tab" aria-controls="contact" aria-selected="false">Kurikulum RPL</a>
+                <a class="nav-link box-rounded transparent mr-2" id="contact-tab" data-toggle="tab" href="#kurikulum" role="tab" aria-controls="contact" aria-selected="false">Kurikulum RPL</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link box-rounded mr-2" id="contact-tab" data-toggle="tab" href="#kerja" role="tab" aria-controls="contact" aria-selected="false">Peluang Kerja</a>
+                <a class="nav-link box-rounded transparent mr-2" id="contact-tab" data-toggle="tab" href="#kerja" role="tab" aria-controls="contact" aria-selected="false">Peluang Kerja</a>
             </li>
         </ul>
 

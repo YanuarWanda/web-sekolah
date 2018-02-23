@@ -52,7 +52,7 @@
 
 <div class="parallax">
     <div class="container p-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -61,7 +61,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded small mr-0 ml-0">
+        <div class="box-rounded transparent small mr-0 ml-0">
             <?php echo form_open('informasi/berita'); ?>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -71,7 +71,7 @@
         </div>
         <?php if($berita){ ?>
             <?php foreach($berita as $b){ ?>
-            <div class="box-rounded">
+            <div class="box-rounded transparent">
                 <div class="row">
                     <div class="col-sm-12 col-lg-3">
                         <img class="img-fluid img-full" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" />
@@ -88,11 +88,11 @@
             </div>
             <?php } ?>
         <?php }else{ ?>
-            <div class="box-rounded">
+            <div class="box-rounded transparent">
                 <h1 class="display-4 text-center"> Berita yang anda cari tidak ditemukan ... </h1>
             </div>
         <?php } ?>
-        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
+        <div class="box-rounded transparent d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

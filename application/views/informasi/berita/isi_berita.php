@@ -52,7 +52,7 @@
 <div class="parallax">
     <?php foreach($berita as $b){ ?>
     <div class="container p-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -64,21 +64,21 @@
         </div>
         <div class="row">
             <div class="col-lg-9">
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <h1 class="display-4 text-center"><?php echo $b['judul_berita']; ?> </h1>
                 </div>
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <img class="img-fluid imgZoom img-full" src="<?php echo base_url();?>assets/img/foto-berita/<?php echo $b['gambar']; ?>" alt="<?php echo $b['judul_berita']; ?>"/>
                 </div>
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <small class="text-muted">Dipost pada : <?php echo $b['tanggal_berita']; ?></small>
                 </div>
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <p class="text-justify"><?php echo $b['isi_berita']; ?></p>
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <h3 class="text-center"> Bagikan Berita </h3>
                     <hr>
                     <div class="d-flex justify-content-center">
@@ -108,7 +108,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <h3 class="text-center"> Berita Terbaru </h3>
                     <?php foreach($beritaTerbaru as $bt){ ?>
                         <hr>

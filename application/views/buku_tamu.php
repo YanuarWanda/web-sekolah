@@ -1,4 +1,4 @@
-<!-- <script src="https://cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script> -->
+<script src="https://cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
 <nav class="navbar navbar-expand navbar-light bg-custom-gradient-1">
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto col-sm-12 col-lg-3 justify-content-center">
@@ -53,7 +53,7 @@
 
 <div class="parallax pt-1 pb-1">
     <div class="container mb-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -61,7 +61,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <h1 class="text-center">Pesan, Kritik dan Saran</h1>
             <hr>
             <?php if($errors){foreach($errors as $error){ ?>

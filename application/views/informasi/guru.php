@@ -51,7 +51,7 @@
 </nav>
 <div class="parallax">
     <div class="container p-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -60,7 +60,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded small mr-0 ml-0">
+        <div class="box-rounded transparent small mr-0 ml-0">
             <?php echo form_open('informasi/guru'); ?>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -72,7 +72,7 @@
             <?php if($guru){ ?>
                 <?php foreach($guru as $g){ ?>
                 <div class="col-lg-4">
-                    <div class="box-rounded">
+                    <div class="box-rounded transparent">
                         <img class="img-fluid img-full imgZoom" src="<?php echo base_url();?>assets/img/foto-guru/<?php echo $g['gambar']; ?>" alt="<?php echo $g['nama_guru']; ?>"/>
                         <hr>
                         <p class="text-center font-weight-bold"> <?php echo $g['nama_guru']; ?> </p>
@@ -110,13 +110,13 @@
                 </div>
         <?php }}else{ ?>
         <div class="col-sm-12">
-            <div class="box-rounded">
+            <div class="box-rounded transparent">
                 <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ... </h1>
             </div>
         </div>
         <?php } ?>
         </div>
-        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
+        <div class="box-rounded transparent d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

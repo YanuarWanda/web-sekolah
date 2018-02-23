@@ -52,7 +52,7 @@
 
 <div class="parallax">
     <div class="container p-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -61,7 +61,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded small mr-0 ml-0">
+        <div class="box-rounded transparent small mr-0 ml-0">
             <?php echo form_open('informasi/agenda'); ?>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -70,7 +70,7 @@
             </form>
         </div>
          <?php if($agenda){foreach($agenda as $b){ ?>
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <div class="row">
                 <div class="col-lg-12">
                     <h3><?php echo $b['judul_agenda']; ?></h3>
@@ -81,11 +81,11 @@
             </div>
         </div>
         <?php }}else{ ?>
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
         </div>
         <?php } ?>
-        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
+        <div class="box-rounded transparent d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

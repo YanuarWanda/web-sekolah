@@ -51,7 +51,7 @@
 </nav>
 <div class="parallax">
     <div class="container p-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -60,7 +60,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded small mr-0 ml-0">
+        <div class="box-rounded transparent small mr-0 ml-0">
             <?php echo form_open('informasi/download'); ?>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -71,7 +71,7 @@
         <div class="row">
             <?php if($download){foreach($download as $d){ ?>
                 <div class="col-lg-6">
-                    <div class="box-rounded">
+                    <div class="box-rounded transparent">
                         <h1 class="text-center"><?php echo $d['nama_file']; ?></h1>
                         <hr>
                         <div class="row container">
@@ -79,20 +79,20 @@
                                 <p class="text-justify"><?php echo word_limiter($d['deskripsi_file'], 15); ?></p>
                             </div>
                             <div class="col-lg-6 float-right">
-                                <a class="informasi-menu" href="#"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x ml-2"></i></h1></a>
+                                <a class="informasi-menu" href="<?php echo $d['link_file']; ?>"><h1 class="h1 display-1 text-center"><i class="fa fa-download fa-1x ml-2"></i></h1></a>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php  }}else{ ?>
                 <div class="col-sm-12">
-                    <div class="box-rounded">
+                    <div class="box-rounded transparent">
                         <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
                     </div>
                 </div>
             <?php } ?>
         </div>
-        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
+        <div class="box-rounded transparent d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

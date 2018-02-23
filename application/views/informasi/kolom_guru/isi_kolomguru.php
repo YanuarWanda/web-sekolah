@@ -54,7 +54,7 @@
     <div class="container pb-3">
         <div class="row">
             <div class="col-sm-12 col-lg-9">
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -64,16 +64,16 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <h1 class="text-center"><?php echo $kolom['0']['judul']; ?></h1>
                 </div>
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <small class="text-muted">Dipost pada : <?php echo $kolom['0']['dibuat_pada']; ?> | Karya : <?php echo $kolom['0']['nama_guru']; ?></small>
                     <p class="text-justify"><?php echo $kolom['0']['isi']; ?></p>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-3">
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <h3 class="text-center">Bagikan</h3>
                     <hr>
                     <div class="d-flex justify-content-center">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <div class="box-rounded">
+                <div class="box-rounded transparent">
                     <h3 class="text-center">Kolom Guru Terbaru</h3>
                     <?php foreach($kolomTerbaru as $k){ ?>
                         <hr>

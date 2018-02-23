@@ -13,7 +13,7 @@
 
         <!-- <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script> -->
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/sweetalert2.all.min.js"></script>
-		<!-- <script src="https://cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script> -->
+		<script src="https://cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
 
 		<link rel='icon' href="<?php echo base_url()."/assets/img/icon.png";?>">
     	<title><?php echo $title.'| SMKN 11 Bandung' ?></title>

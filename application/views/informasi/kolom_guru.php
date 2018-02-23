@@ -52,7 +52,7 @@
 
 <div class="parallax">
     <div class="container p-3">
-        <div class="box-rounded">
+        <div class="box-rounded transparent">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Beranda</a></li>
@@ -61,7 +61,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="box-rounded small mr-0 ml-0">
+        <div class="box-rounded transparent small mr-0 ml-0">
             <?php echo form_open('informasi/kolom_guru'); ?>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -72,7 +72,7 @@
         <div class="row">
          <?php if($kolom){foreach($kolom as $b){ ?>
              <div class="col-lg-6">
-                 <div class="box-rounded">
+                 <div class="box-rounded transparent">
                     <h3><?php echo $b['judul']; ?></h3>
                     <small class="text-muted ml-2">Dipost pada : <?php echo $b['dibuat_pada']; ?> | Karya : <?php echo $b['nama_guru']; ?></small>
                     <hr>
@@ -83,13 +83,13 @@
             </div>
         <?php }}else{ ?>
         <div class="col-sm-12">
-            <div class="box-rounded">
+            <div class="box-rounded transparent">
                 <h1 class="display-4 text-center">Data yang anda cari tidak ditemukan ...</h1>
             </div>
         </div>
         <?php } ?>
         </div>
-        <div class="box-rounded d-flex justify-content-center pt-0 pb-0">
+        <div class="box-rounded transparent d-flex justify-content-center pt-0 pb-0">
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

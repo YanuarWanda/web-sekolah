@@ -216,8 +216,13 @@ hr .black-hr{
 }
 
 .box-rounded.transparent{
-    background-color: rgba(255, 255, 255, .1);
+    transition: all 1s ease-in-out;
+    background-color: rgba(0, 0, 0, .7);
     color: white;
+}
+
+.box-rounded.transparent:hover{
+    background-color: rgba(0, 0, 0, .25);
 }
 
 .box-rounded.white{
@@ -244,7 +249,7 @@ hr .black-hr{
 }
 
 .nav-link.box.active, .nav-link.box-rounded.active{
-    background-color: red;
+    /* background-color: red; */
     color: white;
     font-size: 30px;
 }
@@ -289,7 +294,7 @@ a.informasi-menu-beranda{
 }
 
 a.informasi-menu-beranda:hover{
-    color: rgba(255, 255, 255, .5);
+    color: rgba(255, 255, 255, .25);
 }
 
 a.nav-link.active i{
@@ -627,13 +632,21 @@ a.pagination-link{
   border-radius: 0.25rem 0 0 0.25rem;
 }
 .nav-item .nav-link.active{
-    background-color: #ccc;
+    opacity: 1;
 }
 .box-animate-left:hover{
     background-color: #aaa;
 }
 .box-animate-left{
     animation: 2s ease-out 0s 1 slideInFromLeft;
+    transition: all 0.3s ease-in;
+}
+.box-animate-right{
+    animation: 2s ease-out 0s 1 slideInFromRight;
+    transition: all 0.3s ease-in;
+}
+.box-animate-top{
+    animation: 2s ease-out 0s 1 slideInFromTop;
     transition: all 0.3s ease-in;
 }
 .animate-opacity{
@@ -645,6 +658,22 @@ a.pagination-link{
     }
     100%{
         transform: translateX(0);
+    }
+}
+@keyframes slideInFromRight{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromTop{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
     }
 }
 @keyframes opacityFull{
